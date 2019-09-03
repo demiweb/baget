@@ -1,8 +1,20 @@
 small
   font-size: inherit
 
-h1, h2, h3, h4, h5, h6
-  font-weight: 400
+// h1, h2, h3, h4, h5, h6
+//   font-weight: 400
 
 .title
-  +css-lock(21, 45, 320, 1399, font-size)
+  +css-lock(21, 48, 320, 1399, font-size)
+  color: $black
+  font-weight: 300
+  line-height: 1
+  display: block
+  &--h3
+    +css-lock(18, 24, 320, 1399, font-size)
+  &--ttu
+    text-transform: uppercase
+  &--medium
+    font-weight: 500
+  &--white
+    color: $white

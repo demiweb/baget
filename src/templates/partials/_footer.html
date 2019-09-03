@@ -1,5 +1,108 @@
+{%set
+form = [
+  {
+    wrapMod: 'form__col-50',
+    name: 'input',
+    mod: '',
+    type: 'text',
+    placeholder: 'ВАШЕ ИМЯ',
+    fieldClass: ''
+  },
+  {
+    wrapMod: 'form__col-50',
+    name: 'input',
+    mod: '',
+    type: 'tel',
+    placeholder: 'НОМЕР ТЕЛЕФОНА',
+    fieldClass: ''
+  },
+  {
+    name: 'textarea',
+    mod: '',
+    type: '',
+    placeholder: 'Что вас интересует?',
+    fieldClass: 'js-textarea'
+  }
+]
+%}
+
+{% if page === 'services' %}
 <!-- begin footer -->
-<footer class="footer">
-  hello from footer
+<footer class="footer footer--lg">
+    <div class="footer__inner">
+      <div class="footer__left">
+        <!-- begin banner -->
+        <div class="banner js-lazy" data-background-image="./img/services/banner.jpg">
+          <div class="banner__title">
+            <h3 class="title title--h3 title--medium title--white title--ttu">Консультация специалиста</h3>
+          </div>
+
+          <div class="banner__text">
+            <div class="banner__phones">
+              <div class="banner__phone"><a href="tel:0442272632">(044) 22 72 63 2</a></div>
+              <div class="banner__phone"><a href="tel:0967766003">(096) 77 66 00 3</a></div>
+            </div>
+
+            <a href="mailto:info@bagetnaya.com.ua">info@bagetnaya.com.ua</a>
+          </div>
+        </div>
+        <!-- end banner -->
+      </div>
+
+      <div class="footer__right">
+        <div class="footer__form">
+          <!-- begin form -->
+          <div class="form">
+            <form>
+              <div class="form__inner">
+                <div class="form__title">
+                  <h3 class="title title--h3 title--medium title--ttu">Вам нужна помощь в подборе?</h3>
+                </div>
+
+                <div class="form__row">
+                  {% for i in form %}
+                  <div class="form__col{% if i.wrapMod %} {{ i.wrapMod }}{% endif %}">
+                    {{ mixins.input(
+                      name = i.name,
+                      mod = i.mod,
+                      type = i.type,
+                      placeholder = i.placeholder,
+                      value = '',
+                      fieldClass = i.fieldClass
+                    ) }}
+                  </div>
+                  {% endfor %}
+
+                  <div class="form__col">
+                    {{ mixins.btn(
+                      title = 'ОСТАВИТЬ ЗАЯВКУ',
+                      mod = '',
+                      href = false
+                    ) }}
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- end form -->
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__copy">
+            &copy; 2019 центральная багетная мастерская
+          </div>
+
+          <a href="#" class="footer__auth">
+            <span class="footer__auth-logo">
+              {{ mixins.icon('D') }}
+            </span>
+            разработка сайта <br>
+            «DEMIWEB INTernational»
+          </a>
+        </div>
+      </div>
+    </div>
 </footer>
 <!-- end footer -->
+{% endif %}
+

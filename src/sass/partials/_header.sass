@@ -1,0 +1,234 @@
+.header
+  $this: &
+  position: relative
+  z-index: 10
+  background-color: $white
+  +sm
+    position: fixed
+    left: 0
+    right: 0
+    top: 0
+  &--lg
+    color: $black
+    margin-bottom: 110px   
+    +lg
+      margin-bottom: 100px
+    +md
+      margin-bottom: 55px
+    +xs
+      margin-bottom: 40px
+    +before
+      top: 0
+      left: 0
+      width: 100px
+      height: 260px
+      position: absolute
+      z-index: 0
+      background-color: $accent
+      +md
+        height: 160px
+      +sm
+        height: 100px
+        width: 80px
+      +xs
+        width: 60px
+        height: 70px
+    +after
+      top: 0
+      right: 0
+      position: absolute
+      z-index: 0
+      width: 140px
+      height: 140px
+      background-color: $gray-lighten
+      +md
+        width: 100px
+        height: 100px
+      +sm
+        width: 40px
+        height: 40px
+      +xs
+        width: 20px
+        height: 20px
+
+    #{$this}__inner
+      +flex
+      position: relative
+      z-index: 1
+    #{$this}__left
+      padding-right: 55px
+      padding-left: 50px
+      width: percentage(415/1800)
+      +xl
+        padding-right: 25px
+        padding-left: 30px
+      +lg
+        padding-left: 15px
+      +md
+        padding-right: 15px
+        width: 30%
+      +xs
+        width: 50%
+    #{$this}__right
+      +flex(flex-start, center)
+      border-bottom: 1px solid  $gray-lighten
+      padding-top: 45px
+      padding-bottom: 45px
+      padding-right: 50px
+      width: percentage(1385/1800)
+      position: relative
+      +xl
+        padding-right: 30px
+      +lg
+        padding-right: 15px
+      +md
+        padding-top: 10px
+        padding-bottom: 10px
+      +xs
+        justify-content: flex-end
+    #{$this}__nav
+      max-width: 250px
+      ul
+        +flex(flex-start, noral, row, wrap)
+      li
+        width: 50%
+      +sm
+        position: fixed
+        max-width: none
+        background-color: $white
+        padding: 15px
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: 10
+        overflow: auto
+        transform: translate(0, -100%)
+        +vertical
+        +ready
+          +tr(transform .3s)
+        &.is-active
+          transform: translate(0, 0)
+        li
+          width: auto
+        ul
+          display: block
+    #{$this}__nav-in
+      +sm
+        display: inline-block
+        vertical-align: middle
+        width: 100%
+        font-size: $fz
+        .nav
+          margin-bottom: 15px
+    #{$this}__nav-close
+      +icon-close(20, 1, currentColor)
+      position: absolute
+      top: 15px
+      right: 15px
+      z-index: 1
+      display: none
+      +sm
+        display: block
+    #{$this}__logo
+      position: relative
+      padding-top: 60px
+      padding-left: 15px
+      .logo
+        position: relative
+        z-index: 1
+        max-width: 100%
+      +before
+        position: absolute
+        z-index: 0
+        background-color: $white
+        width: 100px
+        top: 0
+        bottom: 0
+        left: 0
+      +md
+        padding-top: 40px
+      +sm
+        padding-top: 20px
+      +xs
+        padding-left: 0
+        padding-top: 10px
+    #{$this}__address
+      text-align: right
+      transform: translate(0, 50px)
+      +md
+        transform: translate(0, 0)
+      +sm
+        display: none
+    #{$this}__address-mob
+      display: none
+      +sm
+        display: block
+    #{$this}__contacts
+      flex-grow: 1
+      +xs
+        display: none
+    #{$this}__contacts-mob
+      display: none
+      padding-top: 15px
+      padding-bottom: 15px
+      +xs
+        display: block
+    #{$this}__burger
+      display: none
+      +sm
+        display: block
+
+
+.header-address-item
+  text-decoration: underline
+
+.header-contacts
+  text-align: right
+  +sm
+    +flex(flex-start, center, row, wrap)
+  +xs
+    display: block
+    text-align: center
+
+.header-phone
+  font-weight: 700
+  margin-bottom: 5px
+  display: block
+  +sm
+    margin-right: 10px
+    margin-bottom: 0
+  +xs
+    margin-right: 0
+
+.header-mail
+  text-decoration: underline
+
+.burger
+  display: block
+  width: 28px
+  height: 28px
+  margin-top: -14px
+  span:after, span:before 
+    content: ""
+    position: absolute
+    left: 0
+    top: 9px
+  span:after
+    top: 18px
+  span 
+    position: relative
+    display: block
+  span, span:after, span:before
+    width: 100%
+    height: 2px
+    background-color: currentColor
+    transition: all 0.3s
+    backface-visibility: hidden
+    border-radius: 2px
+  // &.is-active span 
+  //   background-color: transparent
+  // &.is-active span:before 
+  //   transform: rotate(45deg) translate(-1px, 0px)
+  // &.is-active span:after 
+  //   transform: rotate(-45deg) translate(6px, -7px)

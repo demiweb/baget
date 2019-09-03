@@ -1,5 +1,72 @@
 <!-- begin header -->
-<header class="header">
-  hello from header
+<header class="header header--lg">
+    <div class="header__inner">
+      <div class="header__left">
+        <div class="header__logo">
+          <a href="/" class="logo"><img class="js-lazy" alt="" data-src="./img/logo.png"/></a>
+        </div>
+
+        <div class="header__address">
+          <!-- begin header-contacts -->
+          <div class="header-adress">
+            <div class="header-address-item">г. Киев, ул. Костёльная, 15</div>
+            <div class="header-address-item">г. Киев, ул. Костёльная, 15</div>
+          </div>
+          <!-- end header-adress -->
+        </div>
+      </div>
+
+      <div class="header__right">
+        <div class="header__nav js-menu">
+          <button class="header__nav-close js-menu-close"></button>
+          <div class="header__nav-in">
+            {% include "partials/_nav.html" %}
+
+            <div class="header__address-mob">
+              <!-- begin header-contacts -->
+              <div class="header-adress">
+                <div class="header-address-item">г. Киев, ул. Костёльная, 15</div>
+                <div class="header-address-item">г. Киев, ул. Костёльная, 15</div>
+              </div>
+              <!-- end header-adress -->
+            </div>
+
+            <div class="header__contacts-mob">
+              <!-- begin header-contacts -->
+              <div class="header-contacts">
+                <div class="header-phone">
+                  <a href="tel:0442272632" class="">(044) 22 72 63 2,</a>
+                </div>
+                <div class="header-phone">
+                  <a href="tel:0967766003" class="">(096) 77 66 00 3</a>
+                </div>             
+                <a href="mailto:info@bagetnaya.com.ua" class="header-mail">info@bagetnaya.com.ua</a>
+              </div>
+              <!-- end header-contacts -->
+            </div>
+          </div>
+        </div>
+
+        <div class="header__contacts">
+          <!-- begin header-contacts -->
+          <div class="header-contacts">
+            <div class="header-phone">
+              <a href="tel:0442272632" class="">(044) 22 72 63 2,</a>
+            </div>
+            <div class="header-phone">
+              <a href="tel:0967766003" class="">(096) 77 66 00 3</a>
+            </div>             
+            <a href="mailto:info@bagetnaya.com.ua" class="header-mail">info@bagetnaya.com.ua</a>
+          </div>
+          <!-- end header-contacts -->
+        </div>
+
+        <div class="header__burger">
+          <button class="burger js-burger"><span></span></button>
+        </div>
+      </div>
+
+      
+    </div>
 </header>
 <!-- end header -->

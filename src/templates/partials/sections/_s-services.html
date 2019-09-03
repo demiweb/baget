@@ -1,0 +1,140 @@
+{%set
+services = [
+  {
+    img: '01.jpg',
+    imgLeft: true,
+    mod: '',
+    title: 'Оформление зеркала',
+    text: 'Сегодня становится популярно оформлять в багет не только картины и фотографии, но и зеркала. Очень часто именно оформленное зеркало становится изюминкой созданного интерьера, оно может придать дополнительный уют и тепло. '
+  },
+  {
+    img: '02.jpg',
+    imgLeft: '',
+    mod: 'service-block--mb-0',
+    title: 'Оформление картин',
+    text: 'классический багет с натуральными оттенками дерева подойдет практически любому произведению искусства и будет изысканным дополнением Вашему интерьеру на протяжении всего времени!'
+  },
+  {
+    img: '03.jpg',
+    imgLeft: true,
+    mod: '',
+    title: 'Оформление плазменных ТВ',
+    text: 'Телевизор или плазменная панель, обрамлённая багетной рамой, будет гармонично сочетаться с общим стилем интерьера, а также существенно повысит защиту вашего телевизора или плазменной панели от внешних воздействий пыли и влаги.'
+  },
+  {
+    img: '04.jpg',
+    imgLeft: '',
+    mod: '',
+    title: 'Оформление вышивки',
+    text: 'Оформление таких работ заслуживает особого внимания, ведь багетная рама должна подчеркнуть основной колорит работы, передать внутренний мир и труд мастера.'
+  },
+  {
+    img: '05.jpg',
+    imgLeft: true,
+    mod: '',
+    title: 'Галерейная натяжка холста на подрамник',
+    text: 'Сегодня становится популярно оформлять в багет не только картины и фотографии, но и зеркала. Очень часто именно оформленное зеркало становится изюминкой созданного интерьера, оно может придать дополнительный уют и тепло. '
+  },
+  {
+    img: '06.jpg',
+    imgLeft: '',
+    mod: 'service-block--mb-0',
+    title: 'Оформление икон',
+    text: 'классический багет с натуральными оттенками дерева подойдет практически любому произведению искусства и будет изысканным дополнением Вашему интерьеру на протяжении всего времени!'
+  },
+  {
+    img: '07.jpg',
+    imgLeft: true,
+    mod: 'service-block--img-auto',
+    title: 'Вышивка лентами',
+    text: 'Телевизор или плазменная панель, обрамлённая багетной рамой, будет гармонично сочетаться с общим стилем интерьера, а также существенно повысит защиту вашего телевизора или плазменной панели от внешних воздействий пыли и влаги.'
+  },
+  {
+    img: '08.jpg',
+    imgLeft: '',
+    mod: '',
+    title: 'Нестандартные заказы и 
+дополнительные услуги',
+    text: 'Оформление таких работ заслуживает особого внимания, ведь багетная рама должна подчеркнуть основной колорит работы, передать внутренний мир и труд мастера.'
+  }
+]
+%}
+
+<!-- begin services -->
+<section class="services">
+  <div class="word logo-text">Цнтр.<span>багет</span></div>
+
+  <div class="container">
+    <div class="services__top">
+      <div class="services__title">
+        <h1 class="title">Услуги багетной мастерской</h1>
+      </div>
+
+      <div class="services__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { link: 'главная' },
+            { item: '/' },
+            { link: 'услуги', modLink: 'is-active' }
+          ]
+        ) }}
+      </div>
+
+      <div class="shadow-rect"></div>
+    </div>
+  </div>
+
+  <div class="services__blocks">
+    <!-- begin bg-lines -->
+    <div class="bg-lines">
+      <div class="bg-line"></div>
+      <div class="bg-line"></div>
+      <div class="bg-line"></div>
+      <div class="bg-line"></div>
+    </div>
+    <!-- end bg-lines -->
+    <div class="container container--full">      
+      {% for i in services %}
+      <div class="services__block">
+        <!-- begin service-block -->
+        <div class="service-block{% if i.imgLeft %} service-block--img-left{% endif %}{% if i.mod %} {{ i.mod}}{% endif %}">
+          {% if i.imgLeft %}
+          <div class="service-block__img js-lazy" data-background-image="./img/services/{{ i.img }}"></div>
+
+          <div class="service-block__content">
+            <div class="service-block__title">
+              <h3 class="title title--ttu title--medium title--h3">{{ i.title | safe  }}</h3>
+            </div>
+
+            <div class="service-block__text">{{ i.text | safe }}</div>
+
+            <div class="service-block__link">
+              <a href="#" class="link">ПОДРОБНЕЕ</a>
+            </div>
+          </div>
+          {% else %} 
+          <div class="service-block__content">
+            <div class="service-block__title">
+              <div class="title title--ttu title--medium title--h3">{{ i.title | safe  }}</div>
+            </div>
+
+            <div class="service-block__text">{{ i.text | safe }}</div>
+
+            <div class="service-block__link">
+              <a href="#" class="link">ПОДРОБНЕЕ</a>
+            </div>
+          </div>
+
+          <div class="service-block__img js-lazy" data-background-image="./img/services/{{ i.img }}"></div>
+          {% endif %}
+        </div>
+        <!-- end service-block -->
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+</section>
+<!-- end services -->

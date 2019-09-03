@@ -1,0 +1,14 @@
+.breadcrumbs
+  font-size: 10px
+  color: $gray
+  text-transform: uppercase
+  li
+    display: inline-block
+  a
+    text-decoration: underline
+    +tr(color .3s)
+    +hover
+      color: $accent
+  .is-active
+    pointer-events: none
+    text-decoration: none

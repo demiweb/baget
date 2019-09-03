@@ -65,6 +65,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "jquery": "^3.4.1",
-    "lozad": "^1.9.0"
+    "lozad": "^1.9.0",
+    "throttle-debounce": "^2.1.0"
   }
 }
