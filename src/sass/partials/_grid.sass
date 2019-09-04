@@ -1,0 +1,20 @@
+.grid
+  +flex(flex-start, normal, row, wrap)
+  &__left,
+  &__right
+    width: 50%
+    +flex(flex-start, normal, column)
+    +sm
+      width: 100%
+      padding-left: 0
+      padding-right: 0
+  &__left
+    padding-right: 15px
+    +sm
+      margin-bottom: 15px
+  &__left-center
+    align-items: center
+    +sm
+      align-items: normal
+  &__right
+    padding-left: 15px

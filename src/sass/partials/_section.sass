@@ -1,0 +1,42 @@
+.section
+  $this: &
+  padding-top: 50px
+  padding-bottom: 50px
+  position: relative
+  z-index: 1
+  +xl
+    padding-top: 40px
+    padding-bottom: 40px
+  +lg
+    padding-top: 30px
+    padding-bottom: 30px
+  // +md
+  //   padding-top: 20px
+  //   padding-bottom: 20px
+  // +xs
+  //   padding-top: 15px
+  //   padding-bottom: 15px
+  &__top
+    +flex(space-between, flex-end)
+    margin-bottom: 25px
+    +sm
+      display: block
+    .section__title
+      margin-bottom: 10px
+  
+  &__nav-title
+    font-weight: 700
+    text-transform: uppercase
+    font-size: 10px
+    margin-bottom: 30px
+    color: $black
+    +md
+      margin-bottom: 15px
+  &__title
+    margin-bottom: 45px
+    +xl
+      margin-bottom: 35px
+    +lg
+      margin-bottom: 25px
+    +md
+      margin-bottom: 15px

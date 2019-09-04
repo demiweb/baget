@@ -1,0 +1,42 @@
+{%set
+services = [
+  { img: '01.jpg', title: 'Оформление зеркала' },
+  { img: '04.jpg', title: 'Оформление вышивки' },
+  { img: '03.jpg', title: 'Оформление плазменных ТВ' },
+  { img: '05.jpg', title: 'галерейная натяжка холста на подрамник' },
+  { img: '06.jpg', title: 'Оформление икон' },
+  { img: '07.jpg', title: 'вышивка лентами' },
+  { img: '08.jpg', title: 'нестандартные заказы
+и дополнительные услуги' }
+]
+%}
+
+<!-- begin section -->
+<section class="section">
+  <div class="container">
+    <div class="section__title">
+      <div class="title title--medium title--h3 title--ttu">Остальные услуги</div>
+    </div>
+
+    <!-- begin services-links -->
+    <div class="services-links">
+      {% for i in services %}
+      <div class="services-links__item">
+        <!-- begin service-link -->
+        <a href="#" class="service-link">
+          <span class="service-link__img js-lazy" data-background-image="./img/services/{{ i.img }}">
+            <span class="service-link__link link">подробнее</span>
+          </span>
+
+          <span class="service-link__title">
+            <span class="title title--ttu title--medium title--h5">{{ i.title | safe }}</span>
+          </span>
+        </a>
+        <!-- end service-link -->
+      </div>
+      {% endfor %}
+    </div>
+    <!-- end services-links -->
+  </div>
+</section>
+<!-- end section -->

@@ -1,0 +1,108 @@
+.hero
+  padding-top: 20px
+  // overflow: hidden
+  position: relative
+  z-index: 1
+  height: 90vh
+  +flex(flex-start, normal, column)
+  .container
+    width: 100%
+  &__breadcrumbs
+    margin-bottom: 30px
+    +md
+      margin-bottom: 15px
+  &__img
+    text-align: center
+    position: relative
+    display: inline-block
+    width: 100%
+    height: 100%
+    
+  &__img-in
+    background-repeat: no-repeat
+    background-position: 50% 50%
+    background-size: contain
+    padding-top: 35%
+    +vcenter
+    width: 100%
+    +xl
+      padding-top: 40%
+    +lg
+      padding-top: 50%
+    +md
+      padding-top: 55%
+    +sm
+      padding-top: 70%
+    +xs
+      padding-top: 85%
+    &::before, &::after
+      content: ''
+      border-right: 1px solid  $gray-lighten
+      bottom: 100%
+      z-index: 0
+      height: 50vh
+      position: absolute
+    &::before      
+      left: 37vw
+      +sm
+        left: 30vw
+    &::after
+      right: 37vw
+      +sm
+        right: 30vw
+  &__content
+    +flex(center, center)
+    position: relative
+    flex-grow: 1
+    max-height: calc(100% - 44px)
+  &__title
+    +css-lock(24, 130, 320, 1399, font-size)
+    font-weight: 500
+    width: 100%
+    white-space: nowrap
+    color: $gray-lighten
+    position: fixed
+    z-index: 0
+    left: 0
+    text-align: center
+    // transform: translate(-50%, 0%)
+    top: calc(50vh + #{$header-height})
+    +md
+      top: calc(50vh + #{$header-height-md})
+    +sm
+      top: calc(50vh + #{$header-height-sm})
+    +xs
+      top: calc(50vh + #{$header-height-xs})
+
+.hero-link
+  position: absolute
+  top: 0
+  bottom: 0
+  width: 100px
+  font-weight: 500
+  color: $black
+  text-decoration: underline
+  text-transform: uppercase
+  z-index: 1
+  +flex(center, center)
+  +sm
+    width: 80px
+  +xs
+    width: 60px
+  a
+    +rotate(-90)
+    display: inline-block
+    white-space: nowrap
+    +tr(color .3s)
+    +hover
+      color: $accent
+  &--prev
+    left: 0
+    // +after
+      // position: absolute
+      // border-right: 1px solid  $gray-lighten
+      // right: 0
+      // top: -100vh
+      // bottom: -500vh
+  &--next
+    right: 0

@@ -1,0 +1,49 @@
+.slider
+  &__wrap
+    position: relative
+    *
+      box-sizing: border-box
+  &__controls
+    text-align: center
+    padding-top: 30px
+    padding-bottom: 30px
+    +md
+      padding-top: 15px
+      padding-bottom: 15px
+
+  &--gallery
+    &__wrap
+      .swiper-slide
+        height: auto
+
+.arrow
+  display: inline-block
+  position: relative
+  +before
+  width: 75px
+  height: 25px
+  color: $black
+  +tr(color .3s)
+  margin-left: 20px
+  margin-right: 20px
+  +hover
+    color: $accent
+  +before
+    background-color: currentColor
+    height: 1px
+    width: 100%
+    position: absolute
+    top: 50%
+    transform: translate(0, -50%)
+    left: 0
+  +after
+    +icon-arrow(10, 10, 1, currentColor, 45)
+    position: absolute
+    left: 0
+    top: 50%
+    transform: translate(0, -50%) rotate(45deg)
+  +sm
+    width: 50px
+
+  &--next
+    transform: rotate(180deg)

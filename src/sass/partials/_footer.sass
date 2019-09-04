@@ -1,79 +1,91 @@
 .footer
   $this: &
-  position: relative
-  &--lg
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 0
+  visibility: hidden
+  opacity: 0
+  background-color: $white
+  +sm
+    position: relative
+    z-index: 1
+  &.is-visible
+    visibility: visible
+    opacity: 1
     
-    #{$this}__inner
-      +flex(flex-start, normal, row, wrap)
-    #{$this}__left
-      padding-left: 50px
-      width: percentage(640/1800)
-      +xl
-        padding-left: 30px
-      +lg
-        padding-left: 15px
-      +md
-        
-      +sm
-        width: 100%
-        padding-left: 0
-    #{$this}__right
-      width: percentage(1160/1800)
-      // +flex(center, normal, column)
-      border-top: 1px solid  $gray-lighten
-      +css-lock(0, 165, 991, 1399, padding-left)
-      position: relative
-      padding-top: 8%
-      padding-bottom: 8%
-      +md
-        padding-top: 60px
-        padding-bottom: 60px
-        display: block
-      +sm
-        width: 100%
-        padding-top: 15px
-        padding-bottom: 15px
-    #{$this}__form      
-      max-width: 780px
-    #{$this}__bottom
-      color: $gray-light
-      text-transform: uppercase
-      font-size: 11px
-      position: absolute
-      left: 0
-      right: 0
-      bottom: 0
-      +css-lock(15, 180, 991, 1399, padding-left)
-      padding-right: 50px
-      +flex(space-between, center)
-      +xl
-        padding-right: 30px
-      +lg
-        padding-right: 15px
-      +sm
-        position: static
-        display: block
-    #{$this}__copy
-      position: relative      
+  &__inner
+    +flex(flex-start, normal, row, wrap)
+  &__left
+    padding-left: 50px
+    width: percentage(640/1800)
+    +xl
+      padding-left: 30px
+    +lg
+      padding-left: 15px
+    +md
+      
+    +sm
+      width: 100%
+      padding-left: 0
+  &__right
+    width: percentage(1160/1800)
+    // +flex(center, normal, column)
+    border-top: 1px solid  $gray-lighten
+    +css-lock(0, 165, 991, 1399, padding-left)
+    position: relative
+    padding-top: 8%
+    padding-bottom: 8%
+    +md
+      padding-top: 60px
+      padding-bottom: 60px
+      display: block
+    +sm
+      width: 100%
       padding-top: 15px
       padding-bottom: 15px
-      +before
-        border-top: 1px solid $gray-lighten
-        top: 0
-        left: 0
-        position: absolute
-        width: 130px
-      +xs
-        padding-top: 10px
-        padding-bottom: 10px
-    #{$this}__auth
-      +flex(flex-start, center)
-    #{$this}__auth-logo
-      background-color: $black
-      margin-right: 5px
-      +flex(center, center)
-      width: 40px
-      height: 40px
-      color: $white
-      .icon
-        font-size: 20px
+  &__form      
+    max-width: 780px
+  &__bottom
+    color: $gray-light
+    text-transform: uppercase
+    font-size: 11px
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+    +css-lock(15, 180, 991, 1399, padding-left)
+    padding-right: 50px
+    +flex(space-between, center)
+    +xl
+      padding-right: 30px
+    +lg
+      padding-right: 15px
+    +sm
+      position: static
+      display: block
+  &__copy
+    position: relative      
+    padding-top: 15px
+    padding-bottom: 15px
+    +before
+      border-top: 1px solid $gray-lighten
+      top: 0
+      left: 0
+      position: absolute
+      width: 130px
+    +xs
+      padding-top: 10px
+      padding-bottom: 10px
+  &__auth
+    +flex(flex-start, center)
+  &__auth-logo
+    background-color: $black
+    margin-right: 5px
+    +flex(center, center)
+    width: 40px
+    height: 40px
+    color: $white
+    .icon
+      font-size: 20px

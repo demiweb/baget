@@ -64,8 +64,10 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "baron": "^3.0.3",
     "jquery": "^3.4.1",
     "lozad": "^1.9.0",
+    "swiper": "^4.5.0",
     "throttle-debounce": "^2.1.0"
   }
 }

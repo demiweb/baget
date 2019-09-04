@@ -1,0 +1,31 @@
+<!-- begin section -->
+<section class="section">
+  <div class="container">
+    <div class="grid">
+      <div class="grid__left grid__left-center">
+        <div class="section__nav">
+          <div class="section__nav-title">материалы, которые мы используем</div>
+
+          {{ mixins.list(
+            name = 'nav',
+            modifications = { wrap: 'nav--content', item: '', link: '' },
+            list = [
+              { link: 'Металический профиль' },
+              { link: 'Пластиковый багет' },
+              { link: 'Стекло' },
+              { link: 'Деревянный багет' },
+              { link: 'Паспарту' },
+              { link: 'Подрамник' },
+              { link: 'Галерейная система подвески картин' }
+            ]
+          ) }}
+        </div>
+      </div>
+
+      <div class="grid__right">
+        {% include "partials/_seo-text.html" %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end section -->

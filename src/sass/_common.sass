@@ -37,10 +37,18 @@ body
     margin-right: 0
 
 .out
+  position: relative
   +sm
     padding-top: 105px
   +xs
     padding-top: 80px
+
+.main
+  background-color: $white
+  position: relative
+  z-index: 1
+
+
 
 .logo
   font-size: 0
@@ -56,7 +64,7 @@ body
   +css-lock(60, 415, 320, 1399, font-size)
   line-height: .9
   position: absolute
-  left: 0
+  left: -50%
   top: 0
   opacity: .1
   z-index: 0
@@ -76,20 +84,28 @@ body
   transform: translate(-50%, 0)
   top: 0
   max-width: 1450px
+  overflow: hidden
 
 .bg-line
   position: absolute
   top: 0
   bottom: 0
   border-right: 1px solid  $gray-lighten
+  animation-name: moveDown
+  animation-duration: 5s
+  animation-fill-mode: forwards
+  transform: translate(0, -100%)
   &:nth-child(1)
     left: $line-left-1
   &:nth-child(2)
     left: $line-left-2
+    animation-delay: 0.2s
   &:nth-child(3)
     left: $line-left-3
+    animation-delay: 0.4s
   &:nth-child(4)
     left: $line-left-4
+    animation-delay: 0.6s
 
 .link
   text-transform: uppercase
@@ -107,6 +123,10 @@ body
     position: relative
     top: -.1em
     margin-left: 15px
+    +sm
+      width: 100px
+    +xs
+      width: 80px
 
 .banner
   +cover
@@ -139,5 +159,34 @@ body
       max-width: none
     +sm
       margin-bottom: 30%
+
+.stext
+  max-height: 295px
+  overflow: auto
+  h1
+    @extend .title
+    @extend .title--h3
+    @extend .title--ttu
+    @extend .title--medium
+    margin-bottom: 50px
+    +xl
+      margin-bottom: 40px
+    +lg
+      margin-bottom: 30px
+    +md
+      margin-bottom: 15px
+  h2, h3, p, ol, ul
+    margin-bottom: 25px
+    +md
+      margin-bottom: 15px
+  ul
+    list-style-type: disc
+    margin-left: 1.1em
+  ol
+    list-style-type: decimal
+    margin-left: 1.1em
+  a
+    text-decoration: underline
+    color: blue
 
     

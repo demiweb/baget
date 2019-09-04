@@ -1,0 +1,54 @@
+{%set
+slider = [
+  { img: '01.jpg' },
+  { img: '02.jpg' },
+  { img: '03.jpg' },
+  { img: '04.jpg' },
+  { img: '05.jpg' },
+  { img: '06.jpg' },
+  { img: '01.jpg' },
+  { img: '02.jpg' },
+  { img: '03.jpg' },
+  { img: '04.jpg' },
+  { img: '05.jpg' },
+  { img: '06.jpg' }
+]
+%}
+
+<!-- begin section -->
+<section class="section">
+  <div class="container">
+    <div class="section__top">
+      <div class="section__title">
+        <div class="title title--h3 title--medium title--ttu">наша галерея</div>
+      </div>
+
+      <div class="section__top-link">
+        <a href="#" class="link">посмотреть все работы</a>
+      </div>
+    </div>
+
+    <!-- begin slider -->
+    <div class="slider__wrap slider--gallery__wrap">
+      <div class="swiper-container js-slider" data-slider="gallery">
+        <div class="swiper-wrapper slider">
+          {% for i in slider %}
+          <a
+            href="#"
+            class="swiper-slide gallery-item "
+            >
+              <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="slider__controls">
+        <button class="slider__prev arrow arrow--prev js-slider-prev"></button>
+        <button class="slider__next arrow arrow--next js-slider-next"></button>
+      </div>
+    </div>
+    <!-- end slider -->
+  </div>
+</section>
+<!-- end section -->

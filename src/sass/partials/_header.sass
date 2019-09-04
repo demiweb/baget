@@ -2,186 +2,190 @@
   $this: &
   position: relative
   z-index: 10
-  background-color: $white
+  background-color: $white  
+  color: $black
+  margin-bottom: $header-margin
+  height: $header-height
+  +lg
+  +md
+    margin-bottom: $header-margin-md
+    height: $header-height-md
   +sm
     position: fixed
+    z-index: 10
     left: 0
     right: 0
     top: 0
-  &--lg
-    color: $black
-    margin-bottom: 110px   
-    +lg
-      margin-bottom: 100px
+    height: $header-height-sm
+  +xs
+    margin-bottom: $header-margin-xs
+    height: $header-height-xs
+  +before
+    top: 0
+    left: 0
+    width: 100px
+    height: 260px
+    position: absolute
+    z-index: 0
+    background-color: $accent
     +md
-      margin-bottom: 55px
+      height: 160px
+    +sm
+      height: 100px
+      width: 80px
     +xs
-      margin-bottom: 40px
-    +before
+      width: 60px
+      height: 70px
+  +after
+    top: 0
+    right: 0
+    position: absolute
+    z-index: 0
+    width: 140px
+    height: 140px
+    background-color: $white-dark
+    +md
+      width: 100px
+      height: 100px
+    +sm
+      width: 40px
+      height: 40px
+    +xs
+      width: 20px
+      height: 20px
+
+  &__inner
+    +flex
+    position: relative
+    z-index: 1
+    max-height: 100%
+  &__left
+    padding-right: 55px
+    padding-left: 50px
+    width: percentage(415/1800)
+    +xl
+      padding-right: 25px
+      padding-left: 30px
+    +lg
+      padding-left: 15px
+    +md
+      padding-right: 15px
+      width: 30%
+    +xs
+      width: 50%
+  &__right
+    +flex(flex-start, center)
+    border-bottom: 1px solid  $gray-lighten
+    padding-top: 45px
+    padding-bottom: 45px
+    padding-right: 50px
+    width: percentage(1385/1800)
+    position: relative
+    +xl
+      padding-right: 30px
+    +lg
+      padding-right: 15px
+    +md
+      padding-top: 10px
+      padding-bottom: 10px
+    +xs
+      justify-content: flex-end
+  &__nav
+    max-width: 250px
+    ul
+      +flex(flex-start, noral, row, wrap)
+    li
+      width: 50%
+    +sm
+      position: fixed
+      max-width: none
+      background-color: $white
+      padding: 15px
       top: 0
       left: 0
-      width: 100px
-      height: 260px
-      position: absolute
-      z-index: 0
-      background-color: $accent
-      +md
-        height: 160px
-      +sm
-        height: 100px
-        width: 80px
-      +xs
-        width: 60px
-        height: 70px
-    +after
-      top: 0
       right: 0
+      bottom: 0
+      z-index: 10
+      overflow: auto
+      transform: translate(0, -100%)
+      +vertical
+      +ready
+        +tr(transform .3s)
+      &.is-active
+        transform: translate(0, 0)
+      li
+        width: auto
+      ul
+        display: block
+  &__nav-in
+    +sm
+      display: inline-block
+      vertical-align: middle
+      width: 100%
+      font-size: $fz
+      .nav
+        margin-bottom: 15px
+  &__nav-close
+    +icon-close(20, 1, currentColor)
+    position: absolute
+    top: 15px
+    right: 15px
+    z-index: 1
+    display: none
+    +sm
+      display: block
+  &__logo
+    position: relative
+    padding-top: 60px
+    padding-left: 15px
+    .logo
+      position: relative
+      z-index: 1
+      max-width: 100%
+    +before
       position: absolute
       z-index: 0
-      width: 140px
-      height: 140px
-      background-color: $gray-lighten
-      +md
-        width: 100px
-        height: 100px
-      +sm
-        width: 40px
-        height: 40px
-      +xs
-        width: 20px
-        height: 20px
-
-    #{$this}__inner
-      +flex
-      position: relative
-      z-index: 1
-    #{$this}__left
-      padding-right: 55px
-      padding-left: 50px
-      width: percentage(415/1800)
-      +xl
-        padding-right: 25px
-        padding-left: 30px
-      +lg
-        padding-left: 15px
-      +md
-        padding-right: 15px
-        width: 30%
-      +xs
-        width: 50%
-    #{$this}__right
-      +flex(flex-start, center)
-      border-bottom: 1px solid  $gray-lighten
-      padding-top: 45px
-      padding-bottom: 45px
-      padding-right: 50px
-      width: percentage(1385/1800)
-      position: relative
-      +xl
-        padding-right: 30px
-      +lg
-        padding-right: 15px
-      +md
-        padding-top: 10px
-        padding-bottom: 10px
-      +xs
-        justify-content: flex-end
-    #{$this}__nav
-      max-width: 250px
-      ul
-        +flex(flex-start, noral, row, wrap)
-      li
-        width: 50%
-      +sm
-        position: fixed
-        max-width: none
-        background-color: $white
-        padding: 15px
-        top: 0
-        left: 0
-        right: 0
-        bottom: 0
-        z-index: 10
-        overflow: auto
-        transform: translate(0, -100%)
-        +vertical
-        +ready
-          +tr(transform .3s)
-        &.is-active
-          transform: translate(0, 0)
-        li
-          width: auto
-        ul
-          display: block
-    #{$this}__nav-in
-      +sm
-        display: inline-block
-        vertical-align: middle
-        width: 100%
-        font-size: $fz
-        .nav
-          margin-bottom: 15px
-    #{$this}__nav-close
-      +icon-close(20, 1, currentColor)
-      position: absolute
-      top: 15px
-      right: 15px
-      z-index: 1
+      background-color: $white
+      width: 100px
+      top: 0
+      bottom: 0
+      left: 0
+    +md
+      padding-top: 40px
+    +sm
+      padding-top: 20px
+    +xs
+      padding-left: 10px
+      padding-top: 10px
+  &__address
+    text-align: right
+    transform: translate(0, 50px)
+    +md
+      transform: translate(0, 0)
+    +sm
       display: none
-      +sm
-        display: block
-    #{$this}__logo
-      position: relative
-      padding-top: 60px
-      padding-left: 15px
-      .logo
-        position: relative
-        z-index: 1
-        max-width: 100%
-      +before
-        position: absolute
-        z-index: 0
-        background-color: $white
-        width: 100px
-        top: 0
-        bottom: 0
-        left: 0
-      +md
-        padding-top: 40px
-      +sm
-        padding-top: 20px
-      +xs
-        padding-left: 0
-        padding-top: 10px
-    #{$this}__address
-      text-align: right
-      transform: translate(0, 50px)
-      +md
-        transform: translate(0, 0)
-      +sm
-        display: none
-    #{$this}__address-mob
+  &__address-mob
+    display: none
+    +sm
+      display: block
+  &__contacts
+    flex-grow: 1
+    +xs
       display: none
-      +sm
-        display: block
-    #{$this}__contacts
-      flex-grow: 1
-      +xs
-        display: none
-    #{$this}__contacts-mob
-      display: none
-      padding-top: 15px
-      padding-bottom: 15px
-      +xs
-        display: block
-    #{$this}__burger
-      display: none
-      +sm
-        display: block
+  &__contacts-mob
+    display: none
+    padding-top: 15px
+    padding-bottom: 15px
+    +xs
+      display: block
+  &__burger
+    display: none
+    +sm
+      display: block
 
 
 .header-address-item
-  text-decoration: underline
+  // text-decoration: underline
 
 .header-contacts
   text-align: right

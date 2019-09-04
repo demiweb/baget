@@ -1,5 +1,44 @@
 <!-- begin hero -->
-<section class="hero">
-  <h1>hello from hero</h1>
+<section class="hero">  
+
+  <div class="container">
+    {% if hero.breadcrumbs %}
+    <div class="hero__breadcrumbs">
+      {{ mixins.list(
+        name = 'breadcrumbs',
+        modifications = { wrap: hero.breadcrumbs.mod, item: '', link: '' },
+        list = hero.breadcrumbs.list
+      ) }}
+    </div>
+    {% endif %}
+  </div>
+
+    <div class="hero__content">
+      {% if hero.links %}
+      <div class="hero-link hero-link--prev">
+        <a href="#">оформление зеркала</a>
+      </div>
+      <div class="hero-link hero-link--next">
+        <a href="#">вышивка лентами</a>
+      </div>
+      {% endif %}
+
+      {% if hero.title %}
+      <div class="hero__title js-hero-title">{{ hero.title }}</div>
+      {% endif %}
+
+      {# <div class="container"> #}
+        {% if hero.img %}
+        <div class="hero__img">
+        {# <div class="hero__img"> #}
+          {# <img class="js-lazy" alt="" data-src="./img/hero/{{ hero.img }}"/> #}
+          <div class="hero__img-in js-lazy" data-background-image="./img/hero/{{ hero.img }}"></div>
+        </div>
+        {% endif %}
+      {# </div> #}
+    </div>
+
+    
+  
 </section>
 <!-- end hero -->

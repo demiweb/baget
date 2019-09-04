@@ -8,6 +8,7 @@ services = [
     text: 'Сегодня становится популярно оформлять в багет не только картины и фотографии, но и зеркала. Очень часто именно оформленное зеркало становится изюминкой созданного интерьера, оно может придать дополнительный уют и тепло. '
   },
   {
+    wrapMod: 'services__block-offset-1',
     img: '02.jpg',
     imgLeft: '',
     mod: 'service-block--mb-0',
@@ -15,6 +16,7 @@ services = [
     text: 'классический багет с натуральными оттенками дерева подойдет практически любому произведению искусства и будет изысканным дополнением Вашему интерьеру на протяжении всего времени!'
   },
   {
+    wrapMod: 'services__block-offset-1',
     img: '03.jpg',
     imgLeft: true,
     mod: '',
@@ -22,6 +24,7 @@ services = [
     text: 'Телевизор или плазменная панель, обрамлённая багетной рамой, будет гармонично сочетаться с общим стилем интерьера, а также существенно повысит защиту вашего телевизора или плазменной панели от внешних воздействий пыли и влаги.'
   },
   {
+    wrapMod: 'services__block-right',
     img: '04.jpg',
     imgLeft: '',
     mod: '',
@@ -36,6 +39,7 @@ services = [
     text: 'Сегодня становится популярно оформлять в багет не только картины и фотографии, но и зеркала. Очень часто именно оформленное зеркало становится изюминкой созданного интерьера, оно может придать дополнительный уют и тепло. '
   },
   {
+    wrapMod: 'services__block-offset-1',
     img: '06.jpg',
     imgLeft: '',
     mod: 'service-block--mb-0',
@@ -43,6 +47,7 @@ services = [
     text: 'классический багет с натуральными оттенками дерева подойдет практически любому произведению искусства и будет изысканным дополнением Вашему интерьеру на протяжении всего времени!'
   },
   {
+    wrapMod: 'services__block-offset-1',
     img: '07.jpg',
     imgLeft: true,
     mod: 'service-block--img-auto',
@@ -50,6 +55,7 @@ services = [
     text: 'Телевизор или плазменная панель, обрамлённая багетной рамой, будет гармонично сочетаться с общим стилем интерьера, а также существенно повысит защиту вашего телевизора или плазменной панели от внешних воздействий пыли и влаги.'
   },
   {
+    wrapMod: 'services__block-right',
     img: '08.jpg',
     imgLeft: '',
     mod: '',
@@ -62,7 +68,7 @@ services = [
 
 <!-- begin services -->
 <section class="services">
-  <div class="word logo-text">Цнтр.<span>багет</span></div>
+  <div class="word logo-text js-bg-text">Цнтр.<span>багет</span></div>
 
   <div class="container">
     <div class="services__top">
@@ -97,7 +103,7 @@ services = [
     <!-- end bg-lines -->
     <div class="container container--full">      
       {% for i in services %}
-      <div class="services__block">
+      <div class="services__block{% if i.wrapMod %} {{ i.wrapMod }}{% endif %} js-anim-el" data-anim-name="fadeInUp">
         <!-- begin service-block -->
         <div class="service-block{% if i.imgLeft %} service-block--img-left{% endif %}{% if i.mod %} {{ i.mod}}{% endif %}">
           {% if i.imgLeft %}

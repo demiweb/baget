@@ -1,0 +1,26 @@
+---
+title: service-one
+page: service-one
+hero: {
+  title: 'Оформление картин',
+  img: 'hero-service-one.jpg',
+  links: true,
+  breadcrumbs: {
+    list: [
+      { link: 'главная' },
+      { link: '/' },
+      { link: 'услуги' },
+      { link: '/' },
+      { link: 'оформление картин', modLink: 'is-active' }
+    ]
+  }
+}
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+  {% include "partials/_hero.html" %}
+  {% include "partials/sections/_s-seo.html" %}
+  {% include "partials/sections/_s-gallery.html" %}
+  {% include "partials/sections/_s-services-simple.html" %}
+{% endblock %}
