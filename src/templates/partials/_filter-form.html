@@ -1,0 +1,53 @@
+<!-- begin form -->
+<div class="form form--hor">
+  <form>
+      <div class="form__row">
+        <div class="form__col">
+          {{ mixins.input(
+            name = 'select',
+            mod = '',
+            type = '',
+            placeholder = '',
+            value = '',
+            fieldClass = 'js-select',
+            fieldAttributes = { multiple: '', 'data-type': 'with_checkboxes' },
+            options = [
+              { value: 'placeholder', option: 'цвет' },
+              { option: 'зОЛОТО-СЕРЕБРО', value: '1' },
+              { option: 'КОРИЧНЕВЫЙ', value: '2' },
+              { option: 'ЦВЕТНОЙ', value: '3' },
+              { option: 'ЧЕРНО-БЕЛЫЙ', value: '4' }
+            ]
+          ) }}
+        </div>
+
+        <div class="form__col">
+          {{ mixins.input(
+            name = 'select',
+            mod = '',
+            type = '',
+            placeholder = '',
+            value = '',
+            fieldClass = 'js-select',
+            fieldAttributes = { multiple: '', 'data-type': 'with_checkboxes' },
+            options = [
+              { value: 'placeholder', option: 'Ширина' },
+              { option: '15 - 50 ММ', value: '1' },
+              { option: '50 - 80 ММ', value: '2' },
+              { option: '80 - ...', value: '3' }
+            ]
+          ) }}
+        </div>
+
+        <div class="form__col">
+          {{ mixins.btn(
+            title = 'показать',
+            mod = 'btn--full',
+            href = false
+          ) }}
+       
+        </div>
+      </div>
+  </form>
+</div>
+<!-- end form -->

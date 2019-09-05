@@ -1,22 +1,15 @@
-{%set
-services = [
-  { img: '01.jpg', title: 'Оформление зеркала' },
-  { img: '04.jpg', title: 'Оформление вышивки' },
-  { img: '03.jpg', title: 'Оформление плазменных ТВ' },
-  { img: '05.jpg', title: 'галерейная натяжка холста на подрамник' },
-  { img: '06.jpg', title: 'Оформление икон' },
-  { mod: 'service-link--img-contain', img: '07.jpg', title: 'вышивка лентами' },
-  { img: '08.jpg', title: 'нестандартные заказы
-и дополнительные услуги' }
-]
-%}
-
 <!-- begin section -->
 <section class="section">
   <div class="container">
+    {% if sectionServices.title %}
+    <div class="section__title">
+      <div class="title title--medium title--h3 title--ttu">{{ sectionServices.title }}</div>
+    </div>
+    {% else %}
     <div class="section__title">
       <div class="title title--medium title--h3 title--ttu">Остальные услуги</div>
     </div>
+    {% endif %}
 
     <!-- begin services-links -->
     <div class="services-links">
@@ -24,7 +17,9 @@ services = [
       <div class="services-links__item">
         <!-- begin service-link -->
         <a href="#" class="service-link{% if i.mod %} {{ i.mod }}{% endif %}">
-          <span class="service-link__img js-lazy" data-background-image="./img/services/{{ i.img }}">
+          {# <span class="service-link__img js-lazy" data-background-image="./img/services/{{ i.img }}"> #}
+          <span class="service-link__img">
+            <img class="js-lazy" alt="" data-src="./img/services/{{ i.img }}"/>
             <span class="service-link__link link">подробнее</span>
           </span>
 

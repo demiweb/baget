@@ -1,0 +1,44 @@
+---
+title: work-one
+page: work-one
+sideLine: true
+sectionGallery: {
+  title: 'Масло',
+  noSlider: true,
+  breadcrumbs: {
+    list: [
+      { link: 'главная' },
+      { item: '/' },
+      { link: 'наши работы' },
+      { item: '/' },
+      { link: 'Масло', modLink: 'is-active' },
+    ]
+  },
+  gallery: [
+    { img: '01.jpg' },
+    { img: '02.jpg' },
+    { img: '03.jpg' },
+    { img: '04.jpg' },
+    { img: '05.jpg' },
+    { img: '06.jpg' }
+  ]
+}
+sectionServices: {
+  title: 'Остальные работы'
+}
+services: [
+  { mod: 'service-link--hover-no-cover service-link--img-contain', img: '09.jpg', title: 'Графика' },
+  { mod: 'service-link--hover-no-cover service-link--img-contain', img: '10.jpg', title: 'Вишивки' },
+  { mod: 'service-link--hover-no-cover service-link--img-contain', img: '10.jpg', title: 'Иконы' },
+  { mod: 'service-link--hover-no-cover ', img: '05.jpg', title: 'паспарту' },
+  { mod: 'service-link--hover-no-cover ', img: '06.jpg', title: 'медали' },
+  { mod: 'service-link--hover-no-cover service-link--img-contain', img: '07.jpg', title: 'фото' },
+  { mod: 'service-link--hover-no-cover ', img: '08.jpg', title: 'зеркала' },
+]
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+  {% include "partials/sections/_s-gallery.html" %}
+  {% include "partials/sections/_s-services-simple.html" %}
+{% endblock %}

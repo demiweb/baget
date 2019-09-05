@@ -1,0 +1,43 @@
+---
+title: material-one
+page: material-one
+sideLine: true
+hero: {
+  title: 'Услуги багетной мастерской',
+  titleFixed: 'Металический профиль',
+  img: 'hero-material-one.jpg',
+  links: { prev: 'Пластиковый багет', next: 'Стекло' },
+  breadcrumbs: {
+    list: [
+      { link: 'главная' },
+      { link: '/' },
+      { link: 'материалы ' },
+      { link: '/' },
+      { link: 'Металический профиль', modLink: 'is-active' }
+    ]
+  }
+}
+sectionGallery: {
+  topSimple: true,
+  filter: true,
+  noSlider: true,
+  title: 'наша галерея',
+  more: { title: 'раскрыть все фото' },
+  gallery: [
+    { img: '07.png' },
+    { img: '07.png' },
+    { img: '07.png' },
+    { img: '07.png' },
+    { img: '07.png' },
+    { img: '07.png' }
+  ]
+}
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+  {% include "partials/_hero.html" %}
+  {% include "partials/sections/_s-seo.html" %}
+  {% include "partials/sections/_s-gallery.html" %}
+{% endblock %}
+

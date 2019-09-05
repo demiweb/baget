@@ -13,7 +13,8 @@ import setFooter from './components/setFooter';
 import setScrollbar from './components/setScrollbar';
 import setSliders from './components/setSliders';
 // import setHeroTitle from './components/setHeroTitle';
-import setGallery from './components/setGallery';
+import setGallery from './components/setSelects';
+import setSelects from './components/setGallery';
 
 document.addEventListener('DOMContentLoaded', () => {
   sayHello();
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setSliders();
   // setHeroTitle();
   setGallery();
+  setSelects();
 });
 
 // $(() => {

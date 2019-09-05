@@ -1,0 +1,55 @@
+.select
+  select
+    position: absolute
+    visibility: hidden
+    opacity: 0
+
+.custom-select
+  $this: &
+  text-transform: uppercase
+  position: relative
+  
+
+  &.is-open
+    #{$this}__panel
+      visibility: visible
+      opacity: 1
+  &__opener
+    background-color: $gray-lighten
+    padding: 1.1em
+    padding-right: 30px
+    position: relative
+    +text-overflow
+    +before
+      +icon-arrow(10, 10, 1, currentColor, -45)
+      top: 1.2em
+      right: 20px
+      pointer-events: none
+      z-index: 1
+      position: absolute
+  &__panel
+    background-color: $gray-lighten
+    position: absolute
+    left: 0
+    width: 100%
+    top: calc(100% + 10px)
+    z-index: 1
+    max-height: 250px
+    overflow: auto
+    visibility: hidden
+    opacity: 0
+    +ready
+      +tr(opacity .3s, visibility .3s)
+  &__option
+    padding: 1.2em
+    user-select: none
+    cursor: pointer
+    +tr(background-color .3s, color .3s)
+    +hover
+      background-color: $white-dark
+      // color: $white
+    &[data-value="placeholder"]
+      display: none
+
+    
+

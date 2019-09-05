@@ -1,0 +1,28 @@
+.checkbox
+  position: relative
+  padding-left: 1.3em
+  user-select: none
+  input[type="checkbox"]
+    opacity: 0
+    visibility: hidden
+    position: absolute
+    &:checked + span
+      &::after
+        content: ''
+        background-color: $accent
+        top: .1em
+        left: 0
+        width: .9em
+        height: .9em
+        position: absolute
+        display: block
+  span
+    &::before
+      content: ''
+      width: .9em
+      height: .9em
+      top: .1em
+      left: 0
+      background-color: $gray
+      position: absolute
+      display: block

@@ -1,4 +1,5 @@
 .form
+  $this: &
   &__inner
     padding-left: 15px
     padding-right: 15px
@@ -34,6 +35,19 @@
       margin-bottom: 20px
     +sm
       margin-bottom: 10px
+
+  &--hor
+    #{$this}__row
+      margin-left: -2px
+      margin-right: -2px
+    #{$this}__col
+      width: 33.33333%
+      padding-left: 2px
+      padding-right: 2px
+      margin-bottom: 0 !important
+      +xs
+        width: 100%
+        margin-bottom: 4px !important
 
 .input, .textarea
   position: relative  

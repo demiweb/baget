@@ -18,6 +18,38 @@ slider = [
 <!-- begin section -->
 <section class="section">
   <div class="container">
+    {% if sectionGallery.breadcrumbs %}
+    <div class="section__top section__top-block">
+      <div class="section__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: sectionGallery.breadcrumbs.mod, item: '', link: '' },
+          list = sectionGallery.breadcrumbs.list
+        ) }}
+      </div>
+
+      {% if sectionGallery.title %}
+      <div class="section__title">
+        <h1 class="title">{{ sectionGallery.title }}</h1>
+      </div>
+      {% endif %}
+    </div>
+  
+    {% elseif sectionGallery.topSimple %}
+
+    {% if sectionGallery.title %}
+      <div class="section__title">
+        <div class="title title--h3 title--medium title--ttu">{{ sectionGallery.title }}</div>
+      </div>
+      {% endif %}
+
+      {% if sectionGallery.filter %}
+      <div class="section__filter">
+        {% include "partials/_filter-form.html" %}
+      </div>
+      {% endif %}
+    {% else %}
+    
     <div class="section__top">
       <div class="section__title">
         <div class="title title--h3 title--medium title--ttu">наша галерея</div>
@@ -27,6 +59,40 @@ slider = [
         <a href="#" class="link">посмотреть все работы</a>
       </div>
     </div>
+    {% endif %}
+
+    {% if sectionGallery.noSlider %}
+    <!-- begin gallery -->
+    <div class="gallery js-lightgallery">
+      {% for i in sectionGallery.gallery %}
+        <a
+          href="./img/gallery/{{ i.img }}"
+          class="swiper-slide gallery-item gallery__item"
+          data-exthumbimage="./img/gallery/{{ i.img }}"
+          >
+            <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>
+          </a>
+      {% endfor %}
+    </div>
+    <!-- end gallery -->
+
+    <div class="section__more">
+      {% if sectionGallery.more %}
+      {{ mixins.btn(
+        title = mixins.icon('refresh') + sectionGallery.more.title,
+        mod = 'btn--link',
+        href = false
+      ) }}
+      {% else %}
+      {{ mixins.btn(
+        title = mixins.icon('refresh') + 'раскрыть все работы',
+        mod = 'btn--link',
+        href = false
+      ) }}
+      {% endif %}
+    </div>
+
+    {% else %}
 
     <!-- begin slider -->
     <div class="slider__wrap slider--gallery__wrap">
@@ -50,6 +116,7 @@ slider = [
       </div>
     </div>
     <!-- end slider -->
+    {% endif %}
   </div>
 </section>
 <!-- end section -->
