@@ -7,7 +7,7 @@ class Footer {
     this.header = document.querySelector('.header');
   }
 
-  setPadding() {
+  setVisibility() {
     this.out = document.querySelector('.out');
     if (window.matchMedia('(max-width: 767px)').matches) {
       this.out.style.paddingBottom = '';
@@ -15,6 +15,7 @@ class Footer {
       return;
     }
 
+    this.footer.classList.remove(IS_VISIBLE);
     this.height = this.footer.offsetHeight;
     this.out.style.paddingBottom = `${this.height}px`;
   }
@@ -32,8 +33,8 @@ class Footer {
   }
 
   _setOutPadding() {
-    this.setPadding();
-    this.setPaddingDebounced = debounce(300, this.setPadding.bind(this));
+    this.setVisibility();
+    this.setPaddingDebounced = debounce(300, this.setVisibility.bind(this));
     window.addEventListener('resize', this.setPaddingDebounced);
   }
 

@@ -1,5 +1,6 @@
 // import $ from 'jquery';
 // import '@babel/polyfill';
+import 'intersection-observer';
 import './lib/polyfill';
 import sayHello from './lib/sayHello';
 import setHTMLClassNames from './components/setHTMLClassNames';
@@ -11,7 +12,8 @@ import animateBgText from './components/animateBgText';
 import setFooter from './components/setFooter';
 import setScrollbar from './components/setScrollbar';
 import setSliders from './components/setSliders';
-import setHeroTitle from './components/setHeroTitle';
+// import setHeroTitle from './components/setHeroTitle';
+import setGallery from './components/setGallery';
 
 document.addEventListener('DOMContentLoaded', () => {
   sayHello();
@@ -24,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setFooter();
   setScrollbar();
   setSliders();
-  setHeroTitle();
+  // setHeroTitle();
+  setGallery();
 });
 
 // $(() => {

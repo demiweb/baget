@@ -8,9 +8,9 @@
   .container
     width: 100%
   &__breadcrumbs
-    margin-bottom: 30px
-    +md
-      margin-bottom: 15px
+    // margin-bottom: 30px
+    // +md
+    //   margin-bottom: 15px
   &__img
     text-align: center
     position: relative
@@ -26,15 +26,30 @@
     +vcenter
     width: 100%
     +xl
-      padding-top: 40%
+      padding-top: 40%    
     +lg
-      padding-top: 50%
+      padding-top: 50%    
     +md
       padding-top: 55%
     +sm
       padding-top: 70%
     +xs
-      padding-top: 85%
+      // padding-top: 85% !important
+    +rmix(1399, 825)
+      padding-top: 30% !important
+    +rmix(1199, 825)
+      padding-top: 40% !important
+    +rmix(767, 825)
+      padding-top: 60% !important
+    +rmix(767, 600)
+      padding-top: 50% !important
+    +rmix(575, 800)
+      padding-top: 80% !important
+    +rmix(575, 600)
+      padding-top: 70% !important
+
+
+
     &::before, &::after
       content: ''
       border-right: 1px solid  $gray-lighten
@@ -46,33 +61,34 @@
       left: 37vw
       +sm
         left: 30vw
+      +rh(825)
+        left: 40vw
     &::after
       right: 37vw
       +sm
         right: 30vw
+      +rh(825)
+        right: 40vw
   &__content
     +flex(center, center)
     position: relative
     flex-grow: 1
     max-height: calc(100% - 44px)
   &__title
-    +css-lock(24, 130, 320, 1399, font-size)
-    font-weight: 500
-    width: 100%
-    white-space: nowrap
-    color: $gray-lighten
-    position: fixed
+  &__title-fixed-wrap
+    position: absolute
     z-index: 0
     left: 0
     text-align: center
-    // transform: translate(-50%, 0%)
-    top: calc(50vh + #{$header-height})
-    +md
-      top: calc(50vh + #{$header-height-md})
-    +sm
-      top: calc(50vh + #{$header-height-sm})
-    +xs
-      top: calc(50vh + #{$header-height-xs})
+    top: 50%
+    width: 100%
+    transform: translate(0, -50%)
+    overflow: hidden
+  &__title-fixed
+    +css-lock(24, 130, 320, 1399, font-size)
+    font-weight: 500    
+    white-space: nowrap
+    color: $gray-lighten
 
 .hero-link
   position: absolute

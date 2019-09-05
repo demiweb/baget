@@ -2,24 +2,9 @@
   overflow: hidden
   position: relative
   &__top
-    position: relative
-    z-index: 1
-    +flex(flex-start, center, row, wrap)
-    .shadow-rect
-      margin-top: 30px
-      +lg
-        margin-top: 15px
-    +xl
-      display: block
+    
   &__title
-    max-width: 60%
-    margin-right: 45px
-    +xl
-      margin-bottom: 15px
-      max-width: none
-      margin-right: 0
-    +lg
-      margin-bottom: 10px
+    
   &__blocks
     position: relative
     z-index: 1
@@ -123,7 +108,7 @@
         padding-left: 30px
       +sm
         padding-left: 15px
-  &--img-auto
+  &--img-contain
     #{$this}__img
       background-size: contain
       box-shadow: none

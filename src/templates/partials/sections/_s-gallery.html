@@ -31,11 +31,12 @@ slider = [
     <!-- begin slider -->
     <div class="slider__wrap slider--gallery__wrap">
       <div class="swiper-container js-slider" data-slider="gallery">
-        <div class="swiper-wrapper slider">
+        <div class="swiper-wrapper slider js-lightgallery">
           {% for i in slider %}
           <a
-            href="#"
-            class="swiper-slide gallery-item "
+            href="./img/gallery/{{ i.img }}"
+            class="swiper-slide gallery-item"
+            data-exthumbimage="./img/gallery/{{ i.img }}"
             >
               <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>
             </a>

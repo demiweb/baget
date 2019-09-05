@@ -2,15 +2,25 @@
 <section class="hero">  
 
   <div class="container">
-    {% if hero.breadcrumbs %}
-    <div class="hero__breadcrumbs">
-      {{ mixins.list(
-        name = 'breadcrumbs',
-        modifications = { wrap: hero.breadcrumbs.mod, item: '', link: '' },
-        list = hero.breadcrumbs.list
-      ) }}
+    <div class="hero__top section-top">
+      {% if hero.title %}
+      <div class="hero__title section-top__title">
+        <h1 class="title">{{ hero.title }}</h1>
+      </div>
+      {% endif %}
+
+      {% if hero.breadcrumbs %}
+      <div class="hero__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: hero.breadcrumbs.mod, item: '', link: '' },
+          list = hero.breadcrumbs.list
+        ) }}
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
+
+    
   </div>
 
     <div class="hero__content">
@@ -23,8 +33,10 @@
       </div>
       {% endif %}
 
-      {% if hero.title %}
-      <div class="hero__title js-hero-title">{{ hero.title }}</div>
+      {% if hero.titleFixed %}
+      <div class="hero__title-fixed-wrap">
+        <div class="hero__title-fixed">{{ hero.titleFixed }}</div>
+      </div>
       {% endif %}
 
       {# <div class="container"> #}

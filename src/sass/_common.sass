@@ -1,3 +1,9 @@
+=main-bg
+  background-color: $white-darken
+  background-image: radial-gradient($white, $white-darken)
+  background-position: center center
+  background-repeat: no-repeat
+
 body
   background: $white
   line-height: 1.4
@@ -38,13 +44,15 @@ body
 
 .out
   position: relative
+  +main-bg
   +sm
     padding-top: 105px
   +xs
     padding-top: 80px
 
 .main
-  background-color: $white
+  display: block
+  +main-bg
   position: relative
   z-index: 1
 
@@ -163,7 +171,7 @@ body
 .stext
   max-height: 295px
   overflow: auto
-  h1
+  h1, h2
     @extend .title
     @extend .title--h3
     @extend .title--ttu

@@ -5,7 +5,7 @@ services = [
   { img: '03.jpg', title: 'Оформление плазменных ТВ' },
   { img: '05.jpg', title: 'галерейная натяжка холста на подрамник' },
   { img: '06.jpg', title: 'Оформление икон' },
-  { img: '07.jpg', title: 'вышивка лентами' },
+  { mod: 'service-link--img-contain', img: '07.jpg', title: 'вышивка лентами' },
   { img: '08.jpg', title: 'нестандартные заказы
 и дополнительные услуги' }
 ]
@@ -23,7 +23,7 @@ services = [
       {% for i in services %}
       <div class="services-links__item">
         <!-- begin service-link -->
-        <a href="#" class="service-link">
+        <a href="#" class="service-link{% if i.mod %} {{ i.mod }}{% endif %}">
           <span class="service-link__img js-lazy" data-background-image="./img/services/{{ i.img }}">
             <span class="service-link__link link">подробнее</span>
           </span>

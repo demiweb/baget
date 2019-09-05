@@ -40,3 +40,23 @@
       margin-bottom: 25px
     +md
       margin-bottom: 15px
+
+.section-top
+  position: relative
+  z-index: 1
+  +flex(flex-start, center, row, wrap)
+  .shadow-rect
+    margin-top: 30px
+    +lg
+      margin-top: 15px
+  +xl
+    display: block
+  &__title
+    max-width: 60%
+    margin-right: 45px
+    +xl
+      margin-bottom: 15px
+      max-width: none
+      margin-right: 0
+    +lg
+      margin-bottom: 10px

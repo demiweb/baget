@@ -7,12 +7,23 @@
     +sm
       display: block
   a
+    display: inline-block
+    background-image: linear-gradient(to top,rgba($black,0.2) 0,rgba($black,0.2) 0),linear-gradient(to top,$black 0,$black 0)
+    background-position: left bottom 2px,left bottom 2px
+    background-repeat: no-repeat
+    background-size: 100% 1px,0 1px
+    transition: none 300ms ease-in-out
+    transition-property: background-size,color
     +hover
-      font-weight: 500
-      text-decoration: underline
+      // font-weight: 500
+      // text-decoration: underline
+      background-size: 100% 1px,100% 1px
+      color: $black
     &.is-active
-      font-weight: 500
-      text-decoration: underline
+      // font-weight: 500
+      // text-decoration: underline
+      background-size: 100% 1px,100% 1px
+      color: $black
   &--content
     li
       display: block

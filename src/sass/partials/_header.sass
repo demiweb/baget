@@ -2,7 +2,7 @@
   $this: &
   position: relative
   z-index: 10
-  background-color: $white  
+  +main-bg
   color: $black
   margin-bottom: $header-margin
   height: $header-height
@@ -17,6 +17,8 @@
     right: 0
     top: 0
     height: $header-height-sm
+    background-color: $white
+    background-image: none
   +xs
     margin-bottom: $header-margin-xs
     height: $header-height-xs
@@ -88,6 +90,8 @@
     +md
       padding-top: 10px
       padding-bottom: 10px
+    +sm
+      border-bottom: 0
     +xs
       justify-content: flex-end
   &__nav
