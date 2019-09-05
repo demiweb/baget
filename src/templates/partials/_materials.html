@@ -1,0 +1,26 @@
+{%set
+materials = [
+  { img: '01.png', title: 'Деревянный багет' },
+  { img: '02.png', title: 'пластиковый багет' },
+  { img: '03.png', title: 'Паспарту' },
+  { img: '04.png', title: 'подрамник' },
+  { img: '05.png', title: 'металический профиль' }
+]
+%}
+
+<!-- begin materials -->
+<div class="materials">
+  {% for i in materials %}
+  <div class="materials__item">
+    <a href="#" class="material-link">
+      {# <span class="material-link__img js-lazy" data-background-image="./img/materials/{{ i.img }}"> #}
+      <span class="material-link__img">
+        <img class="js-lazy" alt="" data-src="./img/materials/{{ i.img }}"/>
+      </span>
+
+      <span class="material-link__title">{{ i.title | safe }}</span>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+<!-- end materials -->

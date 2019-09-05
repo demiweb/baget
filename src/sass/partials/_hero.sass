@@ -1,4 +1,5 @@
 .hero
+  $this: &
   padding-top: 20px
   // overflow: hidden
   position: relative
@@ -17,6 +18,8 @@
     display: inline-block
     width: 100%
     height: 100%
+  &__inner
+    position: relative
     
   &__img-in
     background-repeat: no-repeat
@@ -26,7 +29,7 @@
     +vcenter
     width: 100%
     +xl
-      padding-top: 40%    
+      padding-top: 40%
     +lg
       padding-top: 50%    
     +md
@@ -47,8 +50,6 @@
       padding-top: 80% !important
     +rmix(575, 600)
       padding-top: 70% !important
-
-
 
     &::before, &::after
       content: ''
@@ -86,9 +87,55 @@
     overflow: hidden
   &__title-fixed
     +css-lock(24, 130, 320, 1399, font-size)
-    font-weight: 500    
+    font-weight: 600
     white-space: nowrap
     color: $gray-lighten
+
+  &--common
+    height: auto
+    padding-top: 0
+    #{$this}__left-content
+      +flex(center, normal, column)
+      height: 60vh
+      width: 50%
+      padding-top: 25px
+      padding-bottom: 25px
+      +sm
+        width: 100%
+        height: auto
+    #{$this}__right
+      position: absolute
+      top: -$header-margin
+      bottom: 0
+      right: 0
+      width: 50%
+      overflow: hidden
+      +md
+        top: -$header-margin-md
+      +sm
+        position: relative
+        // top: -$header-margin-xs
+        top: auto
+        bottom: auto
+        right: auto
+        width: 100%
+        margin-bottom: 15px
+    #{$this}__right-normal
+      top: 0
+      +md
+        top: 0
+    #{$this}__left
+      // padding-right: 50%
+      padding-top: 20px
+
+    #{$this}__bottom
+      +cover
+      min-height: 235px
+      padding-top: 15px
+      padding-bottom: 15px
+      +sm
+        min-height: 150px
+
 
 .hero-link
   position: absolute
@@ -114,11 +161,91 @@
       color: $accent
   &--prev
     left: 0
-    // +after
-      // position: absolute
-      // border-right: 1px solid  $gray-lighten
-      // right: 0
-      // top: -100vh
-      // bottom: -500vh
   &--next
     right: 0
+
+.hero-imgs
+  $this: &
+  height: 100%
+  +flex(flex-start, center, column)
+  &__top
+    width: 100%
+    text-align: center
+    position: relative
+    z-index: 2
+    margin-bottom: $header-margin
+    .shadow-rect
+      margin-bottom: 10px
+    +md
+      margin-bottom: $header-margin-md
+    +xs
+      margin-bottom: $header-margin-xs
+  &__top-link
+  &__imgs
+    flex-grow: 1
+    // white-space: nowrap
+    width: 100%
+    margin-right: -130px
+    +flex(space-between, center)
+    .slider__wrap
+        width: 100%
+    +sm
+      margin-right: 0
+  &--slider
+    #{$this}__imgs
+      margin-right: -250px
+      +xl
+        margin-right: -130px
+      +lg
+        // margin-right: -130px
+      +sm
+        margin-right: 0
+
+.hero-img
+  +flex(flex-end, center, column)
+  text-align: center    
+  +hover
+    .hero-img__title
+      color: $accent
+  +notlast
+    margin-right: 10px
+  &::before, &::after
+    content: ''
+    border-right: 1px solid  $gray-lighten
+    bottom: 100%
+    z-index: 0
+    height: 50vh
+    position: absolute
+  &::before      
+    left: 10%
+  &::after
+    right: 10%
+  &.is-loaded
+    position: relative    
+  &__img
+    display: block
+    margin-bottom: 5px
+    box-shadow: 0 0 10px rgba($black, .2)
+    font-size: 0
+    // width: 100%
+    img
+      min-width: 100px
+      min-height: 100px
+      width: 100%
+      position: absolute
+      left: 0
+      top: 0
+      opacity: 0
+      &.is-loaded
+        opacity: 1
+        position: static
+  &__title
+    @extend .title
+    @extend .title--h5
+    @extend .title--medium
+    @extend .title--ttu
+    +tr(color .3s)
+
+  
+  
+  

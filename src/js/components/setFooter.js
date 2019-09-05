@@ -5,6 +5,7 @@ class Footer {
   constructor(footer) {
     this.footer = footer;
     this.header = document.querySelector('.header');
+    this.sideLine = document.querySelector('.js-side-line');
   }
 
   setVisibility() {
@@ -24,7 +25,7 @@ class Footer {
     if (window.matchMedia('(max-width: 767px)').matches) return;
 
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.95) {
         this.footer.classList.remove(IS_VISIBLE);
       } else {
         this.footer.classList.add(IS_VISIBLE);
@@ -34,14 +35,18 @@ class Footer {
 
   _setOutPadding() {
     this.setVisibility();
-    this.setPaddingDebounced = debounce(300, this.setVisibility.bind(this));
-    window.addEventListener('resize', this.setPaddingDebounced);
+    this.setVisibilityDebounced = debounce(300, this.setVisibility.bind(this));
+    window.addEventListener('resize', this.setVisibilityDebounced);
   }
 
   _toggleVisibility() {
-    this.observer = new IntersectionObserver(this.toggleVisibility.bind(this), { rootMargin: '100px' });
+    this.observer = new IntersectionObserver(this.toggleVisibility.bind(this), {
+      rootMargin: '100px',
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    });
     this.observer.observe(this.header);
   }
+
 
   init() {
     this._setOutPadding();

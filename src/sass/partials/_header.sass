@@ -22,22 +22,7 @@
   +xs
     margin-bottom: $header-margin-xs
     height: $header-height-xs
-  +before
-    top: 0
-    left: 0
-    width: 100px
-    height: 260px
-    position: absolute
-    z-index: 0
-    background-color: $accent
-    +md
-      height: 160px
-    +sm
-      height: 100px
-      width: 80px
-    +xs
-      width: 60px
-      height: 70px
+  
   +after
     top: 0
     right: 0
@@ -55,7 +40,13 @@
     +xs
       width: 20px
       height: 20px
-
+  &__rect
+    top: 0
+    left: 0
+    
+    position: absolute
+    z-index: 0
+    
   &__inner
     +flex
     position: relative
@@ -187,6 +178,18 @@
     +sm
       display: block
 
+.header-rect
+  width: 100px
+  height: 260px
+  background-color: $accent  
+  +md
+    height: 160px
+  +sm
+    height: 100px
+    width: 80px
+  +xs
+    width: 60px
+    height: 70px
 
 .header-address-item
   // text-decoration: underline

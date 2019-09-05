@@ -1,0 +1,22 @@
+---
+title: works
+page: works
+sideLine: true
+hero: {
+  common: true,
+  title: 'Наши работы',
+  slider: true,
+  breadcrumbs: {
+    list: [
+      { link: 'главная' },
+      { link: '/' },
+      { link: 'Наши работы', modLink: 'is-active' }
+    ]
+  }
+}
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+  {% include "partials/_hero.html" %}
+{% endblock %}

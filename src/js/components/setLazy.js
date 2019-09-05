@@ -15,6 +15,10 @@ export default function lazyLoading() {
         }
         el.classList.add('lazy');
         el.classList.add(IS_LOADED);
+
+        const parent = el.closest('.js-img-parent');
+
+        if (parent) parent.classList.add(IS_LOADED);
       },
     });
     observer.observe();

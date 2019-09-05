@@ -1,0 +1,22 @@
+---
+title: materials
+page: materials
+sideLine: true
+hero: {
+  common: true,
+  materials: true,
+  title: 'Материалы',
+  breadcrumbs: {
+    list: [
+      { link: 'главная' },
+      { link: '/' },
+      { link: 'материалы', modLink: 'is-active' }
+    ]
+  }
+}
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+  {% include "partials/_hero.html" %}
+{% endblock %}

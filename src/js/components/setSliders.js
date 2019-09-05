@@ -55,6 +55,18 @@ export default function setSliders() {
           },
         },
       },
+      works: {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+          nextEl: next,
+          prevEl: prev,
+        },
+        on: {
+          init: setLazy,
+        },
+      },
     };
   }
 

@@ -1,0 +1,39 @@
+{%set
+  slider = [
+    { img: '01.jpg', title: 'Графика' },
+    { img: '04.jpg', title: 'Вышивки' },
+    { img: '03.jpg', title: 'масло' },
+    { img: '01.jpg', title: 'Графика' },
+    { img: '04.jpg', title: 'Вышивки' },
+    { img: '03.jpg', title: 'масло' }
+  ]
+%}
+
+<!-- begin hero-imgs -->
+<div class="hero-imgs hero-imgs--slider">
+  <div class="hero-imgs__imgs">
+    <!-- begin slider -->
+    <div class="slider__wrap slider--works__wrap">
+      <div class="slider__controls">
+        <button class="slider__prev arrow arrow--prev js-slider-prev"></button>
+        <button class="slider__next arrow arrow--next js-slider-next"></button>
+      </div>
+
+      <div class="swiper-container js-slider" data-slider="works">
+        <div class="slider swiper-wrapper">
+          {% for i in slider %}
+          <a href="#" class="swiper-slide slide hero-img">
+            <span class="hero-img__img">
+              <img class="js-lazy" alt="" data-src="./img/hero-imgs/{{ i.img }}"/>
+            </span>
+            <span class="hero-img__title">{{ i.title | safe }}</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- end slider -->
+  </div>
+</div>
+<!-- end hero-imgs -->
+

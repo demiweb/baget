@@ -1,6 +1,54 @@
+{% if hero.common %}
+<!-- begin hero -->
+<section class="hero hero--common">
+  <div class="hero__inner">
+    <div class="hero__left">
+      <div class="container">
+        {% if hero.breadcrumbs %}
+        <div class="hero__breadcrumbs">
+          {{ mixins.list(
+            name = 'breadcrumbs',
+            modifications = { wrap: hero.breadcrumbs.mod, item: '', link: '' },
+            list = hero.breadcrumbs.list
+          ) }}
+        </div>
+        {% endif %}
+
+        {% if hero.title %}
+        <div class="hero__left-content">
+          <div class="hero__title">
+            <h1 class="title title--lg title--semi">{{ hero.title }}</h1>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    
+      {% if hero.slider %}
+      <div class="hero__right hero__right-normal">
+        {% include "partials/_hero-slider.html" %}
+      </div>
+      {% else %}
+      <div class="hero__right">
+        {% include "partials/_hero-imgs.html" %}
+      </div>
+      {% endif %}
+    
+  </div>
+
+  <div class="hero__bottom js-lazy" data-background-image="./img/bg-hero-bottom.jpg">
+    {% if hero.materials %}
+    <div class="container">
+      {% include "partials/_materials.html" %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+<!-- end hero -->
+{% else %}
 <!-- begin hero -->
 <section class="hero">  
-
   <div class="container">
     <div class="hero__top section-top">
       {% if hero.title %}
@@ -49,8 +97,6 @@
         {% endif %}
       {# </div> #}
     </div>
-
-    
-  
 </section>
 <!-- end hero -->
+{% endif %}
