@@ -19,7 +19,13 @@ slider = [
 <section class="section">
   <div class="container">
     {% if sectionGallery.breadcrumbs %}
-    <div class="section__top section__top-block">
+    <div class="section__top section-top">
+      {% if sectionGallery.title %}
+      <div class="section__title section-top__title">
+        <h1 class="title">{{ sectionGallery.title }}</h1>
+      </div>
+      {% endif %}
+
       <div class="section__breadcrumbs">
         {{ mixins.list(
           name = 'breadcrumbs',
@@ -27,12 +33,6 @@ slider = [
           list = sectionGallery.breadcrumbs.list
         ) }}
       </div>
-
-      {% if sectionGallery.title %}
-      <div class="section__title">
-        <h1 class="title">{{ sectionGallery.title }}</h1>
-      </div>
-      {% endif %}
     </div>
   
     {% elseif sectionGallery.topSimple %}

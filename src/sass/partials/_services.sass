@@ -1,6 +1,8 @@
 .services
   overflow: hidden
   position: relative
+  +md
+    padding-top: 25px
   &__top
     
   &__title
@@ -215,6 +217,7 @@
   &--hover-no-cover
     +hover
       #{$this}__img
+        // border-color: transparent
         +before
           visibility: hidden
           opacity: 0

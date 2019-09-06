@@ -1,17 +1,17 @@
 .materials
-  margin-top: -60px
-  +flex(center, normal, row, wrap)
-  margin-left: -10px
-  margin-right: -10px
-  +sm
-    margin-top: 0
-  &__item
-    width: 20%
-    +sm
-      width: 33.33333%
-      margin-bottom: 10px
-    +xs
-      width: 50%
+  // margin-top: -60px
+  // +flex(center, normal, row, wrap)
+  // margin-left: -10px
+  // margin-right: -10px
+  // +sm
+  //   margin-top: 0
+  // &__item
+  //   width: 20%
+  //   +sm
+  //     width: 33.33333%
+  //     margin-bottom: 10px
+  //   +xs
+  //     width: 50%
 
 .material-link
   $this: &
@@ -24,10 +24,17 @@
     #{$this}__title
       color: $accent
   &__img
-    +flex(center, center)
-    flex-grow: 1
+    // +flex(center, center)
+    display: block
+    width: 100%
+    // flex-grow: 1
     // padding-top: 60%
     margin-bottom: 10px
+    padding-top: 60%
+    position: relative
+    img
+      +vcenter
+      max-height: 100%
     // background-repeat: no-repeat
     // background-position: 50% 50%
     // background-size: contain

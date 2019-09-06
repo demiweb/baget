@@ -67,6 +67,26 @@ export default function setSliders() {
           init: setLazy,
         },
       },
+      materials: {
+        slidesPerView: 5,
+        // spaceBetween: 10,
+        loop: true,
+        navigation: {
+          nextEl: next,
+          prevEl: prev,
+        },
+        on: {
+          init: setLazy,
+        },
+        breakpoints: {
+          767: {
+            slidesPerView: 3,
+          },
+          575: {
+            slidesPerView: 2,
+          },
+        },
+      },
     };
   }
 

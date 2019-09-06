@@ -4,6 +4,21 @@
   background-position: center center
   background-repeat: no-repeat
 
+=nav-link
+  display: inline-block
+  background-image: linear-gradient(to top,rgba($black,0.2) 0,rgba($black,0.2) 0),linear-gradient(to top,$black 0,$black 0)
+  background-position: left bottom 2px,left bottom 2px
+  background-repeat: no-repeat
+  background-size: 100% 1px,0 1px
+  transition: none 300ms ease-in-out
+  transition-property: background-size,color
+  +hover
+    background-size: 100% 1px,100% 1px
+    color: $black
+  &.is-active
+    background-size: 100% 1px,100% 1px
+    color: $black
+
 body
   background: $white
   line-height: 1.4
@@ -13,8 +28,11 @@ body
   font-weight: 300
   color: $c-text
   +no-scroll
+  .no-touch &
+    overflow: hidden
   +sm
     font-size: $fz-sm
+    overflow: visible
 
 .icon
   display: inline-block
@@ -44,11 +62,20 @@ body
 
 .out
   position: relative
-  +main-bg
+  z-index: 1
+  // +main-bg
+  +before
+    width: 100%
+    position: absolute
+    top: 0
+    left: 0
+    height: $header-height + $header-margin + 20px
+    +main-bg
+    z-index: 0
   +sm
-    padding-top: 105px
+    padding-top: $header-height-sm
   +xs
-    padding-top: 80px
+    padding-top: $header-height-xs
 
 .main
   display: block

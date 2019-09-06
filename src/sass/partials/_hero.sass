@@ -143,7 +143,6 @@
   width: 100px
   font-weight: 500
   color: $black
-  text-decoration: underline
   text-transform: uppercase
   z-index: 1
   +flex(center, center)
@@ -152,12 +151,13 @@
   +xs
     width: 60px
   a
+    +nav-link
     +rotate(-90)
     display: inline-block
     white-space: nowrap
-    +tr(color .3s)
-    +hover
-      color: $accent
+    // +tr(color .3s)
+    // +hover
+    //   color: $accent
   &--prev
     left: 0
   &--next

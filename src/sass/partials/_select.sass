@@ -1,4 +1,5 @@
 .select
+  position: relative
   select
     position: absolute
     visibility: hidden
@@ -8,8 +9,6 @@
   $this: &
   text-transform: uppercase
   position: relative
-  
-
   &.is-open
     #{$this}__panel
       visibility: visible
@@ -38,6 +37,7 @@
     overflow: auto
     visibility: hidden
     opacity: 0
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.16)
     +ready
       +tr(opacity .3s, visibility .3s)
   &__option
