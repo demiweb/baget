@@ -74,6 +74,31 @@
     +xs
       height: 30px
       padding: 9px 0 5px
+  label
+    &:first-child
+      position: absolute
+      pointer-events: none
+      left: 0
+      top: 18px
+      +tr(transform .3s)
+      +lg
+        top: 15px
+      +md
+        top: 12px
+      +xs
+        top: 9px
+  &.has-focus, &.has-text
+    label
+      &:first-child
+        font-size: .75em
+        transform: translate(0, -18px)
+        +lg
+          transform: translate(0, -15px)
+        +md
+          transform: translate(0, -12px)
+        +xs
+          transform: translate(0, -9px)
+
 
 .textarea
   textarea

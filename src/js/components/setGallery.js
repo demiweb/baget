@@ -7,7 +7,7 @@ import 'lg-thumbnail.js';
 // import 'lg-video.js';
 
 export default function setgallery() {
-  const lgs = [].slice.call(document.querySelectorAll('.js-lightgallery'));
+  const lgs = [...document.querySelectorAll('.js-lightgallery')];
 
   if (!lgs.length) return;
 

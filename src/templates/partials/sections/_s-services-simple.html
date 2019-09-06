@@ -12,9 +12,9 @@
     {% endif %}
 
     <!-- begin services-links -->
-    <div class="services-links">
+    <div class="services-links js-stagger">
       {% for i in services %}
-      <div class="services-links__item">
+      <div class="services-links__item js-stagger-el">
         <!-- begin service-link -->
         <a href="#" class="service-link{% if i.mod %} {{ i.mod }}{% endif %}">
           {# <span class="service-link__img js-lazy" data-background-image="./img/services/{{ i.img }}"> #}

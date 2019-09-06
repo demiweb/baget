@@ -9,7 +9,7 @@ class CustomSelect {
 
   addSelectsPlaceholder() {
     let placeholder;
-    [].slice.call(this.select.options).forEach((option) => {
+    [...this.select.options].forEach((option) => {
       if (option.value === 'placeholder') {
         placeholder = option.innerText;
       }
@@ -27,7 +27,7 @@ class CustomSelect {
     this.wrap = this.select.parentNode;
     this.opener = this.wrap.querySelector('.custom-select__opener');
     this.panel = this.wrap.querySelector('.custom-select__panel');
-    this.options = [].slice.call(this.wrap.querySelectorAll('.custom-select__option'));
+    this.options = [...this.wrap.querySelectorAll('.custom-select__option')];
     this.input = this.wrap.querySelector('.js-search');
   }
 
@@ -43,7 +43,7 @@ class CustomSelect {
 }
 
 export default function setSelects() {
-  const selects = [].slice.call(document.querySelectorAll('.js-select'));
+  const selects = [...document.querySelectorAll('.js-select')];
   if (!selects.length) return;
 
 

@@ -5,23 +5,23 @@ form = [
     name: 'input',
     mod: '',
     type: 'text',
-    placeholder: 'ВАШЕ ИМЯ',
-    fieldClass: ''
+    label: { first: 'ВАШЕ ИМЯ' },
+    fieldClass: 'js-focused-input'
   },
   {
     wrapMod: 'form__col-50',
     name: 'input',
     mod: '',
     type: 'tel',
-    placeholder: 'НОМЕР ТЕЛЕФОНА',
-    fieldClass: ''
+    label: { first: 'НОМЕР ТЕЛЕФОНА' },
+    fieldClass: 'js-focused-input'
   },
   {
     name: 'textarea',
     mod: '',
     type: '',
-    placeholder: 'Что вас интересует?',
-    fieldClass: 'js-textarea'
+    label: { first: 'Что вас интересует?' },
+    fieldClass: 'js-textarea js-focused-input'
   }
 ]
 %}
@@ -67,7 +67,8 @@ form = [
                       type = i.type,
                       placeholder = i.placeholder,
                       value = '',
-                      fieldClass = i.fieldClass
+                      fieldClass = i.fieldClass,
+                      label = i.label
                     ) }}
                   </div>
                   {% endfor %}

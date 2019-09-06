@@ -1,5 +1,4 @@
-// import $ from 'jquery';
-// import '@babel/polyfill';
+import '@babel/polyfill';
 import 'intersection-observer';
 import './lib/polyfill';
 import sayHello from './lib/sayHello';
@@ -12,11 +11,11 @@ import animateOnScroll from './components/animateOnScroll';
 import setFooter from './components/setFooter';
 import setScrollbar from './components/setScrollbar';
 import setSliders from './components/setSliders';
-// import setHeroTitle from './components/setHeroTitle';
 import setGallery from './components/setSelects';
 import setSelects from './components/setGallery';
-// import setSmoothScrolling from './components/setSmoothScrolling';
 import setSmoothScrolling from './components/setSmoothScrolling';
+import setAnimations from './components/animations/setAnimations';
+import toggleInputFocus from './components/toggleInputFocus';
 
 document.addEventListener('DOMContentLoaded', () => {
   sayHello();
@@ -29,14 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setFooter();
   setScrollbar();
   setSliders();
-  // setHeroTitle();
   setGallery();
   setSelects();
   setSmoothScrolling();
+  setAnimations();
+  toggleInputFocus();
 });
-
-// $(() => {
-//   sayHello();
-//   setHTMLClassNames();
-//   setLazy();
-// });

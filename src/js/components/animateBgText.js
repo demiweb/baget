@@ -1,5 +1,5 @@
 export default function animateBgText(index) {
-  const els = [].slice.call(document.querySelectorAll('.js-bg-text'));
+  const els = [...document.querySelectorAll('.js-bg-text')];
 
   if (!els.length) return;
 
@@ -11,7 +11,6 @@ export default function animateBgText(index) {
     top += titleHeight;
 
     if (top < 0) return;
-    console.log(index);
     title.style.transform = `translate(${index}px, 0px)`;
   });
 }

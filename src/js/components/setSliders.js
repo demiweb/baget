@@ -9,7 +9,7 @@ class MySlider {
     this.prev = this.wrap.querySelector('.js-slider-prev');
     this.next = this.wrap.querySelector('.js-slider-next');
     this.pagination = this.wrap.querySelector('.js-pagination');
-    this.slides = [].slice.call(slider.querySelectorAll('.swiper-slide'));
+    this.slides = [...slider.querySelectorAll('.swiper-slide')];
 
     this.options = getOptions({
       next: this.next,
@@ -28,7 +28,7 @@ class MySlider {
 }
 
 export default function setSliders() {
-  const sliders = [].slice.call(document.querySelectorAll('.js-slider'));
+  const sliders = [...document.querySelectorAll('.js-slider')];
   if (!sliders.length) return;
 
   function getOptions({ next, prev, pagination }) {

@@ -42,8 +42,7 @@
       height: 20px
   &__rect
     top: 0
-    left: 0
-    
+    left: 0    
     position: absolute
     z-index: 0
     
@@ -56,6 +55,7 @@
     padding-right: 55px
     padding-left: 50px
     width: percentage(415/1800)
+    opacity: 0
     +xl
       padding-right: 25px
       padding-left: 30px
@@ -91,6 +91,7 @@
       +flex(flex-start, noral, row, wrap)
     li
       width: 50%
+      opacity: 0
     +sm
       position: fixed
       max-width: none
@@ -109,7 +110,7 @@
       &.is-active
         transform: translate(0, 0)
       li
-        width: auto
+        width: auto        
       ul
         display: block
   &__nav-in
@@ -165,6 +166,7 @@
       display: block
   &__contacts
     flex-grow: 1
+    opacity: 0
     +xs
       display: none
   &__contacts-mob
@@ -208,6 +210,8 @@
   font-weight: 700
   margin-bottom: 5px
   display: block
+  a
+    display: inline-block
   +sm
     margin-right: 10px
     margin-bottom: 0
@@ -216,6 +220,7 @@
 
 .header-mail
   text-decoration: underline
+  display: inline-block
 
 .burger
   display: block

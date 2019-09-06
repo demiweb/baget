@@ -63,11 +63,11 @@ slider = [
 
     {% if sectionGallery.noSlider %}
     <!-- begin gallery -->
-    <div class="gallery js-lightgallery">
+    <div class="gallery js-lightgallery js-stagger">
       {% for i in sectionGallery.gallery %}
         <a
           href="./img/gallery/{{ i.img }}"
-          class="swiper-slide gallery-item gallery__item"
+          class="swiper-slide gallery-item gallery__item js-stagger-el"
           data-exthumbimage="./img/gallery/{{ i.img }}"
           >
             <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>
@@ -97,11 +97,11 @@ slider = [
     <!-- begin slider -->
     <div class="slider__wrap slider--gallery__wrap">
       <div class="swiper-container js-slider" data-slider="gallery">
-        <div class="swiper-wrapper slider js-lightgallery">
+        <div class="swiper-wrapper slider js-lightgallery js-stagger">
           {% for i in slider %}
           <a
             href="./img/gallery/{{ i.img }}"
-            class="swiper-slide gallery-item"
+            class="swiper-slide gallery-item js-stagger-el"
             data-exthumbimage="./img/gallery/{{ i.img }}"
             >
               <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>

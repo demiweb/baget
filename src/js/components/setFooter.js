@@ -1,5 +1,6 @@
-import { debounce } from 'throttle-debounce';
-import { IS_VISIBLE } from '../constants';
+import { debounce, throttle } from 'throttle-debounce';
+import { IS_VISIBLE, IS_TOP } from '../constants';
+import { isTouch } from '../helpers';
 
 class Footer {
   constructor(footer) {
@@ -19,6 +20,20 @@ class Footer {
     this.footer.classList.remove(IS_VISIBLE);
     this.height = this.footer.offsetHeight;
     this.out.style.paddingBottom = `${this.height}px`;
+  }
+
+  toggleZIndex() {
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+      this.footer.classList.add(IS_TOP);
+    } else {
+      this.footer.classList.remove(IS_TOP);
+    }
+  }
+
+  _toggleZIndex() {
+    if (!isTouch) return;
+    this.toggleZIndexThrottled = throttle(66, this.toggleZIndex.bind(this));
+    window.addEventListener('scroll', this.toggleZIndexThrottled);
   }
 
   toggleVisibility(entries) {
@@ -51,6 +66,7 @@ class Footer {
   init() {
     this._setOutPadding();
     this._toggleVisibility();
+    this._toggleZIndex();
   }
 }
 

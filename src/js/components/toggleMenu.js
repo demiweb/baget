@@ -1,3 +1,4 @@
+import { TimelineLite, Power2 } from 'gsap';
 import {
   IS_ACTIVE, NO_SCROLL, IS_HIDDEN,
 } from '../constants';
@@ -32,8 +33,8 @@ class Burger {
   }
 
   close() {
-    this.burgers = [].slice.call(document.querySelectorAll(`.${Burger.classNames.burger}`));
-    this.targets = [].slice.call(document.querySelectorAll(`.${Burger.classNames.menu}`));
+    this.burgers = [...document.querySelectorAll(`.${Burger.classNames.burger}`)];
+    this.targets = [...document.querySelectorAll(`.${Burger.classNames.menu}`)];
 
     if (this.burgers.length > 0 && this.targets.length > 0) {
       this.burgers.forEach((btn) => btn.classList.remove(IS_ACTIVE));
@@ -54,8 +55,46 @@ Burger.classNames = {
 
 export default function toggleMenu() {
   const burger = new Burger();
+  const tl = new TimelineLite();
+
   burger.onToggle = () => {
     document.body.classList.toggle(NO_SCROLL);
+    const {
+      nav,
+      addresses,
+      contacts,
+    } = {
+      nav: burger.target.querySelectorAll('.header__nav li'),
+      addresses: burger.target.querySelectorAll('.header__address-mob .header-address-item'),
+      contacts: burger.target.querySelectorAll('.header__contacts-mob a'),
+    };
+    tl
+      .staggerFromTo(
+        nav,
+        0.5,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0 },
+        0.1,
+      )
+      .staggerFromTo(
+        addresses,
+        0.5,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0 },
+        0.1,
+        '-=0.3',
+      );
+    if (window.matchMedia('(max-width: 575px)').matches) {
+      tl
+        .staggerFromTo(
+          contacts,
+          0.5,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0 },
+          0.1,
+          '-=0.3',
+        );
+    }
   };
   burger.onClose = () => {
     document.body.classList.remove(NO_SCROLL);

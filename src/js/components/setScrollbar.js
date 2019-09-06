@@ -49,7 +49,7 @@ Scrollbar.classNames = {
 
 export default function setScrollbar() {
   if (isWebkit) return;
-  const containers = [].slice.call(document.querySelectorAll('.js-scrollbar'));
+  const containers = [...document.querySelectorAll('.js-scrollbar')];
 
   if (!containers.length) return;
 

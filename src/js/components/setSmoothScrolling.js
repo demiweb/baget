@@ -1,5 +1,5 @@
-import Smooth from 'smooth-scrolling';
-import { isTouch } from '../helpers';
+import 'smooth-scrolling/smooth-scrolling';
+import { isTouch, isIE } from '../helpers';
 import { IS_TOP } from '../constants';
 import animateBgText from './animateBgText';
 
@@ -7,7 +7,7 @@ class Scroll {
   constructor(wrap) {
     this.wrap = wrap;
     this.footer = document.querySelector('.footer');
-    this.scrolledEls = [].slice.call(document.querySelectorAll('.js-scrolled-el'));
+    this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
   }
 
   toggleWrapEnabling() {
@@ -45,6 +45,7 @@ class Scroll {
   }
 
   setPlugin() {
+    // eslint-disable-next-line
     this.smooth = new Smooth({
       section: this.wrap,
       callback: this.toggleWrapEnabling.bind(this),

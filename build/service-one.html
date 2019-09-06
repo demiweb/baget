@@ -134,7 +134,7 @@
         <section class="section">
           <div class="container">
             <div class="grid">
-              <div class="grid__left grid__left-center">
+              <div class="grid__left grid__left-center js-anim-el" data-anim-name="fadeInUp">
                 <div class="section__nav">
                   <div class="section__nav-title">материалы, которые мы используем</div>
                   <!-- begin nav -->
@@ -152,7 +152,7 @@
                   <!-- end nav -->
                 </div>
               </div>
-              <div class="grid__right">
+              <div class="grid__right js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.2s">
                 <!-- begin stext -->
                 <div class="stext scrollbar js-scrollbar js-scrolled-el">
                   <h2>на что обратить внимание при выборе?</h2>
@@ -187,41 +187,41 @@
             <!-- begin slider -->
             <div class="slider__wrap slider--gallery__wrap">
               <div class="swiper-container js-slider" data-slider="gallery">
-                <div class="swiper-wrapper slider js-lightgallery">
-                  <a href="./img/gallery/01.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/01.jpg">
+                <div class="swiper-wrapper slider js-lightgallery js-stagger">
+                  <a href="./img/gallery/01.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/01.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/01.jpg" />
                   </a>
-                  <a href="./img/gallery/02.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/02.jpg">
+                  <a href="./img/gallery/02.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/02.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/02.jpg" />
                   </a>
-                  <a href="./img/gallery/03.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/03.jpg">
+                  <a href="./img/gallery/03.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/03.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/03.jpg" />
                   </a>
-                  <a href="./img/gallery/04.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/04.jpg">
+                  <a href="./img/gallery/04.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/04.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/04.jpg" />
                   </a>
-                  <a href="./img/gallery/05.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/05.jpg">
+                  <a href="./img/gallery/05.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/05.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/05.jpg" />
                   </a>
-                  <a href="./img/gallery/06.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/06.jpg">
+                  <a href="./img/gallery/06.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/06.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/06.jpg" />
                   </a>
-                  <a href="./img/gallery/01.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/01.jpg">
+                  <a href="./img/gallery/01.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/01.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/01.jpg" />
                   </a>
-                  <a href="./img/gallery/02.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/02.jpg">
+                  <a href="./img/gallery/02.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/02.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/02.jpg" />
                   </a>
-                  <a href="./img/gallery/03.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/03.jpg">
+                  <a href="./img/gallery/03.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/03.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/03.jpg" />
                   </a>
-                  <a href="./img/gallery/04.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/04.jpg">
+                  <a href="./img/gallery/04.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/04.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/04.jpg" />
                   </a>
-                  <a href="./img/gallery/05.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/05.jpg">
+                  <a href="./img/gallery/05.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/05.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/05.jpg" />
                   </a>
-                  <a href="./img/gallery/06.jpg" class="swiper-slide gallery-item" data-exthumbimage="./img/gallery/06.jpg">
+                  <a href="./img/gallery/06.jpg" class="swiper-slide gallery-item js-stagger-el" data-exthumbimage="./img/gallery/06.jpg">
                     <img class="js-lazy" alt="" data-src="./img/gallery/06.jpg" />
                   </a>
                 </div>
@@ -242,8 +242,8 @@
               <div class="title title--medium title--h3 title--ttu">Остальные услуги</div>
             </div>
             <!-- begin services-links -->
-            <div class="services-links">
-              <div class="services-links__item">
+            <div class="services-links js-stagger">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link">
                   <span class="service-link__img">
@@ -256,7 +256,7 @@
                 </a>
                 <!-- end service-link -->
               </div>
-              <div class="services-links__item">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link">
                   <span class="service-link__img">
@@ -269,7 +269,7 @@
                 </a>
                 <!-- end service-link -->
               </div>
-              <div class="services-links__item">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link">
                   <span class="service-link__img">
@@ -282,7 +282,7 @@
                 </a>
                 <!-- end service-link -->
               </div>
-              <div class="services-links__item">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link">
                   <span class="service-link__img">
@@ -295,7 +295,7 @@
                 </a>
                 <!-- end service-link -->
               </div>
-              <div class="services-links__item">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link">
                   <span class="service-link__img">
@@ -308,7 +308,7 @@
                 </a>
                 <!-- end service-link -->
               </div>
-              <div class="services-links__item">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link service-link--img-contain">
                   <span class="service-link__img">
@@ -321,7 +321,7 @@
                 </a>
                 <!-- end service-link -->
               </div>
-              <div class="services-links__item">
+              <div class="services-links__item js-stagger-el">
                 <!-- begin service-link -->
                 <a href="#" class="service-link">
                   <span class="service-link__img">
@@ -374,21 +374,24 @@
                     <div class="form__col form__col-50">
                       <!-- begin input -->
                       <div class="input">
-                        <input type="text" placeholder="ВАШЕ ИМЯ">
+                        <label>ВАШЕ ИМЯ</label>
+                        <input class="js-focused-input" type="text">
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="form__col form__col-50">
                       <!-- begin input -->
                       <div class="input">
-                        <input type="tel" placeholder="НОМЕР ТЕЛЕФОНА">
+                        <label>НОМЕР ТЕЛЕФОНА</label>
+                        <input class="js-focused-input" type="tel">
                       </div>
                       <!-- end input -->
                     </div>
                     <div class="form__col">
                       <!-- begin textarea -->
                       <div class="textarea">
-                        <textarea class="js-textarea" placeholder="Что вас интересует?"></textarea>
+                        <label>Что вас интересует?</label>
+                        <textarea class="js-textarea js-focused-input"></textarea>
                       </div>
                       <!-- end textarea -->
                     </div>
