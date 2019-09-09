@@ -1,5 +1,5 @@
 import 'smooth-scrolling/smooth-scrolling';
-import { isTouch, isIE } from '../helpers';
+import { isTouch } from '../helpers';
 import { IS_ABOVE } from '../constants';
 import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';

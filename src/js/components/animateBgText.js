@@ -1,16 +1,17 @@
-export default function animateBgText(index) {
+export default function animateBgText(position) {
   const els = [...document.querySelectorAll('.js-bg-text')];
-
   if (!els.length) return;
 
   els.forEach((el) => {
     const title = el;
 
-    let { top } = title.getBoundingClientRect();
-    const titleHeight = title.offsetHeight;
-    top += titleHeight;
-
-    if (top < 0) return;
-    title.style.transform = `translate(${index}px, 0px)`;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          title.style.transform = `translate(${position}px, 0px)`;
+        }
+      });
+    });
+    observer.observe(title);
   });
 }
