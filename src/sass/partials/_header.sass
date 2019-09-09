@@ -35,8 +35,8 @@
       width: 100px
       height: 100px
     +sm
-      width: 40px
-      height: 40px
+      width: 30px
+      height: 30px
     +xs
       width: 20px
       height: 20px
@@ -45,6 +45,8 @@
     left: 0    
     position: absolute
     z-index: 0
+    +sm
+      display: none
     
   &__inner
     +flex
@@ -149,10 +151,16 @@
     +md
       padding-top: 40px
     +sm
-      padding-top: 20px
+      // padding-top: 5px
+      padding-top: 0
+      padding-left: 0
+      +flex(center, center)
+      height: 100%
+      +before
+        display: none
     +xs
-      padding-left: 10px
-      padding-top: 10px
+      // padding-left: 10px
+      // padding-top: 10px
   &__address
     text-align: right
     transform: translate(0, 50px)

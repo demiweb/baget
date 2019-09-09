@@ -30,9 +30,11 @@ body
   +no-scroll
   .no-touch &
     overflow: hidden
+    +sm
+      overflow: visible
   +sm
     font-size: $fz-sm
-    overflow: visible
+    // overflow: visible
 
 .icon
   display: inline-block
@@ -79,6 +81,8 @@ body
   &.is-loaded
     background-color: transparent
     background-image: none
+  &.is-above
+    z-index: 25
 
 .main
   display: block

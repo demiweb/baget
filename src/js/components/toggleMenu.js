@@ -1,6 +1,6 @@
 import { TimelineLite, Power2 } from 'gsap';
 import {
-  IS_ACTIVE, NO_SCROLL, IS_HIDDEN,
+  IS_ACTIVE, NO_SCROLL, IS_HIDDEN, IS_ABOVE,
 } from '../constants';
 
 class Burger {
@@ -56,9 +56,12 @@ Burger.classNames = {
 export default function toggleMenu() {
   const burger = new Burger();
   const tl = new TimelineLite();
+  const out = document.querySelector('.out');
 
   burger.onToggle = () => {
     document.body.classList.toggle(NO_SCROLL);
+    out.classList.toggle(IS_ABOVE);
+
     const {
       nav,
       addresses,
@@ -98,7 +101,9 @@ export default function toggleMenu() {
   };
   burger.onClose = () => {
     document.body.classList.remove(NO_SCROLL);
-    console.log(burger);
+    setTimeout(() => {
+      out.classList.remove(IS_ABOVE);
+    }, 300);
   };
   burger.init();
 

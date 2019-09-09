@@ -1,12 +1,12 @@
 import { debounce, throttle } from 'throttle-debounce';
-import { IS_VISIBLE, IS_TOP } from '../constants';
+import { IS_VISIBLE, IS_ABOVE } from '../constants';
 import { isTouch } from '../helpers';
+
 
 class Footer {
   constructor(footer) {
     this.footer = footer;
     this.header = document.querySelector('.header');
-    this.sideLine = document.querySelector('.js-side-line');
   }
 
   setVisibility() {
@@ -22,12 +22,16 @@ class Footer {
     this.out.style.paddingBottom = `${this.height}px`;
   }
 
-  toggleZIndex() {
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-      this.footer.classList.add(IS_TOP);
+  toggleAbove(condition) {
+    if (condition) {
+      this.footer.classList.add(IS_ABOVE);
     } else {
-      this.footer.classList.remove(IS_TOP);
+      this.footer.classList.remove(IS_ABOVE);
     }
+  }
+
+  toggleZIndex() {
+    this.toggleAbove((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight);
   }
 
   _toggleZIndex() {
@@ -62,18 +66,17 @@ class Footer {
     this.observer.observe(this.header);
   }
 
-
   init() {
+    if (!this.footer) return;
     this._setOutPadding();
     this._toggleVisibility();
     this._toggleZIndex();
   }
 }
 
-export default function setOutPaddingBottom() {
-  const footer = document.querySelector('.footer');
-  if (!footer) return;
 
-  const f = new Footer(footer);
-  f.init();
-}
+const footer = document.querySelector('.footer');
+
+const fixedFooter = new Footer(footer);
+
+export default fixedFooter;
