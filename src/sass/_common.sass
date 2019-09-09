@@ -65,6 +65,11 @@ body
 .out
   position: relative
   z-index: 1
+  will-change: transform
+  // +ready
+    // +tr(.1s transform)
+  .is-firefox &
+    +tr(.1s transform)
   +main-bg
   +before
     width: 100%

@@ -1,4 +1,4 @@
-import { isTouch, isIE } from '../helpers';
+import { isTouch, isIE, isFirefox } from '../helpers';
 import { NO_TOUCH, IS_READY } from '../constants';
 
 function setTouch() {
@@ -17,8 +17,15 @@ function detectIE() {
   }
 }
 
+function detectFirefox() {
+  if (isFirefox) {
+    document.documentElement.classList.add('is-firefox');
+  }
+}
+
 export default function setHTMLClassNames() {
   setTouch();
   setReady();
   detectIE();
+  detectFirefox();
 }
