@@ -1,0 +1,215 @@
+.about-block
+  $this: &
+  position: relative
+  +before
+    position: absolute
+    top: 0
+    right: 0
+    width: 40%
+    height: 80%
+    background-color: $accent
+    z-index: 0
+    +md
+      height: 70%
+  &__img
+    +cover
+    position: relative
+    z-index: 1
+    overflow: hidden
+    width: percentage(670/1311)
+    padding-top: percentage(670/880)
+    +lg
+      position: relative
+      width: 50%
+      padding-top: 60%
+    +md
+      width: 50%
+    +sm
+      width: 100%
+  &__img-caption
+    position: absolute
+    z-index: 2
+    background-color: $white
+    text-transform: uppercase
+    padding: 35px
+    +rotate(-90)
+    top: 0
+    right: 0
+    transform-origin: 84% 49%
+    +xl
+      padding: 25px
+      transform-origin: 87% 49%
+    +lg
+      padding: 15px
+      transform-origin: 90% 49%
+    +xs
+      font-size: .8em
+      transform-origin: 90% 43%
+  &__block
+    position: absolute
+    z-index: 2
+    background-color: $white
+    padding: 40px
+    width: 52%
+    +xl
+      width: 70%
+    +lg
+      width: 50%
+      position: relative
+    +md
+      position: relative
+      width: 50%
+      transform: translate(0, 0)
+    +sm
+      width: 100%
+    +xs
+      padding: 15px !important
+    
+  &__title
+    margin-bottom: 40px
+    +xl
+      margin-bottom: 30px
+    +lg
+      margin-bottom: 25px
+    +md
+      margin-bottom: 15px
+    +sm
+      margin-bottom: 10px
+  &__text
+    margin-bottom: 30px
+    p
+      +notlast
+        margin-bottom: 20px
+        +md
+          margin-bottom: 10px
+    ul
+      // list-style-type: disc
+      // margin-left: 1.1em
+      li
+        &::before
+          content: "\2022"
+          display: inline-block
+          margin-right: 5px
+    +md
+      margin-bottom: 15px
+  &--lg
+    padding-right: 70px
+    margin-bottom: 150px
+    +xl
+      padding-right: 50px
+    +lg
+      padding-right: 30px
+      margin-bottom: 120px
+    +md
+      padding-right: 20px
+      margin-bottom: 30px
+    +sm
+      margin-bottom: 15px
+    +xs
+      padding-right: 10px
+    #{$this}__img
+      width: 100%
+      padding-top: percentage(890/1380)
+      +xs
+        padding-top: 65%
+    #{$this}__block
+      padding: 40px 100px
+      width: percentage(1072/1380)
+      bottom: -75px
+      left: 50%
+      transform: translate(-50%, 0)
+      +xl
+        padding: 40px 70px
+      +lg
+        padding: 40px 50px
+        position: absolute
+      +md
+        position: relative
+        padding: 30px
+        width: 100%
+        transform: translate(0, 0)
+        left: auto
+        bottom: auto
+      +sm
+        padding: 20px
+  &--left
+    padding-left: 140px
+    margin-bottom: 100px
+    +xl
+      padding-left: 70px
+    +lg
+      padding-left: 50px
+      +flex
+      margin-bottom: 50px
+    +md
+      padding-left: 30px
+      margin-bottom: 30px
+    +sm
+      padding-left: 20px
+      display: block
+      margin-bottom: 15px
+    +xs
+      padding-left: 10px
+    +before
+      right: auto
+      left: 0
+      top: 50px
+      height: 70%
+      +xl
+        top: 30px
+      +lg
+        top: 20px
+    #{$this}__img
+    #{$this}__block
+      bottom: -45px
+      right: 0
+      padding: 110px 70px
+      +xl
+        padding: 80px 50px
+      +lg
+        padding: 50px
+        bottom: auto
+        right: auto
+      +md
+        padding: 30px
+      +sm
+        padding: 20px
+  &--right
+    padding-right: 40px
+    padding-top: 170px
+    +before
+    +xl
+      padding-right: 30px
+      padding-top: 100px
+    +lg
+      padding-right: 20px
+      padding-top: 70px
+      +flex
+    +md
+      padding-top: 40px
+    +sm
+      padding-top: 20px
+      display: block
+    +xs
+      padding-right: 10px
+    #{$this}__block
+      bottom: 35px
+      left: 50%
+      transform: translate(-50%, 0)
+      padding: 110px 45px
+      +xl
+        padding: 80px 50px
+      +lg
+        padding: 50px
+        left: auto
+        transform: translate(0, 0)
+        bottom: auto
+      +md
+        padding: 30px
+      +sm
+        padding: 20px
+
+    #{$this}__img
+        margin-left: auto
+        +lg
+          margin-left: 0

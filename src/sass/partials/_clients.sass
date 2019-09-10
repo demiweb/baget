@@ -1,0 +1,46 @@
+.clients
+  +flex
+  +sm
+    display: block
+  &__list
+    width: percentage(440/1450)
+    padding-left: 70px
+    padding-right: 15px
+    +xl
+      padding-left: 40px
+    +lg
+      padding-left: 0
+    +sm
+      width: auto
+      margin-bottom: 15px
+  &__table
+    width: percentage(1010/1450)
+    +sm
+      width: auto
+
+.clients-table
+  display: table
+  width: 100%
+  border-collapse: collapse
+  max-width: 870px
+  &__img
+    width: 60%
+    padding-top: 25%
+    background-repeat: no-repeat
+    background-size: contain
+    background-position: 50% 50%
+    margin-left: auto
+    margin-right: auto
+    opacity: 0
+  &__tr
+    display: table-row
+  &__td
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    border: 1px solid $gray-lighten
+    padding-top: 40px
+    padding-bottom: 40px
+    +sm
+      padding-top: 20px
+      padding-bottom: 20px

@@ -1,0 +1,96 @@
+<!-- begin s-about -->
+<section class="s-about section overflow-hidden">
+  <div class="word logo-text js-bg-text">Цнтр.<span>багет</span></div>
+
+  <div class="container">
+    <div class="section__top section-top">
+      <div class="section-top__title">
+        <h1 class="title">Немного о нас</h1>
+      </div>
+
+      <div class="section__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { link: 'главная' },
+            { item: '/' },
+            { link: 'о нас', modLink: 'is-active' }
+          ]
+        ) }}
+      </div>
+    </div>
+
+    <!-- begin about-blocks -->
+    <div class="about-blocks">
+      <!-- begin about-block -->
+      <div class="about-block about-block--lg">
+        <div class="about-block__img js-lazy" data-background-image="./img/about/about-lg.jpg">
+          <div class="about-block__img-caption">Фото нашей мастерской</div>
+        </div>
+
+        <div class="about-block__block js-anim-el" data-anim-name="fadeIn" data-anim-delay="0.2s">«ЦЕНТРАЛЬНАЯ Багетная мастерская» занимается оформлением картин, вышивок, постеров и гобеленов в красивые деревянные, пластиковые и металлические рамы. Мы молодая компания, но наши высококвалифицированные специалисты смогут воплотить в жизнь любую Вашу идею, даже самую смелую!</div>
+      </div>
+      <!-- end about-block -->
+
+      <!-- begin about-block -->
+      <div class="about-block about-block--left">
+        <div class="about-block__img js-lazy" data-background-image="./img/about/about.jpg"></div>
+
+        <div class="about-block__block js-anim-el" data-anim-name="fadeIn">
+          <div class="about-block__title js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.2s">
+            <div class="title title--h3 title--ttu title--medium">Ваши фантазии — наше обрамление!</div>
+          </div>
+
+          <div class="about-block__text js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.4s">
+            <p>Мы с удовольствием оформим и профессионально подберём Вам оригинальный и идеальный вариант оформления, так как знаем, как важно правильно подобрать багет, чтобы Ваши картины радовали глаз не один день и даже не один год! Коллектив «ЦЕНРАЛЬНОЙ Багетной мастерской» обладает безупречным вкусом. Индивидуальность – вот основной принцип нашей работы! Для нас нет ничего, что бы мы не смогли оформить для Вас!</p>
+            <p>Мы хотим, что бы каждая комната в Вашем доме была особенной, неповторимой и уникальной, чтобы каждое оформленная нами работа приносила только радость, тепло и уют! Посетив нашу Багетную мастерскую, Вы будете приятно удивлены ценами, профессионализмом нашего коллектива и сроками изготовления! Ждём Вас!</p>
+          </div>
+
+          <div class="about-block__btn js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.4s">
+            {{ mixins.btn(
+              title = 'ОСТАВИТЬ ЗАЯВКУ',
+              mod = '',
+              href = false
+            ) }}
+          </div>
+        </div>
+      </div>
+      <!-- end about-block -->
+
+      <!-- begin about-block -->
+      <div class="about-block about-block--right">
+        <div class="about-block__img js-lazy" data-background-image="./img/about/about.jpg"></div>
+
+        <div class="about-block__block js-anim-el" data-anim-name="fadeIn">
+          <div class="about-block__title js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.2s">
+            <div class="title title--h3 title--ttu title--medium">«ЦЕНТРАЛЬНАЯ Багетная мастерская» это:</div>
+          </div>
+
+          <div class="about-block__text js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.4s">
+            <ul>
+              <li>Широкий ассортимент багета на любой вкус: Более 350 видов багета из пластика и более 500 видов багета из натурального дерева, обладающий высоким качеством древесины, экологически чистыми лакокрасочными материалами.</li>
+              <li>Наличие огромной гаммы оттенков паспарту (паспарту с бархатным покрытием, с льяным покрытием, с оттенком металлика) производства Moorman, Slater-harrison, San Bow Arts;</li>
+              <li>Многообразный выбор фурнитуры и стекла: простое полированное, антибликовое и антиблик музейного класса;</li>
+              <li>Помощь дизайнеров – профессионалов;</li>
+              <li>Высокое качество и быстрое обслуживания;</li>
+              <li>Приятные и доступные цены;</li>
+              <li>Гибкая система скидок для постоянных клиентов.</li>
+            </ul>
+          </div>
+
+          <div class="about-block__btn js-anim-el" data-anim-name="fadeInUp" data-anim-delay="0.4s">
+            {{ mixins.btn(
+              title = 'ОСТАВИТЬ ЗАЯВКУ',
+              mod = '',
+              href = false
+            ) }}
+          </div>
+        </div>
+      </div>
+      <!-- end about-block -->
+    </div>
+    <!-- end about-blocks -->
+  </div>
+</section>
+<!-- end s-about -->

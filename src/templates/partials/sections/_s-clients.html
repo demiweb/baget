@@ -1,0 +1,67 @@
+{%set
+table = [
+  {
+    cols: [
+      { img: '01.png' },
+      { img: '02.png' },
+      { img: '03.png' }
+    ]
+  },
+  {
+    cols: [
+      { img: '04.png' },
+      { img: '01.png' },
+      { img: '02.png' }
+    ]
+  }
+]
+%}
+
+<!-- begin section -->
+<section class="section section--white">
+  <div class="container">
+    <div class="section__title">
+      <div class="title title--ttu title--medium title--h3">работаем с лучшими:</div>
+    </div>
+
+    <!-- begin clients -->
+    <div class="clients">
+      <div class="clients__list js-anim-el" data-anim-name="fadeIn">
+        {{ mixins.list(
+          name = 'list',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { item: 'LPM (Италия)' },
+            { item: 'Salvadori (Италия)' },
+            { item: 'In.Co.M (Италия)' },
+            { item: 'Toledana (Испания)' },
+            { item: 'Adhisa (Испания)' },
+            { item: 'Garcia (Испания)' },
+            { item: 'Smap-Fil' },
+            { item: 'Wer-Rama (Польша)' },
+            { item: 'Carlson I Piechocki (Польша)' },
+            { item: 'Injac (Сербия)' }
+          ]
+        ) }}
+      </div>
+
+      <div class="clients__table">
+        <!-- begin clients-table -->
+        <div class="clients-table js-stagger">
+          {% for i in table %}
+          <div class="clients-table__tr">
+            {% for j in i.cols %}
+            <div class="clients-table__td">
+              <div class="clients-table__img js-stagger-el js-lazy" data-background-image="./img/clients/{{ j.img }}"></div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+        <!-- end clients-table -->
+      </div>
+    </div>
+    <!-- end clients -->
+  </div>
+</section>
+<!-- end section -->

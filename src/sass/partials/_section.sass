@@ -56,6 +56,9 @@
     +md
       margin-bottom: 15px
 
+  &--white
+    background-color: $white
+
 .section-top
   position: relative
   z-index: 1
@@ -75,3 +78,37 @@
       margin-right: 0
     +lg
       margin-bottom: 10px
+
+.section-img
+  position: relative
+  padding-top: 25px
+  margin-left: -30px
+  padding-left: 100px
+  max-width: 970px
+  +xl
+    margin-left: 0
+    padding-left: 70px
+  +lg
+    padding-left: 50px
+    padding-top: 15px
+  +md
+    padding-left: 30px
+  +sm
+    padding-left: 20px
+  +xs
+    padding-left: 10px
+    padding-top: 10px
+  +before
+    z-index: 0
+    background-color: $accent
+    width: percentage(241/970)
+    height: 85%
+    position: absolute
+    top: 0
+    left: 0
+  &__img
+    position: relative
+    z-index: 1
+    +cover
+    width: 100%
+    padding-top: percentage(740/870)
