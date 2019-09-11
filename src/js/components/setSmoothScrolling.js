@@ -1,4 +1,5 @@
 import 'smooth-scrolling/smooth-scrolling';
+import { debounce } from 'throttle-debounce';
 import { isTouch } from '../helpers';
 import { IS_ABOVE } from '../constants';
 import animateBgText from './animateBgText';
@@ -9,6 +10,9 @@ class Scroll {
     this.wrap = wrap;
     this.footer = document.querySelector('.footer');
     this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
+
+    this.inited = false;
+    this.pause = false;
   }
 
   onScroll() {
@@ -52,7 +56,31 @@ class Scroll {
     });
   }
 
+  initPlugin() {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      if (document.body.classList.contains('is-virtual-scroll')) return;
+
+      if (!this.inited) {
+        document.body.style.overflow = 'hidden';
+        this.smooth.init();
+        this.inited = true;
+      } else {
+        this.reinitPlugin();
+      }
+    } else if (document.body.classList.contains('is-virtual-scroll')) {
+      this.destroyPlugin();
+    }
+  }
+
   reinitPlugin() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    this.setPlugin();
+    this.smooth.init();
+  }
+
+  refreshPlugin() {
     const top = this.smooth.vars.current;
 
     function destroy() {
@@ -79,33 +107,31 @@ class Scroll {
       .then(init.bind(this));
   }
 
+  destroyPlugin() {
+    this.smooth.destroy();
+    this.wrap.style.transform = '';
+    document.body.style.overflow = '';
+  }
+
   observeChildren() {
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         console.log({ mutation, scroll: this });
 
-        this.reinitPlugin();
+        this.refreshPlugin();
       });
     });
     this.observer.observe(this.wrap, { childList: true, subtree: true });
   }
 
-  initPlugin() {
-    this.observeChildren();
-    if (window.matchMedia('(min-width: 768px)').matches
-      && !document.body.classList.contains('is-virtual-scroll')) {
-      this.smooth.init();
-    } else if (document.body.classList.contains('is-virtual-scroll')) {
-      this.smooth.destroy();
-    }
-  }
-
-
   init() {
     this.setPlugin();
     this.initPlugin();
     this.preventScroll();
-    // window.addEventListener('resize', this.initPlugin.bind(this));
+    this.observeChildren();
+
+    this.onResize = debounce(300, this.initPlugin.bind(this));
+    window.addEventListener('resize', this.onResize);
   }
 }
 

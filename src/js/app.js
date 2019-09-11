@@ -7,6 +7,7 @@ import './lib/polyfill';
 import sayHello from './lib/sayHello';
 import setHTMLClassNames from './components/setHTMLClassNames';
 import setLazy from './components/setLazy';
+// import { setVhProperty } from './helpers';
 import setTextareaHeight from './components/setTextareaHeight';
 import toggleMenu from './components/toggleMenu';
 import animateOnScroll from './components/animateOnScroll';
@@ -21,10 +22,12 @@ import setAnimations from './components/animations/setAnimations';
 import toggleInputFocus from './components/toggleInputFocus';
 import setInputMask from './components/setInputMask';
 
+
 document.addEventListener('DOMContentLoaded', () => {
   sayHello();
   setHTMLClassNames();
   setLazy();
+  // setVhProperty();
   setTextareaHeight();
   toggleMenu();
   animateOnScroll();

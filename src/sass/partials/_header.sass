@@ -103,6 +103,8 @@
       left: 0
       right: 0
       bottom: 0
+      // height: 100vh
+      // height: calc(var(--vh, 1vh) * 100)
       z-index: 10
       overflow: auto
       transform: translate(0, -100%)
@@ -112,7 +114,7 @@
       &.is-active
         transform: translate(0, 0)
       li
-        width: auto        
+        width: auto
       ul
         display: block
   &__nav-in
