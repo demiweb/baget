@@ -1,0 +1,26 @@
+<!-- begin section -->
+<section class="section pb-0">
+  <div class="container">
+    <div class="section__top section-top">
+      <div class="section-top__title">
+        <h1 class="title">Свяжитесь с нами</h1>
+      </div>
+
+      <div class="section__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { link: 'главная' },
+            { item: '/' },
+            { link: 'контакты', modLink: 'is-active' }
+          ]
+        ) }}
+      </div>
+    </div>
+  </div>
+
+  {% include "partials/_map.html" %}
+  {% include "partials/_panorama.html" %}
+</section>
+<!-- end section -->

@@ -1,0 +1,169 @@
+.contacts
+  color: $white
+  font-weight: 500
+  padding-left: 50px
+  padding-right: 50px
+  margin-bottom: -152px
+  +xl
+    padding-left: 30px
+    padding-right: 30px
+    margin-bottom: -132px
+  +lg
+    padding-left: 15px
+    padding-right: 15px
+    margin-bottom: -112px
+  +md
+    margin-bottom: -107px
+  +sm
+    margin-bottom: 0
+  &__tabs
+    +flex
+    position: relative
+    z-index: 2
+    +sm
+      margin-left: -15px
+      margin-right: -15px
+  &__tab
+    display: block
+    text-align: center
+    width: 420px
+    padding: 35px 10px
+    position: relative
+    background-color: $gray
+    +tr(background-color .3s)
+    +md
+      width: 350px
+      padding: 25px 10px
+    +sm
+      width: 50%
+      padding: 15px 10px
+    +before
+      +arr(20, 10, $accent, b)
+      position: absolute
+      left: 50%
+      transform: translate(-50%, 0)
+      top: 100%
+      display: none
+    &.is-active
+      background-color: $accent
+      +before
+        display: block
+    +hover
+      @extend .contacts__tab.is-active
+      +before
+        display: none
+  &__map
+    padding-top: 40%
+    position: relative
+    background-color: $gray
+    margin-left: -50px
+    margin-right: -50px
+    +xl
+      margin-left: -30px
+      margin-right: -30px
+    +lg
+      margin-left: -15px
+      margin-right: -15px
+    +sm
+      padding-left: 0
+      padding-right: 0
+      padding-top: 60%
+    +xs
+      padding-top: 70%
+    iframe
+      +coverdiv
+      z-index: 0
+  &__block
+    position: relative
+    z-index: 1
+    bottom: 0
+    left: 0
+    max-width: 840px
+    height: 152px
+    transform: translate(0, -100%)
+    +xl
+      height: 132px
+    +lg
+      height: 112px
+    +md
+      height: 107px
+    +sm
+      // position: relative
+      transform: translate(0, 0)
+      height: auto
+      margin-left: -15px
+      margin-right: -15px
+  &__block-item
+    opacity: 0
+    max-height: 0
+    overflow: hidden
+    +tr(opacity .6s)
+    &.is-active
+      overflow: visible
+      max-height: none
+      opacity: 1
+      padding: 40px 100px
+      +xl
+        padding: 30px 80px
+      +lg
+        padding: 20px 60px
+      +md
+        padding: 20px 40px
+      +sm
+        padding: 20px
+      +xs
+        padding: 10px
+
+.contacts-block
+  background-color: $accent  
+  +flex()
+  +xs
+    display: block
+  &__title
+    color: #f6928f
+    margin-bottom: 15px
+    +md
+      margin-bottom: 10px
+  &__item
+    width: 33.33333%
+    +xs
+      width: 100%
+      margin-bottom: 10px
+    +notlast
+      border-right: 1px solid #f6928f
+      padding-right: 30px
+      +md
+        padding-right: 15px
+      +sm
+        padding-right: 5px
+      +xs
+        padding-right: 0
+        border-right: 0
+    +notfirst
+      padding-left: 30px
+      +md
+        padding-left: 15px
+      +sm
+        padding-left: 5px
+      +xs
+        padding-left: 0
+
+.panorama
+  padding-top: 40%
+  position: relative
+  +hover
+    canvas
+      filter: blur(0)
+    img
+      display: none
+  canvas
+    +coverdiv
+    .no-touch &
+      filter: blur(4px)
+      +tr(filter .3s)
+      
+  img
+    +vcenter
+    z-index: 2
+
+

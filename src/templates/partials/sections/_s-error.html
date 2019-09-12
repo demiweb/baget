@@ -1,0 +1,33 @@
+<!-- begin section -->
+<section class="section">
+  <div class="container">
+    <div class="section__top section-top">
+      <div class="section__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { link: 'главная' },
+            { item: '/' },
+            { link: '404', modLink: 'is-active' }
+          ]
+        ) }}
+      </div>
+    </div>
+
+    <!-- begin error -->
+    <div class="error">
+      <div class="error__title">404</div>
+      <div class="error__text">К сожалению такой страницы не существует, 
+но вы можете вернуться на главную:</div>
+      <div class="error__btn">
+        {{ mixins.btn(
+          title = 'на главную',
+          mod = ''
+        ) }}
+      </div>
+    </div>
+    <!-- end error -->
+  </div>
+</section>
+<!-- end section -->

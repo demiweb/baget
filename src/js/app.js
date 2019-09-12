@@ -7,7 +7,7 @@ import './lib/polyfill';
 import sayHello from './lib/sayHello';
 import setHTMLClassNames from './components/setHTMLClassNames';
 import setLazy from './components/setLazy';
-// import { setVhProperty } from './helpers';
+import { setVhProperty } from './helpers';
 import setTextareaHeight from './components/setTextareaHeight';
 import toggleMenu from './components/toggleMenu';
 import animateOnScroll from './components/animateOnScroll';
@@ -17,17 +17,21 @@ import setScrollbar from './components/setScrollbar';
 import setSliders from './components/setSliders';
 import setGallery from './components/setSelects';
 import setSelects from './components/setGallery';
-import setSmoothScrolling from './components/setSmoothScrolling';
+
 import setAnimations from './components/animations/setAnimations';
 import toggleInputFocus from './components/toggleInputFocus';
 import setInputMask from './components/setInputMask';
+import setTabs from './components/setTabs';
+import setPanorama from './components/setPanorama';
+
+import setSmoothScrolling from './components/setSmoothScrolling';
 
 
 document.addEventListener('DOMContentLoaded', () => {
   sayHello();
   setHTMLClassNames();
   setLazy();
-  // setVhProperty();
+  setVhProperty();
   setTextareaHeight();
   toggleMenu();
   animateOnScroll();
@@ -38,8 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
   setSliders();
   setGallery();
   setSelects();
-  setSmoothScrolling();
+
   setAnimations();
   toggleInputFocus();
   setInputMask();
+  setTabs();
+  setPanorama();
+
+  setTimeout(() => {
+    setSmoothScrolling();
+  }, 200);
 });

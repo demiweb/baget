@@ -13,10 +13,10 @@
   <body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
 
     <!-- BEGIN content -->
-    <div class="out{% if outClass %} {{ outClass }}{% endif %}">
+    <div class="out{% if outClass %} {{ outClass }}{% endif %}" {% if out.bg %}data-background-image="./img/bg-404.jpg"{% endif %}>
       {% include "partials/_header.html" %}
       <!-- begin main -->
-      <main class="main{% if mainClass %} {{ mainClass }}{% endif %}">
+      <main class="main{% if mainClass %} {{ mainClass }}{% endif %}" {% if main.bg %}data-background-image="./img/bg-404.jpg"{% endif %}>
         {% if sideLine %}
         <div class="side-line js-side-line"></div>
         {% endif %}    

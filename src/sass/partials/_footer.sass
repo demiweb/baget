@@ -8,6 +8,8 @@
   visibility: hidden
   opacity: 0
   background-color: $white
+  +ready
+    +tr(opacity .3s, visibility .3s)
   +sm
     position: relative
     z-index: 1

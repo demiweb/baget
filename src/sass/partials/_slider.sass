@@ -25,9 +25,10 @@
           padding-top: 0
           padding-bottom: 0
 
-.arrow
+.arrow, .prev, .next
   display: inline-block
   position: relative
+  background-color: transparent
   +before
   width: 75px
   height: 25px
@@ -53,6 +54,8 @@
     transform: translate(0, -50%) rotate(45deg) !important
   +sm
     width: 50px
+  +xs
+    width: 30px
 
-  &--next
-    transform: rotate(180deg)
+  &--next, .next
+    transform: scaleX(-1)

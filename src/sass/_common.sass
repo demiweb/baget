@@ -60,6 +60,8 @@ body
 .out
   position: relative
   z-index: 1  
+  // min-height: 100vh
+  // min-height: calc(var(--vh, 1vh) * 100)
   +main-bg
   +before
     width: 100%
@@ -80,6 +82,12 @@ body
     background-image: none
   &.is-above
     z-index: 25
+  &--transparent
+    background-image: none
+    background-color: transparent
+    +before
+      display: none
+
 
 .main
   display: block
@@ -87,7 +95,16 @@ body
   position: relative
   z-index: 1
   opacity: 0
+  min-height: 100vh
+  min-height: calc(var(--vh, 1vh) * 100)
   // padding-top: 20px
+  &.lazy
+    +cover
+  &--transparent
+    background-color: transparent
+    background-image: none
+  &--has-header-absolute
+    padding-top: $header-height
 
 
 
@@ -164,6 +181,7 @@ body
     position: relative
     top: -.1em
     margin-left: 15px
+    +tr(border-color .3s)
     +sm
       width: 100px
     +xs
@@ -251,6 +269,9 @@ body
       content: "\2022"
       display: inline-block
       margin-right: 5px
+
+
+
 
 
     

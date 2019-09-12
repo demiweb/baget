@@ -1,0 +1,105 @@
+{%set
+items = [
+  {
+    title: 'Поздравляем с Днём Независимости Украины!',
+    text: 'Центральная Багетная мастерская поздравляет своих клиентов и друзей с наступающей...'
+  },
+  {
+    title: 'Поздравляем с Днём Независимости Украины!',
+    text: 'Центральная Багетная мастерская поздравляет своих клиентов и друзей с наступающей...'
+  },
+  {
+    title: 'Поздравляем с Днём Независимости Украины!',
+    text: 'Центральная Багетная мастерская поздравляет своих клиентов и друзей с наступающей...'
+  },
+  {
+    title: 'Поздравляем с Днём Независимости Украины!',
+    text: 'Центральная Багетная мастерская поздравляет своих клиентов и друзей с наступающей...'
+  },
+  {
+    title: 'Поздравляем с Днём Независимости Украины!',
+    text: 'Центральная Багетная мастерская поздравляет своих клиентов и друзей с наступающей...'
+  },
+  {
+    title: 'Поздравляем с Днём Независимости Украины!',
+    text: 'Центральная Багетная мастерская поздравляет своих клиентов и друзей с наступающей...'
+  }
+]
+%}
+
+<!-- begin section -->
+<section class="section">
+  <div class="container">
+    <div class="section__top section-top">
+      <div class="section-top__title">
+        <h1 class="title">Новости</h1>
+      </div>
+
+      <div class="section__breadcrumbs">
+        {{ mixins.list(
+          name = 'breadcrumbs',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { link: 'главная' },
+            { item: '/' },
+            { link: 'новости', modLink: 'is-active' }
+          ]
+        ) }}
+      </div>
+    </div>
+
+    <!-- begin blog -->
+    <div class="blog">
+      <div class="blog__items">
+        <div class="grid grid--block">
+          <div class="grid__row">
+            {% for i in items %}
+            <div class="grid__col grid__col-3">
+              <!-- begin blog-article -->
+              <a href="#" class="blog-article js-anim-el" data-anim-name="fadeInUp">
+                <span class="blog-article__img js-lazy" data-background-image="./img/blog/01.jpg"></span>
+
+                <span class="blog-article__content">
+                  <span class="blog-article__meta">
+                    <span class="meta">
+                      <span class="meta__item">{{ mixins.icon('clock') }} 24.08.2019</span>
+                      <span class="meta__item">{{ mixins.icon('view') }} 350</span>
+                    </span>
+                  </span>
+
+                  <span class="blog-article__title">
+                    <span class="title title--ttu title--medium title--h5">{{ i.title | safe }}</span>
+                  </span>
+
+                  <span class="blog-article__text">{{ i.text | safe }}</span>
+
+                  <span class="blog-article__link link">ПОДРОБНЕЕ</span>
+                </span>
+              </a>
+              <!-- end blog-article -->
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="blog__pagination js-anim-el" data-anim-name="fadeInUp">
+        {{ mixins.list(
+          name = 'pagination',
+          modifications = { wrap: '', item: '', link: '' },
+          list = [
+            { link:  ' ' },
+            { link: '1', modLink: 'is-active' },
+            { link: '2' },
+            { link: '3' },
+            { link: '...', modLink: 'is-inactive' },
+            { link: '11' },
+            { link:  ' ' }
+          ]
+        ) }}
+      </div>
+    </div>
+    <!-- end blog -->
+  </div>
+</section>
+<!-- end section -->

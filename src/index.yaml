@@ -8,3 +8,7 @@ PageList:
 - file: work-one.html
 - file: material-one.html
 - file: about.html
+- file: blog.html
+- file: blog-page.html
+- file: 404.html
+- file: contacts.html

@@ -1,0 +1,164 @@
+.blog
+  &__items
+    margin-bottom: 30px
+    +md
+      margin-bottom: 15px
+
+.blog-article
+  +flex(flex-start, normal, column)
+  height: 100%
+  position: relative
+  +hover
+    +before
+      visibility: visible
+      opacity: 1
+    .link
+      color: $accent
+      +after
+        border-color: $accent
+  +before
+    position: absolute
+    z-index: 0
+    background-color: $accent
+    top: -10px
+    right: -10px
+    width: 20%
+    height: 50%
+    +tr(opacity .3s, visibility .3s)
+    visibility: hidden
+    opacity: 0
+  &__img
+    display: block
+    +cover
+    width: 100%
+    padding-top: percentage(315/440)
+    position: relative
+    z-index: 1
+  &__content
+    flex-grow: 1
+    +flex(flex-start, normal, column)
+    position: relative
+    z-index: 1
+    background-color: $white
+    padding: 35px
+    +xl
+      padding: 25px
+    +lg
+      padding: 20px
+    +md
+      padding: 15px
+    +sm
+      padding: 10px
+  &__meta
+    display: block
+    margin-bottom: 15px
+    +md
+      margin-bottom: 10px
+  &__title, &__text
+    display: block
+    margin-bottom: 20px
+    +md
+      margin-bottom: 10px
+  &__text
+    flex-grow: 1
+
+.meta
+  display: block
+  color: $gray-light
+  &__item
+    display: inline-block
+    vertical-align: middle
+    +notlast
+      margin-right: 25px
+      +md
+        margin-right: 15px
+    .icon
+      position: relative
+      top: .2em
+      margin-right: 5px
+      font-size: 1.2em
+
+.blog-page
+  figure
+    position: relative
+    padding-left: 115px
+    padding-top: 52%
+    +xll
+      padding-left: 100px
+    +xl
+      padding-left: 80px
+    +lg
+      padding-left: 60px
+    +md
+      padding-left: 40px
+    +sm
+      padding-left: 20px
+    +xs
+      padding-left: 10px
+    +before
+      position: absolute
+      z-index: 0
+      background-color: $accent
+      left: 0
+      top: 50px
+      height: 70%
+      width: 50%
+      +lg
+        top: 30px
+      +sm
+        top: 20px
+      +xs
+        top: 10px
+    img
+      // width: 100%
+      position: absolute
+      top: 0
+      right: 0
+      width: calc(100% - 115px)
+      max-height: 100%
+      object-fit: cover
+      z-index: 1
+      +xll
+        width: calc(100% - 100px)
+      +xl
+        width: calc(100% - 80px)
+      +lg
+        width: calc(100% - 60px)
+      +md
+        width: calc(100% - 40px)
+      +sm
+        width: calc(100% - 20px)
+      +xs
+        width: calc(100% - 10px)
+  p, ul, ol, figure, h2, h3
+    +notlast
+      margin-bottom: 40px
+      +lg
+        margin-bottom: 30px
+      +md
+        margin-bottom: 15px
+  article
+    margin-bottom: 90px
+    +xll
+      margin-bottom: 70px
+    +xl
+      margin-bottom: 50px
+    +lg
+      margin-bottom: 30px
+    +md
+      margin-bottom: 15px
+  ul
+    li
+      &::before
+        content: '-'
+        display: inline-block
+        margin-right: 5px
+  ol
+    list-style-type: decimal
+    margin-left: 1.2em
+  h2
+    @extend .title
+    @extend .title--ttu
+    @extend .title--medium
+    @extend .title--h3
+

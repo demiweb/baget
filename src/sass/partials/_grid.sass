@@ -1,4 +1,8 @@
 .grid
+  $this: &
+  $gutter: 30px
+  $gutter-xl: 15px
+  $gutter-lg: 10px
   +flex(flex-start, normal, row, wrap)
   &__left,
   &__right
@@ -18,3 +22,37 @@
       align-items: normal
   &__right
     padding-left: 15px
+  &__row
+    margin-left: -$gutter
+    margin-right: -$gutter
+    +flex(flex-start, normal, row, wrap)
+    +xl
+      margin-left: -$gutter-xl
+      margin-right: -$gutter-xl
+    +lg
+      margin-left: -$gutter-lg
+      margin-right: -$gutter-lg
+  &__col
+    padding-left: $gutter
+    padding-right: $gutter
+    margin-bottom: $gutter * 2
+    +xl
+      padding-left: $gutter-xl
+      padding-right: $gutter-xl
+      margin-bottom: $gutter-xl * 2
+    +lg
+      padding-left: $gutter-lg
+      padding-right: $gutter-lg
+      margin-bottom: $gutter-lg * 2
+  &__col-3
+    width: 33.33333%
+    +md
+      width: 50%
+    +xs
+      width: 100%
+
+  &--block
+    display: block
+    // padding-left: $gutter
+    // padding-right: $gutter
+
