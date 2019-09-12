@@ -16,7 +16,7 @@ class Panorama {
     this.viewer = new PANOLENS.Viewer({
       container: this.wrap,
     });
-    this.viewer.OrbitControls.noZoom = true;
+    // this.viewer.OrbitControls.noZoom = true;
     this.viewer.add(this.panorama);
     this.viewer.container.style.width = this.size.width;
     this.viewer.container.style.height = this.size.height;
