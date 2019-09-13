@@ -31,6 +31,8 @@ class Scroll {
   }
 
   allowClickOnCustomWheelBlocks() {
+    if (!this.customWheelBlocks.length) return;
+
     this.customWheelBlocks.forEach((block) => {
       const parent = block.parentNode;
       const overlay = document.createElement('div');

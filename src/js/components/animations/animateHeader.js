@@ -59,8 +59,8 @@ export default function animateHeader() {
       .fromTo(
         main,
         1,
-        { opacity: 0, y: 50, ease: Power2.easeOut },
-        { opacity: 1, y: 0, ease: Power2.easeOut },
+        { opacity: 0, ease: Power2.easeOut },
+        { opacity: 1, ease: Power2.easeOut },
       );
   });
 }
