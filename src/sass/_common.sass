@@ -94,18 +94,24 @@ body
   +main-bg
   position: relative
   z-index: 1
-  opacity: 0
-  min-height: 100vh
-  min-height: calc(var(--vh, 1vh) * 100)
+  opacity: 0  
   // padding-top: 20px
   &.lazy
     +cover
+    +lg
+      background-position: 0 50%
   &--transparent
     background-color: transparent
     background-image: none
   &--has-header-absolute
     padding-top: $header-height
-
+    +md
+      padding-top: $header-height-md
+    +sm
+      padding-top: 0
+  &--full
+    min-height: 100vh
+    min-height: calc(var(--vh, 1vh) * 100)
 
 
 .logo

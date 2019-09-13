@@ -1,6 +1,7 @@
 import 'core-js/features/symbol';
 import 'core-js/features/array/from';
 import 'core-js/features/promise';
+
 import 'intersection-observer';
 import './lib/polyfill';
 
@@ -22,7 +23,7 @@ import setAnimations from './components/animations/setAnimations';
 import toggleInputFocus from './components/toggleInputFocus';
 import setInputMask from './components/setInputMask';
 import setTabs from './components/setTabs';
-import setPanorama from './components/setPanorama';
+// import setPanorama from './components/setPanorama';
 
 import setSmoothScrolling from './components/setSmoothScrolling';
 
@@ -47,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleInputFocus();
   setInputMask();
   setTabs();
-  setPanorama();
 
-  setTimeout(() => {
-    setSmoothScrolling();
-  }, 200);
+  setSmoothScrolling();
+  // setPanorama();
 });

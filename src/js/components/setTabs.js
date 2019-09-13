@@ -30,6 +30,10 @@ class Tabs {
 
       this.btn.classList.add(Tabs.classNames.active);
       this.item.classList.add(Tabs.classNames.active);
+
+      if (this.onToggle) {
+        this.onToggle();
+      }
     }
   }
 
@@ -52,5 +56,12 @@ Tabs.classNames = {
 
 export default function setTabs() {
   const tabs = new Tabs();
+  tabs.onToggle = () => {
+    const map = tabs.wrap.querySelector('.js-map-iframe');
+    const tour = tabs.wrap.querySelector('.js-panorama-iframe');
+    const { mapSrc, tourSrc } = tabs.btn.dataset;
+    map.src = mapSrc;
+    tour.src = tourSrc;
+  };
   tabs.init();
 }

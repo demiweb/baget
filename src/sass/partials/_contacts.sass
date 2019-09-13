@@ -3,19 +3,22 @@
   font-weight: 500
   padding-left: 50px
   padding-right: 50px
-  margin-bottom: -152px
+  position: relative
+  // margin-bottom: -152px
   +xl
     padding-left: 30px
     padding-right: 30px
-    margin-bottom: -132px
+    // margin-bottom: -132px
   +lg
     padding-left: 15px
     padding-right: 15px
-    margin-bottom: -112px
+    // margin-bottom: -112px
   +md
-    margin-bottom: -107px
+    // margin-bottom: -107px
   +sm
     margin-bottom: 0
+  &__top
+    position: relative
   &__tabs
     +flex
     position: relative
@@ -52,6 +55,16 @@
       @extend .contacts__tab.is-active
       +before
         display: none
+  &__panorama
+    background-color: $gray
+    margin-left: -50px
+    margin-right: -50px
+    +xl
+      margin-left: -30px
+      margin-right: -30px
+    +lg
+      margin-left: -15px
+      margin-right: -15px
   &__map
     padding-top: 40%
     position: relative
@@ -73,20 +86,22 @@
     iframe
       +coverdiv
       z-index: 0
-  &__block
-    position: relative
+  &__map-overlay
+    +coverdiv
     z-index: 1
+  &__block
+    // position: relative
+    position: absolute
+    z-index: 2
     bottom: 0
     left: 0
     max-width: 840px
-    height: 152px
-    transform: translate(0, -100%)
+    left: 50px
     +xl
-      height: 132px
-    +lg
-      height: 112px
-    +md
-      height: 107px
+      left: 30px
+    +sm
+      left: 0
+      position: relative
     +sm
       // position: relative
       transform: translate(0, 0)
@@ -151,12 +166,14 @@
 .panorama
   padding-top: 40%
   position: relative
+  overflow: hidden
+  // +clr
   +hover
-    canvas
+    iframe
       filter: blur(0)
     img
       display: none
-  canvas
+  iframe
     +coverdiv
     .no-touch &
       filter: blur(4px)
@@ -165,5 +182,10 @@
   img
     +vcenter
     z-index: 2
+    max-width: 30%
+    html:not(.no-touch) &
+      display: none
+  &__inner
+    +coverdiv
 
 

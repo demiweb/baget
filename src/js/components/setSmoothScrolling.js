@@ -10,9 +10,12 @@ class Scroll {
     this.wrap = wrap;
     this.footer = document.querySelector('.footer');
     this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
+    this.customWheelBlocks = [...document.querySelectorAll('.js-wheel-custom-block')];
+    this.height = wrap.offsetHeight;
 
     this.inited = false;
     this.pause = false;
+    this.allowRefresh = true;
   }
 
   onScroll() {
@@ -25,6 +28,31 @@ class Scroll {
     // all onScroll events go here
     fixedFooter.toggleAbove(this.isBottom);
     animateBgText(this.position);
+  }
+
+  allowClickOnCustomWheelBlocks() {
+    this.customWheelBlocks.forEach((block) => {
+      const parent = block.parentNode;
+      const overlay = document.createElement('div');
+      if (window.getComputedStyle(parent).position !== 'absolute') {
+        parent.style.position = 'relative';
+      }
+
+      overlay.style.position = 'absolute';
+      overlay.style.left = '0';
+      overlay.style.right = '0';
+      overlay.style.top = '0';
+      overlay.style.bottom = '0';
+      overlay.style.zIndex = '1';
+      parent.appendChild(overlay);
+
+      overlay.addEventListener('click', (e) => {
+        overlay.style.pointerEvents = 'none';
+      });
+      block.addEventListener('mouseleave', (e) => {
+        overlay.style.pointerEvents = '';
+      });
+    });
   }
 
   preventScroll() {
@@ -83,28 +111,16 @@ class Scroll {
   refreshPlugin() {
     const top = this.smooth.vars.current;
 
-    function destroy() {
-      return new Promise((resolve) => {
-        this.smooth.destroy();
-        resolve();
-      });
-    }
+    this.smooth.destroy();
+    this.setPlugin();
+    this.smooth.init();
+    this.smooth.scrollTo(top);
 
-    function set() {
-      return new Promise((resolve) => {
-        this.setPlugin();
-        resolve();
-      });
-    }
+    this.allowRefresh = false;
 
-    function init() {
-      this.smooth.init();
-      this.smooth.scrollTo(top);
-    }
-
-    destroy.call(this)
-      .then(set.bind(this))
-      .then(init.bind(this));
+    setTimeout(() => {
+      this.allowRefresh = true;
+    }, 500);
   }
 
   destroyPlugin() {
@@ -118,7 +134,14 @@ class Scroll {
       mutations.forEach((mutation) => {
         console.log({ mutation, scroll: this });
 
-        this.refreshPlugin();
+        const newHeight = this.wrap.offsetHeight;
+
+        if (this.height !== newHeight) {
+          if (this.allowRefresh) {
+            this.height = newHeight;
+            this.refreshPlugin();
+          }
+        }
       });
     });
     this.observer.observe(this.wrap, { childList: true, subtree: true });
@@ -128,7 +151,14 @@ class Scroll {
     this.setPlugin();
     this.initPlugin();
     this.preventScroll();
-    this.observeChildren();
+    this.allowClickOnCustomWheelBlocks();
+
+    window.onload = () => {
+      setTimeout(() => {
+        this.observeChildren();
+      }, 1000);
+    };
+
 
     this.onResize = debounce(300, this.initPlugin.bind(this));
     window.addEventListener('resize', this.onResize);
