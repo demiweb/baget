@@ -2,7 +2,6 @@ import { debounce, throttle } from 'throttle-debounce';
 import { IS_VISIBLE, IS_ABOVE } from '../constants';
 import { isTouch } from '../helpers';
 
-
 class Footer {
   constructor(footer) {
     this.footer = footer;
@@ -40,14 +39,22 @@ class Footer {
     window.addEventListener('scroll', this.toggleZIndexThrottled);
   }
 
+  show() {
+    this.footer.classList.add(IS_VISIBLE);
+  }
+
+  hide() {
+    this.footer.classList.remove(IS_VISIBLE);
+  }
+
   toggleVisibility(entries) {
     if (window.matchMedia('(max-width: 767px)').matches) return;
 
     entries.forEach((entry) => {
       if (entry.isIntersecting && entry.intersectionRatio > 0.95) {
-        this.footer.classList.remove(IS_VISIBLE);
+        this.hide();
       } else {
-        this.footer.classList.add(IS_VISIBLE);
+        this.show();
       }
     });
   }

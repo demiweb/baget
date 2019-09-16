@@ -6,12 +6,17 @@ import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';
 
 class Scroll {
-  constructor(wrap) {
+  constructor(wrap, getOptions) {
     this.wrap = wrap;
     this.footer = document.querySelector('.footer');
     this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
     this.customWheelBlocks = [...document.querySelectorAll('.js-wheel-custom-block')];
     this.height = wrap.offsetHeight;
+    this.name = wrap.dataset.name || 'default';
+    this.options = getOptions({
+      section: this.wrap,
+      callback: this.onScroll.bind(this),
+    })[this.name];
 
     this.inited = false;
     this.pause = false;
@@ -19,8 +24,8 @@ class Scroll {
   }
 
   onScroll() {
-    this.position = Math.round(this.smooth.vars.current);
-    this.bottom = Math.round(this.smooth.vars.bounding);
+    this.position = Math.floor(this.smooth.vars.current);
+    this.bottom = Math.floor(this.smooth.vars.bounding);
     const roundIndex = 5;
     this.isBottom = this.position >= this.bottom - roundIndex;
     this.isTop = this.position === 0;
@@ -28,6 +33,7 @@ class Scroll {
     // all onScroll events go here
     fixedFooter.toggleAbove(this.isBottom);
     animateBgText(this.position);
+    if (this.position > 100) fixedFooter.show();
   }
 
   allowClickOnCustomWheelBlocks() {
@@ -79,11 +85,9 @@ class Scroll {
 
   setPlugin() {
     // eslint-disable-next-line
-    this.smooth = new Smooth({
-      ease: 0.05,
-      section: this.wrap,
-      callback: this.onScroll.bind(this),
-    });
+    this.smooth = new Smooth(this.options);
+
+    console.log(this.options);
   }
 
   initPlugin() {
@@ -149,6 +153,18 @@ class Scroll {
     this.observer.observe(this.wrap, { childList: true, subtree: true });
   }
 
+  resize() {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      if (this.inited) {
+        this.smooth.vars.bounding = this.wrap.getBoundingClientRect().height
+          - this.smooth.vars.height;
+        // this.smooth.resize();
+      }
+    }
+
+    this.initPlugin();
+  }
+
   init() {
     this.setPlugin();
     this.initPlugin();
@@ -161,17 +177,29 @@ class Scroll {
       }, 1000);
     };
 
-
-    this.onResize = debounce(300, this.initPlugin.bind(this));
+    this.onResize = debounce(300, this.resize.bind(this));
     window.addEventListener('resize', this.onResize);
+
+    console.log(this);
   }
 }
 
 export default function setSmoothScrolling() {
   if (isTouch) return;
 
-  const wrap = document.querySelector('.out');
+  const wrap = document.querySelector('.js-scroll');
+  if (!wrap) return;
 
-  const scroll = new Scroll(wrap);
+  function getOptions({ section, callback }) {
+    return {
+      default: {
+        section,
+        callback,
+        ease: 0.05,
+      },
+    };
+  }
+
+  const scroll = new Scroll(wrap, getOptions);
   scroll.init();
 }

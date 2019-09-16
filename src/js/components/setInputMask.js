@@ -7,12 +7,12 @@ class Mask {
     this.mask = input.dataset.mask;
 
     this.options = getOptions({
-      mask: this.mask || '+{38}(000)000-00-00',
+      mask: this.mask,
     })[this.type];
   }
 
   init() {
-    this.plugin = IMask(this.input, this.options);
+    this.imask = IMask(this.input, this.options);
   }
 }
 
@@ -24,7 +24,7 @@ export default function setInputMask() {
   function getOptions({ mask }) {
     return {
       phone: {
-        mask,
+        mask: mask || '+{38}(000)000-00-00',
         // lazy: false,
       },
     };
