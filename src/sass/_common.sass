@@ -276,6 +276,15 @@ body
       display: inline-block
       margin-right: 5px
 
+.tabs-item
+  overflow: hidden
+  opacity: 0
+  max-height: 0
+  &.is-active
+    max-height: none
+    opacity: 1
+    overflow: visible
+
 
 
 

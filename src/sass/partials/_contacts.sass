@@ -59,18 +59,46 @@
     background-color: $gray
     margin-left: -50px
     margin-right: -50px
+    padding-top: 40%
+    position: relative
+    overflow: hidden
+    // +clr
     +xl
       margin-left: -30px
       margin-right: -30px
     +lg
       margin-left: -15px
       margin-right: -15px
+    +hover
+      iframe
+        filter: blur(0)
+      img
+        display: none
+    iframe
+      +coverdiv
+      .no-touch &
+        filter: blur(4px)
+        +tr(filter .3s)
+        
+    img
+      +vcenter
+      z-index: 2
+      max-width: 30%
+      html:not(.no-touch) &
+        display: none
+    .tabs-item
+      +coverdiv
+      z-index: 0
+    
   &__map
     padding-top: 40%
     position: relative
     background-color: $gray
     margin-left: -50px
     margin-right: -50px
+    .tabs-item
+      +coverdiv
+      z-index: 0
     +xl
       margin-left: -30px
       margin-right: -30px
@@ -163,29 +191,30 @@
       +xs
         padding-left: 0
 
-.panorama
-  padding-top: 40%
-  position: relative
-  overflow: hidden
-  // +clr
-  +hover
-    iframe
-      filter: blur(0)
-    img
-      display: none
-  iframe
-    +coverdiv
-    .no-touch &
-      filter: blur(4px)
-      +tr(filter .3s)
+// .panorama
+//   padding-top: 40%
+//   position: relative
+//   overflow: hidden
+//   // +clr
+//   +hover
+//     iframe
+//       filter: blur(0)
+//     img
+//       display: none
+//   iframe
+//     +coverdiv
+//     .no-touch &
+//       filter: blur(4px)
+//       +tr(filter .3s)
       
-  img
-    +vcenter
-    z-index: 2
-    max-width: 30%
-    html:not(.no-touch) &
-      display: none
-  &__inner
-    +coverdiv
+//   img
+//     +vcenter
+//     z-index: 2
+//     max-width: 30%
+//     html:not(.no-touch) &
+//       display: none
+//   .tabs-item
+//     +coverdiv
+//     z-index: 0
 
 

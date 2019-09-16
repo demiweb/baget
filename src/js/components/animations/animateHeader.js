@@ -26,7 +26,6 @@ export default function animateHeader() {
       },
     });
 
-
     tl
       .fromTo(
         headerLeft,

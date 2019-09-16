@@ -15,25 +15,20 @@ class Tabs {
     this.wrap = this.btn.closest(`.${Tabs.classNames.wrap}`);
     if (!this.wrap) return;
 
-    this.tabs = [].slice.call(this.wrap.querySelectorAll(`.${Tabs.classNames.tab}`));
-    this.items = [].slice.call(this.wrap.querySelectorAll(`.${Tabs.classNames.item}`));
+    this.tabs = [...this.wrap.querySelectorAll(`.${Tabs.classNames.tab}`)];
+    this.items = [...this.wrap.querySelectorAll(`.${Tabs.classNames.item}`)];
     this.tabName = this.btn.dataset.targetTab;
-    this.item = this.wrap.querySelector(`[data-tab="${this.tabName}"]`);
+    this.targetItems = [...this.wrap.querySelectorAll(`[data-tab="${this.tabName}"]`)];
 
-    if (this.tabs.length > 0 && this.tabs.length === this.items.length) {
-      const itemsLength = this.tabs.length;
 
-      for (let i = 0; i < itemsLength; i++) {
-        this.tabs[i].classList.remove(Tabs.classNames.active);
-        this.items[i].classList.remove(Tabs.classNames.active);
-      }
+    this.tabs.forEach((tab) => tab.classList.remove(Tabs.classNames.active));
+    this.items.forEach((item) => item.classList.remove(Tabs.classNames.active));
 
-      this.btn.classList.add(Tabs.classNames.active);
-      this.item.classList.add(Tabs.classNames.active);
+    this.btn.classList.add(Tabs.classNames.active);
+    this.targetItems.forEach((item) => item.classList.add(Tabs.classNames.active));
 
-      if (this.onToggle) {
-        this.onToggle();
-      }
+    if (this.onToggle) {
+      this.onToggle();
     }
   }
 
@@ -56,12 +51,12 @@ Tabs.classNames = {
 
 export default function setTabs() {
   const tabs = new Tabs();
-  tabs.onToggle = () => {
-    const map = tabs.wrap.querySelector('.js-map-iframe');
-    const tour = tabs.wrap.querySelector('.js-panorama-iframe');
-    const { mapSrc, tourSrc } = tabs.btn.dataset;
-    map.src = mapSrc;
-    tour.src = tourSrc;
-  };
+  // tabs.onToggle = () => {
+  //   // const map = tabs.wrap.querySelector('.js-map-iframe');
+  //   // const tour = tabs.wrap.querySelector('.js-panorama-iframe');
+  //   // const { mapSrc, tourSrc } = tabs.btn.dataset;
+  //   // map.src = mapSrc;
+  //   // tour.src = tourSrc;
+  // };
   tabs.init();
 }
