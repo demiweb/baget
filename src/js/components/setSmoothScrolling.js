@@ -86,8 +86,6 @@ class Scroll {
   setPlugin() {
     // eslint-disable-next-line
     this.smooth = new Smooth(this.options);
-
-    console.log(this.options);
   }
 
   initPlugin() {
@@ -114,21 +112,6 @@ class Scroll {
     this.smooth.init();
   }
 
-  refreshPlugin() {
-    const top = this.smooth.vars.current;
-
-    this.smooth.destroy();
-    this.setPlugin();
-    this.smooth.init();
-    this.smooth.scrollTo(top);
-
-    this.allowRefresh = false;
-
-    setTimeout(() => {
-      this.allowRefresh = true;
-    }, 500);
-  }
-
   destroyPlugin() {
     this.smooth.destroy();
     this.wrap.style.transform = '';
@@ -145,7 +128,12 @@ class Scroll {
         if (this.height !== newHeight) {
           if (this.allowRefresh) {
             this.height = newHeight;
-            this.refreshPlugin();
+            this.resetBounding();
+
+            this.allowRefresh = false;
+            setTimeout(() => {
+              this.allowRefresh = true;
+            }, 500);
           }
         }
       });
@@ -153,7 +141,7 @@ class Scroll {
     this.observer.observe(this.wrap, { childList: true, subtree: true });
   }
 
-  resize() {
+  resetBounding() {
     if (window.matchMedia('(min-width: 768px)').matches) {
       if (this.inited) {
         this.smooth.vars.bounding = this.wrap.getBoundingClientRect().height
@@ -161,7 +149,10 @@ class Scroll {
         // this.smooth.resize();
       }
     }
+  }
 
+  resize() {
+    this.resetBounding();
     this.initPlugin();
   }
 
@@ -170,17 +161,10 @@ class Scroll {
     this.initPlugin();
     this.preventScroll();
     this.allowClickOnCustomWheelBlocks();
-
-    window.onload = () => {
-      setTimeout(() => {
-        this.observeChildren();
-      }, 1000);
-    };
+    this.observeChildren();
 
     this.onResize = debounce(300, this.resize.bind(this));
     window.addEventListener('resize', this.onResize);
-
-    console.log(this);
   }
 }
 
