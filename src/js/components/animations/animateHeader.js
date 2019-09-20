@@ -19,6 +19,8 @@ export default function animateHeader() {
       headerNav: document.querySelectorAll('.header__nav li'),
     };
 
+    if (!header) return;
+
     const tl = new TimelineLite({
       onComplete: () => {
         out.classList.add(IS_LOADED);

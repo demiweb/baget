@@ -12,3 +12,4 @@ PageList:
 - file: blog-page.html
 - file: 404.html
 - file: contacts.html
+- file: home.html

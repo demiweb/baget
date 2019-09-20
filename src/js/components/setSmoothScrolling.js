@@ -1,9 +1,12 @@
 import 'smooth-scrolling/smooth-scrolling';
 import { debounce } from 'throttle-debounce';
+import { TweenLite, Power1 } from 'gsap';
+import ScrollToPlugin from 'gsap/umd/ScrollToPlugin';
 import { isTouch } from '../helpers';
 import { IS_ABOVE } from '../constants';
 import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';
+
 
 class Scroll {
   constructor(wrap, getOptions) {
@@ -12,7 +15,7 @@ class Scroll {
     this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
     this.customWheelBlocks = [...document.querySelectorAll('.js-wheel-custom-block')];
     this.height = wrap.offsetHeight;
-    this.name = wrap.dataset.name || 'default';
+    this.name = wrap.dataset.scroll || 'default';
     this.options = getOptions({
       section: this.wrap,
       callback: this.onScroll.bind(this),
@@ -151,6 +154,30 @@ class Scroll {
     }
   }
 
+
+  setHorizontalScroll() {
+    if (!this.name === 'horizintal') return;
+
+
+    const scrollTime = 1.2; // Scroll time
+    const scrollDistance = 170;
+
+
+    window.addEventListener('wheel', (e) => {
+      const delta = e.wheelDelta / 120 || -e.detail / 3;
+      // const scrollTop = window.scrollTop();
+      const { scrollLeft } = document.documentElement;
+      const finalScroll = scrollLeft - parseInt((delta * scrollDistance), 10);
+
+      TweenLite.to(document.documentElement, scrollTime, {
+        scrollTo: { x: finalScroll, autoKill: true },
+        ease: Power1.easeOut,
+        autoKill: true,
+        overwrite: 5,
+      });
+    });
+  }
+
   resize() {
     this.resetBounding();
     this.initPlugin();
@@ -162,6 +189,8 @@ class Scroll {
     this.preventScroll();
     this.allowClickOnCustomWheelBlocks();
     this.observeChildren();
+
+    this.setHorizontalScroll();
 
     this.onResize = debounce(300, this.resize.bind(this));
     window.addEventListener('resize', this.onResize);
@@ -180,6 +209,13 @@ export default function setSmoothScrolling() {
         section,
         callback,
         ease: 0.05,
+      },
+      horizontal: {
+        section,
+        // callback,
+        ease: 0.05,
+        direction: 'horizontal',
+        native: true,
       },
     };
   }
