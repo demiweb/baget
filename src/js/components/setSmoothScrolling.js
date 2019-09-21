@@ -1,9 +1,6 @@
 import 'smooth-scrolling/smooth-scrolling';
 import { debounce } from 'throttle-debounce';
-import { TweenLite, Power1 } from 'gsap';
-import ScrollToPlugin from 'gsap/umd/ScrollToPlugin';
 import { isTouch } from '../helpers';
-import { IS_ABOVE } from '../constants';
 import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';
 
@@ -91,6 +88,12 @@ class Scroll {
     this.smooth = new Smooth(this.options);
   }
 
+  destroyVsListeners() {
+    if (this.options.direction === 'horizontal') {
+      this.smooth.vs.destroy();
+    }
+  }
+
   initPlugin() {
     if (window.matchMedia('(min-width: 768px)').matches) {
       if (document.body.classList.contains('is-virtual-scroll')) return;
@@ -98,6 +101,7 @@ class Scroll {
       if (!this.inited) {
         document.body.style.overflow = 'hidden';
         this.smooth.init();
+        this.destroyVsListeners();
         this.inited = true;
       } else {
         this.reinitPlugin();
@@ -112,6 +116,7 @@ class Scroll {
     document.documentElement.scrollTop = 0;
     document.body.style.overflow = 'hidden';
     this.setPlugin();
+    this.destroyVsListeners();
     this.smooth.init();
   }
 
@@ -154,28 +159,23 @@ class Scroll {
     }
   }
 
-
   setHorizontalScroll() {
-    if (!this.name === 'horizintal') return;
-
-
-    const scrollTime = 1.2; // Scroll time
-    const scrollDistance = 170;
-
+    if (!this.options.direction === 'horizintal') return;
+    if (window.matchMedia('(max-width: 767px)').matches) return;
 
     window.addEventListener('wheel', (e) => {
-      const delta = e.wheelDelta / 120 || -e.detail / 3;
-      // const scrollTop = window.scrollTop();
-      const { scrollLeft } = document.documentElement;
-      const finalScroll = scrollLeft - parseInt((delta * scrollDistance), 10);
+      e.preventDefault();
+      let { target } = this.smooth.vars;
+      const width = this.wrap.scrollWidth - window.innerWidth;
 
-      TweenLite.to(document.documentElement, scrollTime, {
-        scrollTo: { x: finalScroll, autoKill: true },
-        ease: Power1.easeOut,
-        autoKill: true,
-        overwrite: 5,
-      });
-    });
+      target += ((e.deltaY / 10) * 4);
+      this.smooth.vars.target = target;
+      if (target < 0) {
+        this.smooth.vars.target = 0;
+      } else if (target > width) {
+        this.smooth.vars.target = width;
+      }
+    }, { passive: false });
   }
 
   resize() {
@@ -215,7 +215,6 @@ export default function setSmoothScrolling() {
         // callback,
         ease: 0.05,
         direction: 'horizontal',
-        native: true,
       },
     };
   }
