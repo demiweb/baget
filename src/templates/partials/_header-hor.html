@@ -1,5 +1,63 @@
+{%set
+contacts = [
+  {
+    text: 'г.Киев, ул. Костельная, 15',
+    phones: '
+      <p><a href="tel:0442272632">(044) 22 72 63 2</a></p>
+      <p><a href="tel:0967766003">(096) 77 66 00 3</a></p>
+    ',
+    email: '<a href="mailto:info@bagetnaya.com.ua">info@bagetnaya.com.ua</a>'
+  },
+  {
+    text: 'г.Киев, ул. Пирогова, 2',
+    phones: '
+      <p><a href="tel:0442272632">(044) 22 72 63 2</a></p>
+      <p><a href="tel:0967766003">(096) 77 66 00 3</a></p>
+    ',
+    email: '<a href="mailto:info@bagetnaya.com.ua">info@bagetnaya.com.ua</a>'
+  }
+]
+%}  
+
 <!-- begin header-hor -->
-<header class="header-hor js-lazy" data-background-image="./img/home/bg-header.jpg">
-  this is header
+<header class="header-hor">
+  <div class="header-hor__inner">
+    <div class="header-hor__rect">
+      <div class="shadow-rect"></div>
+    </div>
+
+    <div class="header-hor__logo">
+      <div class="logo-text logo-text--md">
+        <div class="logo-text__icon">
+          <div class="logo-text__icon-arrow"></div>
+        </div>
+        Цнтр.<span>багет</span>
+      </div>
+    </div>
+
+    <div class="header-hor__title">Центральная багетная мастерская</div>
+
+    <div class="header-hor__contacts">
+      <!-- begin main-contacts -->
+      <div class="main-contacts">
+        {% for i in contacts %}
+        <!-- begin main-contacts-block -->
+        <div class="main-contacts-block">
+          <div class="main-contacts-block__text">{{ i.text | safe }}</div>
+
+          <div class="main-contacts-block__phones">{{ i.phones | safe }}</div>
+
+          <div class="main-contacts-block__email">{{ i.email | safe }}</div>
+        </div>
+        <!-- end main-contacts-block -->
+        {% endfor %}
+      </div>
+      <!-- end main-contacts -->
+    </div>
+
+    <div class="header-hor__scroll">
+      <span class="link link--black link--ttn link--no-hover">листай вправо</span>
+    </div>
+  </div>
 </header>
 <!-- end header-hor -->

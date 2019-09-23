@@ -123,9 +123,50 @@ body
 
 .logo-text
   font-family: serif
+  color: $black
+  line-height: 1.1
+  +inline-flex(flex-start, center)
   span
     font-family: 'montserrat', Arial, sans-serif
     color: $accent
+  &__icon
+    position: relative
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    height: .8em
+    width: .8em
+    margin-right: .2em
+    
+    +after
+      width: .3em
+      height: .3em
+      background-color: $accent
+      display: inline-block
+
+  &__icon-arrow
+    border-left: .15em solid currentColor
+    border-bottom: .15em solid currentColor
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 75%
+    height: 75%
+    +before
+      +arr(.15, .15, $black, tl, em)
+      position: absolute
+      bottom: -0.15em
+      left: 100%
+    +after
+      +arr(.15, .15, $black, br, em)
+      position: absolute
+      bottom: 100%
+      left: -0.15em
+
+  &--md
+    font-size: 80px
+
+
 
 .word
   +css-lock(60, 415, 320, 1399, font-size)
@@ -195,6 +236,15 @@ body
       width: 100px
     +xs
       width: 80px
+  &--ttn
+    text-transform: none
+  &--black
+    color: $black
+    +after
+      border-color: currentColor
+  &--no-hover
+    +hover
+      color: initial
 
 .banner
   +cover

@@ -1,22 +1,74 @@
-
+=lines($height)
+  position: relative
+  &::before, &::after
+    content: ''
+    border-right: 1px solid $gray-lighten
+    position: absolute
+    top: 100%
+    height: $height
+    z-index: 0
+  &::before
+    left: 8px
+  &::after
+    right: 8px
+  
 
 .out-hor
   +flex
   height: 100vh
   height: calc(var(--vh, 1vh) * 100)
+  background-repeat: no-repeat
+  background-position: 0% 50%
+  background-size: cover
 
 .header-hor
-  // width: 100vw
-  flex: 0 0 100vw
-  +cover
-  background-size: 100%
+  flex: 0 0 1000px
+  height: 100%
+  &__inner
+    height: 100%
+    max-width: 690px
+    margin-left: auto
+    margin-right: auto
+    padding-top: 10%
+    padding-bottom: 15%
+  &__rect
+    margin-bottom: 14vh
+    +lines(14vh)
+  &__logo
+    background-color: $white
+    text-align: center
+    box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
+    position: relative
+    padding-top: 30px
+    padding-bottom: 30px
+    margin-bottom: 5vh
+    +lines(5vh)
+  &__title
+    color: $white
+    background-color: $black
+    text-align: center
+    text-transform: uppercase
+    font-size: 30px
+    position: relative
+    margin-bottom: 5vh
+    box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
+  &__contacts
+    margin-bottom: 14vh
+  &__scroll
+    text-align: center
 
-.footer-hor
-  // width: 100vw
-  flex: 0 0 100vw
-  +cover
 
 .main-hor
   flex: 0 0 1500px
   // flex-grow: 1
   +cover
+
+.footer-hor
+  // width: 100vw
+  flex: 0 0 650px
+  text-align: center
+  &__inner
+    @extend .header-hor__inner
+    padding-top: 15vh
+  &__logo
+    margin-bottom: 15vh

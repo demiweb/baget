@@ -191,30 +191,20 @@
       +xs
         padding-left: 0
 
-// .panorama
-//   padding-top: 40%
-//   position: relative
-//   overflow: hidden
-//   // +clr
-//   +hover
-//     iframe
-//       filter: blur(0)
-//     img
-//       display: none
-//   iframe
-//     +coverdiv
-//     .no-touch &
-//       filter: blur(4px)
-//       +tr(filter .3s)
-      
-//   img
-//     +vcenter
-//     z-index: 2
-//     max-width: 30%
-//     html:not(.no-touch) &
-//       display: none
-//   .tabs-item
-//     +coverdiv
-//     z-index: 0
+.main-contacts
+  +flex(space-around)
 
+.main-contacts-block
+  text-align: center
+  font-size: 18px
+  +sm
+    font-size: $fz
+  &__text
+    text-transform: uppercase
+  &__phones
+    font-weight: 700
+    color: $black
+  &__email
+    a
+      +nav-link
 

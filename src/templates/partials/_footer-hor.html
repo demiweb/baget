@@ -1,5 +1,29 @@
 <!-- begin footer-hor -->
-<footer class="footer-hor js-lazy" data-background-image="./img/home/bg-footer.jpg">
-  this is footer
+<footer class="footer-hor">
+  <div class="footer-hor__inner">
+    <div class="footer-hor__logo">
+      <div class="logo-text logo-text--md">
+        <div class="logo-text__icon">
+          <div class="logo-text__icon-arrow"></div>
+        </div>
+        Цнтр.<span>багет</span>
+      </div>
+    </div>
+
+    <div class="footer-hor__menu">
+      {{ mixins.list(
+        name = 'nav',
+        modifications = { wrap: 'nav--vert', item: '', link: '' },
+        list = [
+          { link: 'УСЛУГИ', modLink: 'is-active' },
+          { link: 'НАШИ РАБОТЫ' },
+          { link: 'МАТЕРИАЛЫ' },
+          { link: 'О НАС' },
+          { link: 'НОВОСТИ' },
+          { link: 'КОНТАКТЫ' }
+        ]
+      ) }}
+    </div>
+  </div>
 </footer>
 <!-- end footer-hor -->

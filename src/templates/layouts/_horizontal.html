@@ -13,10 +13,10 @@
   <body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
 
     <!-- BEGIN content -->
-    <div class="out-hor{% if outClass %} {{ outClass }}{% endif %} js-scroll" data-scroll="horizontal">
+    <div class="out-hor{% if outClass %} {{ outClass }}{% endif %} js-scroll js-lazy" data-background-image="./img/home/bg-home.jpg" data-scroll="horizontal">
       {% include "partials/_header-hor.html" %}
       <!-- begin main -->
-      <main class="main-hor{% if mainClass %} {{ mainClass }}{% endif %} js-lazy" data-background-image="./img/home/bg-main.jpg">
+      <main class="main-hor{% if mainClass %} {{ mainClass }}{% endif %}">
         {% block content %}{% endblock %}
       </main>
       <!-- end main -->

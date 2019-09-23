@@ -4,7 +4,6 @@ import { isTouch } from '../helpers';
 import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';
 
-
 class Scroll {
   constructor(wrap, getOptions) {
     this.wrap = wrap;
@@ -160,8 +159,11 @@ class Scroll {
   }
 
   setHorizontalScroll() {
-    if (!this.options.direction === 'horizintal') return;
+    if (this.options.direction !== 'horizontal') return;
     if (window.matchMedia('(max-width: 767px)').matches) return;
+
+    this.wrap.style.width = `${this.wrap.scrollWidth}px`;
+
 
     window.addEventListener('wheel', (e) => {
       e.preventDefault();
