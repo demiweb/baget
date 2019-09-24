@@ -3,16 +3,17 @@ import { debounce } from 'throttle-debounce';
 import { isTouch } from '../helpers';
 import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';
+import scaleHorizontalContainer from './scaleHorizontalContainer';
 
 class Scroll {
-  constructor(wrap, getOptions) {
+  constructor(wrap, options) {
     this.wrap = wrap;
-    this.footer = document.querySelector('.footer');
     this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
     this.customWheelBlocks = [...document.querySelectorAll('.js-wheel-custom-block')];
-    this.height = wrap.offsetHeight;
+    this.height = wrap.scrollHeight;
+    this.width = wrap.scrollWidth;
     this.name = wrap.dataset.scroll || 'default';
-    this.options = getOptions({
+    this.options = options({
       section: this.wrap,
       callback: this.onScroll.bind(this),
     })[this.name];
@@ -20,6 +21,10 @@ class Scroll {
     this.inited = false;
     this.pause = false;
     this.allowRefresh = true;
+  }
+
+  get isHorizontal() {
+    return this.options.direction === 'horizontal';
   }
 
   onScroll() {
@@ -30,9 +35,13 @@ class Scroll {
     this.isTop = this.position === 0;
 
     // all onScroll events go here
-    fixedFooter.toggleAbove(this.isBottom);
-    animateBgText(this.position);
-    if (this.position > 100) fixedFooter.show();
+    if (this.isHorizontal) {
+      scaleHorizontalContainer.call(this);
+    } else {
+      fixedFooter.toggleAbove(this.isBottom);
+      animateBgText(this.position);
+      if (this.position > 100) fixedFooter.show();
+    }
   }
 
   allowClickOnCustomWheelBlocks() {
@@ -88,25 +97,31 @@ class Scroll {
   }
 
   destroyVsListeners() {
-    if (this.options.direction === 'horizontal') {
+    if (this.isHorizontal) {
       this.smooth.vs.destroy();
     }
   }
 
   initPlugin() {
-    if (window.matchMedia('(min-width: 768px)').matches) {
-      if (document.body.classList.contains('is-virtual-scroll')) return;
+    if (!this.isHorizontal) {
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        if (document.body.classList.contains('is-virtual-scroll')) return;
 
-      if (!this.inited) {
-        document.body.style.overflow = 'hidden';
-        this.smooth.init();
-        this.destroyVsListeners();
-        this.inited = true;
-      } else {
-        this.reinitPlugin();
+        if (!this.inited) {
+          document.body.style.overflow = 'hidden';
+          this.smooth.init();
+          this.destroyVsListeners();
+          this.inited = true;
+        } else {
+          this.reinitPlugin();
+        }
+      } else if (document.body.classList.contains('is-virtual-scroll')) {
+        this.destroyPlugin();
       }
-    } else if (document.body.classList.contains('is-virtual-scroll')) {
-      this.destroyPlugin();
+    } else if (!this.inited) {
+      document.body.style.overflow = 'hidden';
+      this.smooth.init();
+      this.inited = true;
     }
   }
 
@@ -130,18 +145,33 @@ class Scroll {
       mutations.forEach((mutation) => {
         console.log({ mutation, scroll: this });
 
-        const newHeight = this.wrap.offsetHeight;
+        const newScrollSize = this.isHorizontal
+          ? this.wrap.scrollWidth
+          : this.wrap.scrollHeight;
 
-        if (this.height !== newHeight) {
-          if (this.allowRefresh) {
-            this.height = newHeight;
-            this.resetBounding();
+        const setNewBounding = (scrollSize, newSize) => {
+          if (scrollSize !== newSize) {
+            if (this.allowRefresh) {
+              if (this.isHorizontal) {
+                this.width = newSize;
+              } else {
+                this.height = newSize;
+              }
 
-            this.allowRefresh = false;
-            setTimeout(() => {
-              this.allowRefresh = true;
-            }, 500);
+              this.resetBounding();
+
+              this.allowRefresh = false;
+              setTimeout(() => {
+                this.allowRefresh = true;
+              }, 500);
+            }
           }
+        };
+
+        if (this.isHorizontal) {
+          setNewBounding(this.width, newScrollSize);
+        } else {
+          setNewBounding(this.height, newScrollSize);
         }
       });
     });
@@ -149,35 +179,43 @@ class Scroll {
   }
 
   resetBounding() {
-    if (window.matchMedia('(min-width: 768px)').matches) {
-      if (this.inited) {
-        this.smooth.vars.bounding = this.wrap.getBoundingClientRect().height
+    if (!this.isHorizontal) {
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        if (this.inited) {
+          this.smooth.vars.bounding = this.wrap.getBoundingClientRect().height
           - this.smooth.vars.height;
         // this.smooth.resize();
+        }
       }
+    } else if (this.inited) {
+      const wWidth = this.smooth.vars.width > document.documentElement.clientWidth
+        ? document.documentElement.clientWidth
+        : this.smooth.vars.width;
+
+      this.smooth.vars.bounding = this.wrap.getBoundingClientRect().width
+          - wWidth;
     }
   }
 
   setHorizontalScroll() {
-    if (this.options.direction !== 'horizontal') return;
-    if (window.matchMedia('(max-width: 767px)').matches) return;
+    if (!this.isHorizontal) return;
+    if (isTouch) {
+      this.resetBounding();
+    } else {
+      window.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        let { target } = this.smooth.vars;
+        const width = this.wrap.scrollWidth - window.innerWidth;
 
-    this.wrap.style.width = `${this.wrap.scrollWidth}px`;
-
-
-    window.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      let { target } = this.smooth.vars;
-      const width = this.wrap.scrollWidth - window.innerWidth;
-
-      target += ((e.deltaY / 10) * 4);
-      this.smooth.vars.target = target;
-      if (target < 0) {
-        this.smooth.vars.target = 0;
-      } else if (target > width) {
-        this.smooth.vars.target = width;
-      }
-    }, { passive: false });
+        target += ((e.deltaY / 10) * 4);
+        this.smooth.vars.target = target;
+        if (target < 0) {
+          this.smooth.vars.target = 0;
+        } else if (target > width) {
+          this.smooth.vars.target = width;
+        }
+      }, { passive: false });
+    }
   }
 
   resize() {
@@ -186,6 +224,9 @@ class Scroll {
   }
 
   init() {
+    if (!this.wrap) return;
+    if (!this.isHorizontal && isTouch) return;
+
     this.setPlugin();
     this.initPlugin();
     this.preventScroll();
@@ -199,28 +240,24 @@ class Scroll {
   }
 }
 
-export default function setSmoothScrolling() {
-  if (isTouch) return;
+const wrap = document.querySelector('.js-scroll');
 
-  const wrap = document.querySelector('.js-scroll');
-  if (!wrap) return;
-
-  function getOptions({ section, callback }) {
-    return {
-      default: {
-        section,
-        callback,
-        ease: 0.05,
-      },
-      horizontal: {
-        section,
-        // callback,
-        ease: 0.05,
-        direction: 'horizontal',
-      },
-    };
-  }
-
-  const scroll = new Scroll(wrap, getOptions);
-  scroll.init();
+function getOptions({ section, callback }) {
+  return {
+    default: {
+      section,
+      callback,
+      ease: 0.05,
+    },
+    horizontal: {
+      section,
+      callback,
+      ease: 0.05,
+      direction: 'horizontal',
+      vs: { passive: false },
+    },
+  };
 }
+
+const scroll = new Scroll(wrap, getOptions);
+export default scroll;

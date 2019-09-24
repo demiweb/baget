@@ -11,36 +11,86 @@
     left: 8px
   &::after
     right: 8px
-  
+
+.horizontal-page
+  overflow: hidden
+  opacity: 0
+  z-index: 10
+  +main-bg
+  &__scroll-to
+    position: absolute
+    z-index: 1  
+
 
 .out-hor
   +flex
+  height: 110vh
+  width: 732.3vh
   height: 100vh
   height: calc(var(--vh, 1vh) * 100)
+  width: 665.74vh
+  // height: 1080px
+  // width: 7190px
   background-repeat: no-repeat
-  background-position: 0% 50%
-  background-size: cover
+  background-position: 0% 0%
+  background-size: 100%
+  +ready
+    +tr(width 1s, height 1s)
+  &.is-scaled
+    height: 110vh
+    height: calc(var(--vh, 1.1vh) * 100)
+    width: 732.3vh
+    .info-block
+      &:nth-child(1)
+        top: 53vh
+        left: 70vh
+      &:nth-child(2)
+        top: 58vh
+        left: 115vh
+      &:nth-child(3)
+        top: 55vh
+        left: 169vh
+      &:nth-child(4)
+        top: 47vh
+        left: 239vh
+      &:nth-child(5)
+        top: 22vh
+        left: 301vh
+      &:nth-child(6)
+        top: 78vh
+        left: 410vh
 
 .header-hor
-  flex: 0 0 1000px
+  flex: 0 0 percentage(1120/7190)
   height: 100%
   &__inner
     height: 100%
-    max-width: 690px
+    max-width: percentage(690/1120)
     margin-left: auto
     margin-right: auto
-    padding-top: 10%
-    padding-bottom: 15%
+    padding-top: 10vh
+    padding-bottom: 10vh
+    padding-left: 15px
+    padding-right: 15px
+    +sm
+      margin-left: 0
+      margin-right: 0
+      max-width: none
+    +xs
+      padding-top: 5vh
+      max-width: 100vw
   &__rect
     margin-bottom: 14vh
     +lines(14vh)
+    +xs
+      margin-bottom: 5vh
   &__logo
     background-color: $white
     text-align: center
     box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
     position: relative
-    padding-top: 30px
-    padding-bottom: 30px
+    padding-top: 2.7vh
+    padding-bottom: 2.7vh
     margin-bottom: 5vh
     +lines(5vh)
   &__title
@@ -48,27 +98,117 @@
     background-color: $black
     text-align: center
     text-transform: uppercase
-    font-size: 30px
+    // font-size: 30px
+    font-size: 2.7vh
     position: relative
     margin-bottom: 5vh
     box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
   &__contacts
     margin-bottom: 14vh
+    +xs
+      margin-bottom: 7vh
   &__scroll
-    text-align: center
-
+    +flex(center, center)
+    .icon
+      font-size: 21px
+      margin-left: 10px
+      fill: $black
 
 .main-hor
-  flex: 0 0 1500px
-  // flex-grow: 1
-  +cover
+  flex: 0 0 percentage(5400/7190)
+  position: relative
 
 .footer-hor
-  // width: 100vw
-  flex: 0 0 650px
+  flex: 0 0 percentage(670/7190)
   text-align: center
   &__inner
-    @extend .header-hor__inner
+    // @extend .header-hor__inner
     padding-top: 15vh
+    padding-left: 15px
+    padding-right: 15px
+    padding-bottom: 10vh
+    height: 100%
   &__logo
     margin-bottom: 15vh
+
+.info-block
+  $this: &
+  position: absolute
+  z-index: 1
+  +tr(top 1s, left 1s)
+  &:hover
+    #{$this}__btn
+      background-color: $accent
+      color: $white
+    #{$this}__btn-icon
+      +rotate(0)
+    #{$this}__block
+      visibility: visible
+      opacity: 1
+      transform: translate(0, -50%) 
+  &__btn
+    width: 40px
+    height: 40px
+    +inline-flex(center, center)
+    background-color: $white
+    box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
+    position: relative
+    z-index: 1
+    +tr(color .3s, background-color .3s)
+    +xs
+      width: 30px
+      height: 30px
+  &__btn-icon
+    +icon-close(16, 1, currentColor)
+    display: inline-block
+    +rotate(225)
+    +tr(transform .3s)
+  &__block
+    background-color: $white
+    padding: 2.7vh
+    width: 320px
+    position: absolute
+    top: 50%
+    left: 50%
+    z-index: 0
+    visibility: hidden
+    opacity: 0
+    transform: translate(-50%, -50%) scale(0.1)
+    +ready
+      +tr(opacity .3s, visibility .3s, transform .3s)
+  &__title
+    margin-bottom: 2vh
+    color: $black
+    font-weight: 500
+    font-size: 21px
+    +sm
+      font-size: 18px
+      margin-bottom: 1vh
+  &__text
+    margin-bottom: 2vh
+    +sm
+      margin-bottom: 1vh
+  &:nth-child(1)
+    top: 50%
+    left: 64vh
+    z-index: 6
+  &:nth-child(2)
+    top: 53vh
+    left: 104vh
+    z-index: 5
+  &:nth-child(3)
+    top: 48vh
+    left: 153vh
+    z-index: 4
+  &:nth-child(4)
+    top: 42vh
+    left: 217vh
+    z-index: 3
+  &:nth-child(5)
+    top: 20vh
+    left: 273.5vh
+    z-index: 2
+  &:nth-child(6)
+    top: 72vh
+    left: 372vh
+    z-index: 1

@@ -1,1 +1,19 @@
-this is home page
+{% for i in range(0, 6) %}
+<!-- begin info-block -->
+<div class="info-block">
+  <button class="info-block__btn">
+    <span class="info-block__btn-icon"></span>
+  </button>
+
+  <div class="info-block__block">
+    <div class="info-block__title">Оформление зеркала</div>
+
+    <div class="info-block__text">Сегодня становится популярно оформлять в багет не только картины и фотографии, но и зеркала. Очень часто именно оформленное зеркало становится изюминкой созданного интерьера, оно может придать дополнительный уют и тепло. </div>
+
+    <div class="info-block__link">
+      <a href="#" class="link">ПОДРОБНЕЕ</a>
+    </div>
+  </div>
+</div>
+<!-- end info-block -->
+{% endfor %}

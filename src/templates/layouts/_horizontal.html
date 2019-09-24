@@ -13,14 +13,21 @@
   <body {% if bodyClass %}class="{{ bodyClass }}"{% endif %}>
 
     <!-- BEGIN content -->
-    <div class="out-hor{% if outClass %} {{ outClass }}{% endif %} js-scroll js-lazy" data-background-image="./img/home/bg-home.jpg" data-scroll="horizontal">
-      {% include "partials/_header-hor.html" %}
-      <!-- begin main -->
-      <main class="main-hor{% if mainClass %} {{ mainClass }}{% endif %}">
-        {% block content %}{% endblock %}
-      </main>
-      <!-- end main -->
-      {% include "partials/_footer-hor.html" %}
+    <div class="horizontal-page">
+      <button class="horizontal-page__scroll-to burger-lg js-scroll-to" data-scroll-to="footer">
+        <span class="burger-lg__title">МЕНЮ</span>
+        <span class="burger-lg__burger"><span></span></span>
+      </button>
+
+      <div class="out-hor{% if outClass %} {{ outClass }}{% endif %} js-scroll js-lazy" data-background-image="./img/home/bg-home.jpg" data-scroll="horizontal">
+        {% include "partials/_header-hor.html" %}
+        <!-- begin main -->
+        <main class="main-hor{% if mainClass %} {{ mainClass }}{% endif %}">
+          {% block content %}{% endblock %}
+        </main>
+        <!-- end main -->
+        {% include "partials/_footer-hor.html" %}
+      </div>
     </div>
     <!-- END content -->
 

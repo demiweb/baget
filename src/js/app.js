@@ -25,7 +25,8 @@ import setInputMask from './components/setInputMask';
 import setTabs from './components/setTabs';
 // import setPanorama from './components/setPanorama';
 
-import setSmoothScrolling from './components/setSmoothScrolling';
+import scroll from './components/setSmoothScrolling';
+import scrollTo from './components/scrollTo';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInputMask();
   setTabs();
 
-  setSmoothScrolling();
+  scroll.init();
   // setPanorama();
+  scrollTo();
 });

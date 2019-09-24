@@ -19,7 +19,7 @@ export default function animateHeader() {
       headerNav: document.querySelectorAll('.header__nav li'),
     };
 
-    if (!header) return;
+    if (!header) { resolve(); return; }
 
     const tl = new TimelineLite({
       onComplete: () => {
