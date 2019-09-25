@@ -23,46 +23,54 @@
 
 
 .out-hor
+  $this: &
   +flex
   height: 110vh
   width: 732.3vh
   height: 100vh
   height: calc(var(--vh, 1vh) * 100)
   width: 665.74vh
-  // height: 1080px
-  // width: 7190px
-  background-repeat: no-repeat
-  background-position: 0% 0%
-  background-size: 100%
-  +ready
-    +tr(width 1s, height 1s)
+  position: relative
   &.is-scaled
-    height: 110vh
-    height: calc(var(--vh, 1.1vh) * 100)
-    width: 732.3vh
-    .info-block
+    #{$this}__bg
+      transform: scale(1.1)
+    .header-hor
+      transform: translate(-10%, 0)
+    .footer-hor
+      transform: translate(40%, 0)
+    .info-block      
       &:nth-child(1)
-        top: 53vh
-        left: 70vh
+        transform: translate(-12vh, 0)
       &:nth-child(2)
-        top: 58vh
-        left: 115vh
+        transform: translate(-12vh, 0)        
       &:nth-child(3)
-        top: 55vh
-        left: 169vh
+        transform: translate(1vh, 0)        
       &:nth-child(4)
-        top: 47vh
-        left: 239vh
+        transform: translate(-0.5vh, 0)        
       &:nth-child(5)
-        top: 22vh
-        left: 301vh
+        transform: translate(4.7vh, -2vh)        
       &:nth-child(6)
-        top: 78vh
-        left: 410vh
+        transform: translate(15vh, 1vh)        
+  &__bg
+    background-repeat: no-repeat
+    background-position: 0% 0%
+    background-size: 100%
+    position: absolute
+    z-index: 0
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    +ready
+      +tr(transform 1s)
 
 .header-hor
   flex: 0 0 percentage(1120/7190)
   height: 100%
+  position: relative
+  z-index: 1
+  +ready
+    +tr(transform 1s)
   &__inner
     height: 100%
     max-width: percentage(690/1120)
@@ -72,6 +80,8 @@
     padding-bottom: 10vh
     padding-left: 15px
     padding-right: 15px
+    +ready
+      +tr(transform 1s)
     +sm
       margin-left: 0
       margin-right: 0
@@ -82,8 +92,12 @@
   &__rect
     margin-bottom: 14vh
     +lines(14vh)
+    +lg
+      margin-bottom: 10vh
+      +lines(10vh)
     +xs
       margin-bottom: 5vh
+      +lines(5vh)
   &__logo
     background-color: $white
     text-align: center
@@ -105,6 +119,8 @@
     box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
   &__contacts
     margin-bottom: 14vh
+    +lg
+      margin-bottom: 10vh
     +xs
       margin-bottom: 7vh
   &__scroll
@@ -117,10 +133,14 @@
 .main-hor
   flex: 0 0 percentage(5400/7190)
   position: relative
+  z-index: 1
 
 .footer-hor
   flex: 0 0 percentage(670/7190)
   text-align: center
+  position: relative
+  z-index: 1
+  +tr(transform 1s)
   &__inner
     // @extend .header-hor__inner
     padding-top: 15vh
@@ -135,7 +155,7 @@
   $this: &
   position: absolute
   z-index: 1
-  +tr(top 1s, left 1s)
+  +tr(transform 1s)
   &:hover
     #{$this}__btn
       background-color: $accent
@@ -165,7 +185,7 @@
     +tr(transform .3s)
   &__block
     background-color: $white
-    padding: 2.7vh
+    padding: 30px
     width: 320px
     position: absolute
     top: 50%
@@ -176,6 +196,8 @@
     transform: translate(-50%, -50%) scale(0.1)
     +ready
       +tr(opacity .3s, visibility .3s, transform .3s)
+    +xs
+      padding: 20px
   &__title
     margin-bottom: 2vh
     color: $black

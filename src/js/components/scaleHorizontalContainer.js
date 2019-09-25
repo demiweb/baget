@@ -15,12 +15,12 @@ export default function scaleHorizontalContainer() {
   };
 
   if (header && footer) {
-    if (this.smooth.vars.current <= header.offsetWidth / 2) {
+    if (this.smooth.vars.current <= header.offsetWidth / 1.5) {
       toggleScale(this.wrap, false);
-    } else if (this.smooth.vars.current > this.smooth.vars.bounding - footer.offsetWidth / 2) {
+    } else if (this.smooth.vars.current > this.smooth.vars.bounding - footer.offsetWidth / 1.5) {
       toggleScale(this.wrap, false);
-    } else if (this.smooth.vars.current > header.offsetWidth / 2
-        && this.smooth.vars.current < this.width - footer.offsetWidth / 2) {
+    } else if (this.smooth.vars.current > header.offsetWidth / 1.5
+        && this.smooth.vars.current < this.width - footer.offsetWidth / 1.5) {
       toggleScale(this.wrap, true);
     }
   }
