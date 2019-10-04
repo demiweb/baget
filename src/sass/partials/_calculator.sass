@@ -1,0 +1,75 @@
+.calculator
+  $this: &
+  text-align: left
+  &__inner
+    +flex(flex-start, normal, row, wrap)
+  &__left
+    padding-right: 20px
+    +flex(space-between, normal, column)
+    width: percentage(330/1360)
+
+  &__right
+    padding-left: 20px
+    width: percentage(1030/1360)
+  &__row
+    +flex(flex-start, normal, row, wrap)
+    margin-left: -20px
+    margin-right: -20px
+    +notlast
+      margin-bottom: 50px
+      +xl
+        margin-bottom: 40px
+      +lg
+        margin-bottom: 30px
+      +md
+        margin-bottom: 15px
+  &__col
+    padding-left: 20px
+    padding-right: 20px
+    width: 33.33333%
+    +flex(flex-start, normal, column)
+  &__col-height
+    #{$this}__field
+      height: 100%
+  &__title
+    margin-bottom: 25px
+    +md
+      margin-bottom: 10px
+  &__field
+    // height: 100%
+    +notlast
+      margin-bottom: 15px
+  &__block
+    flex-grow: 1
+  &__imgs
+    +flex(flex-start, normal, row, wrap)
+    margin-left: -10px
+    margin-right: -10px
+  &__img-wrap
+    width: 50%
+    padding-left: 10px
+    padding-right: 10px
+    margin-bottom: 10px
+    text-align: center
+  &__img
+    position: relative
+    display: block
+  &__img-img
+    display: block
+    +cover
+    padding-top: 80%
+    margin-bottom: 10px
+  &__img-close
+    background-color: $black
+    border-radius: 50%
+    width: 20px
+    height: 20px
+    position: absolute
+    top: 0
+    right: 0
+    color: $white
+    +flex(center, center)
+    transform: translate(50%, -50%)
+    span
+      +icon-close(10, 1, currentColor)
+

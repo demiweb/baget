@@ -12,10 +12,9 @@ import { setVhProperty } from './helpers';
 import setTextareaHeight from './components/setTextareaHeight';
 import toggleMenu from './components/toggleMenu';
 import animateOnScroll from './components/animateOnScroll';
-// import animateBgText from './components/animateBgText';
 import fixedFooter from './components/setFooter';
 import setScrollbar from './components/setScrollbar';
-import setSliders from './components/setSliders';
+import mySlider from './components/sliders/setSlider';
 import setGallery from './components/setSelects';
 import setSelects from './components/setGallery';
 
@@ -27,6 +26,8 @@ import setTabs from './components/setTabs';
 
 import scroll from './components/setSmoothScrolling';
 import scrollTo from './components/scrollTo';
+import splitText from './components/splitText';
+import setPopups from './components/setPopups';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,14 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setHTMLClassNames();
   setLazy();
   setVhProperty();
+  splitText();
   setTextareaHeight();
   toggleMenu();
   animateOnScroll();
-  // animateBgText();
-  // setFooter();
   fixedFooter.init();
   setScrollbar();
-  setSliders();
+  mySlider.init();
   setGallery();
   setSelects();
 
@@ -53,4 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
   scroll.init();
   // setPanorama();
   scrollTo();
+
+  setPopups();
 });

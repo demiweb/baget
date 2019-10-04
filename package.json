@@ -81,6 +81,7 @@
     "panolens": "^0.11.0",
     "select-custom": "^1.1.4",
     "smooth-scrolling": "github:yurayarosh/smooth-scrolling",
+    "split-html-to-chars": "^1.0.5",
     "swiper": "^4.5.0",
     "three": "^0.108.0",
     "throttle-debounce": "^2.1.0"

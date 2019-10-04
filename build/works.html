@@ -70,6 +70,18 @@
               </div>
             </div>
             <div class="header__contacts">
+              <!-- begin header-search -->
+              <div class="header-search">
+                <div class="header-search__icon">
+                  <svg viewBox="0 0 56.966 56.966" class="icon icon-search" width="1.000em" height="1em">
+                    <path d="M55.146 51.887L41.588 37.786A22.926 22.926 0 0046.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 00.083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z" />
+                  </svg>
+                </div>
+                <div class="header-search__input">
+                  <input type="text" placeholder="Поиск...">
+                </div>
+              </div>
+              <!-- end header-search -->
               <!-- begin header-contacts -->
               <div class="header-contacts">
                 <div class="header-phone">
@@ -255,6 +267,266 @@
     </footer>
     <!-- end footer -->
     <!-- END content -->
+    <!-- begin popups -->
+    <!-- begin popup -->
+    <div class="popup js-popup" data-popup="calculator">
+      <div class="popup__inner">
+        <button class="popup__close js-popup-close"></button>
+        <div class="popup__title">
+          <div class="title title--h3 title--medium title--ttu">просчет стоимости</div>
+        </div>
+        <div class="popup__form">
+          <!-- begin calculator -->
+          <div class="calculator">
+            <form>
+              <div class="calculator__inner">
+                <div class="calculator__left">
+                  <div class="calculator__imgs">
+                    <div class="calculator__img-wrap">
+                      <div class="calculator__img">
+                        <div class="calculator__img-img js-lazy" data-background-image="./img/materials/popup-sm-01.jpg"></div>
+                        <div class="calculator__img-title">Артикул: <strong>542A</strong></div>
+                        <button class="calculator__img-close"><span></span></button>
+                      </div>
+                    </div>
+                    <div class="calculator__img-wrap">
+                      <div class="calculator__img">
+                        <div class="calculator__img-img js-lazy" data-background-image="./img/materials/popup-sm-01.jpg"></div>
+                        <div class="calculator__img-title">Артикул: <strong>542A</strong></div>
+                        <button class="calculator__img-close"><span></span></button>
+                      </div>
+                    </div>
+                    <div class="calculator__img-wrap">
+                      <div class="calculator__img">
+                        <div class="calculator__img-img js-lazy" data-background-image="./img/materials/popup-sm-01.jpg"></div>
+                        <div class="calculator__img-title">Артикул: <strong>542A</strong></div>
+                        <button class="calculator__img-close"><span></span></button>
+                      </div>
+                    </div>
+                    <div class="calculator__img-wrap">
+                      <div class="calculator__img">
+                        <div class="calculator__img-img js-lazy" data-background-image="./img/materials/popup-sm-01.jpg"></div>
+                        <div class="calculator__img-title">Артикул: <strong>542A</strong></div>
+                        <button class="calculator__img-close"><span></span></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="calculator__btn">
+                    <button class="btn">отправить на просчет</button>
+                  </div>
+                </div>
+                <div class="calculator__right">
+                  <div class="calculator__row">
+                    <div class="calculator__col">
+                      <div class="calculator__title">
+                        <div class="title title--h5 title--medium">Контактная информация:</div>
+                      </div>
+                      <div class="calculator__block">
+                        <div class="calculator__field">
+                          <!-- begin input -->
+                          <div class="input">
+                            <label>*ВАШЕ ИМЯ</label>
+                            <input class="js-focused-input" type="text">
+                          </div>
+                          <!-- end input -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin input -->
+                          <div class="input">
+                            <label>*телефон</label>
+                            <input class="js-focused-input js-mask" type="tel" data-mask-type="phone" data-mask="+{38}(000)000-00-00">
+                          </div>
+                          <!-- end input -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin input -->
+                          <div class="input">
+                            <label>*E-mail</label>
+                            <input class="js-focused-input" type="email">
+                          </div>
+                          <!-- end input -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="calculator__col">
+                      <div class="calculator__title">
+                        <div class="title title--h5 title--medium">Основные параметры работы:</div>
+                      </div>
+                      <div class="calculator__block">
+                        <div class="calculator__field">
+                          <!-- begin input -->
+                          <div class="input input--comb">
+                            <label>*Длина</label>
+                            <input type="text">
+                            <label>см</label>
+                          </div>
+                          <!-- end input -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin input -->
+                          <div class="input input--comb">
+                            <label>*Ширина</label>
+                            <input type="text">
+                            <label>см</label>
+                          </div>
+                          <!-- end input -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin input -->
+                          <div class="input input--comb">
+                            <label>*Количество рам</label>
+                            <input type="text">
+                            <label>см</label>
+                          </div>
+                          <!-- end input -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="calculator__col calculator__col-height">
+                      <div class="calculator__title">
+                        <div class="title title--h5 title--medium">Примечания:</div>
+                      </div>
+                      <div class="calculator__block">
+                        <div class="calculator__field">
+                          <!-- begin textarea -->
+                          <div class="textarea textarea--lg">
+                            <label>*текст</label>
+                            <textarea class="js-focused-input"></textarea>
+                          </div>
+                          <!-- end textarea -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="calculator__row">
+                    <div class="calculator__col">
+                      <div class="calculator__title">
+                        <div class="title title--h5 title--medium">Внешнее покрытие:</div>
+                      </div>
+                      <div class="calculator__block">
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="cover" checked="">
+                            <span>Без стекла</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="cover">
+                            <span>стекло обычное</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="cover">
+                            <span>стекло антибликовое</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="cover">
+                            <span>пластик (орг. стекло)</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="cover">
+                            <span>Музейный антиблик</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="calculator__col">
+                      <div class="calculator__title">
+                        <div class="title title--h5 title--medium">Паспарту:</div>
+                      </div>
+                      <div class="calculator__block">
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="paspartu" checked="">
+                            <span>Без паспарту</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="paspartu">
+                            <span>простое</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="paspartu">
+                            <span>фактурное</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="paspartu">
+                            <span>фигурный вырез окна)</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="calculator__col">
+                      <div class="calculator__title">
+                        <div class="title title--h5 title--medium">Задняя стенка:</div>
+                      </div>
+                      <div class="calculator__block">
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="back" checked="">
+                            <span>Без двп/картон</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="back">
+                            <span>двп</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                        <div class="calculator__field">
+                          <!-- begin radio -->
+                          <label class="radio">
+                            <input type="radio" name="back">
+                            <span>картон</span>
+                          </label>
+                          <!-- end radio -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- end calculator -->
+        </div>
+      </div>
+    </div>
+    <!-- end popup -->
+    <!-- end popups -->
     <!-- BEGIN scripts -->
     <script type="text/javascript" src="js/app.js"></script>
     <!-- END scripts -->

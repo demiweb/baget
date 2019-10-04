@@ -50,14 +50,15 @@
         margin-bottom: 4px !important
 
 .input, .textarea
-  position: relative  
+  position: relative
+  text-transform: uppercase
   input, textarea    
     height: 55px
     width: 100%
     background-color: $white
     border: 0
     border-bottom: 1px solid  $gray-lighten
-    padding: 18px 0
+    padding: 18px 0    
     +tr(border-color .3s)
     +placeholder
       text-transform: uppercase
@@ -101,7 +102,36 @@
           transform: translate(0, -11px)
           font-size: .65em
 
+.input
+  height: 55px
+  &--comb
+    border-bottom: 1px solid  $gray-lighten
+    padding: 10px 0
+    +flex(space-between, center)
+    label
+      &:first-child
+        position: static
+        width: 55%
+      &:last-child
+        width: calc(45% - 90px)
+        text-align: right
+        text-transform: none
+    input
+      width: 70px
+      height: 30px
+      border: 1px solid  $gray-lighten
+      margin-right: 10px
+      margin-left: 10px
+      text-align: center
+      padding: 0 5px
+
+
 
 .textarea
   textarea
     overflow: hidden
+  &--lg
+    height: 100%
+    textarea
+      overflow: auto
+      height: 100%

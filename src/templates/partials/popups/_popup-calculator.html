@@ -1,0 +1,207 @@
+{%set
+inputs = [
+  {
+    title: 'Контактная информация:',
+    fields: [
+      {
+        name: 'input',
+        mod: '',
+        type: 'text',
+        label: { first: '*ВАШЕ ИМЯ' },
+        fieldClass: 'js-focused-input'
+      },
+      {
+        name: 'input',
+        mod: '',
+        type: 'tel',
+        label: { first: '*телефон' },
+        fieldClass: 'js-focused-input js-mask',
+        fieldAttributes: { 'data-mask-type': 'phone', 'data-mask': '+{38}(000)000-00-00'}
+      },
+      {
+        name: 'input',
+        mod: '',
+        type: 'email',
+        label: { first: '*E-mail' },
+        fieldClass: 'js-focused-input'
+      }
+    ]
+  },
+  {
+    title: 'Основные параметры работы:',
+    fields: [
+      {
+        name: 'input',
+        mod: 'input--comb',
+        type: 'text',
+        label: { first: '*Длина', last: 'см' },
+        fieldClass: '',
+        fieldAttributes: {}
+      },
+      {
+        name: 'input',
+        mod: 'input--comb',
+        type: 'text',
+        label: { first: '*Ширина', last: 'см' },
+        fieldClass: '',
+        fieldAttributes: {}
+      },
+      {
+        name: 'input',
+        mod: 'input--comb',
+        type: 'text',
+        label: { first: '*Количество рам', last: 'см' },
+        fieldClass: '',
+        fieldAttributes: {}
+      }
+    ]
+  },
+  {
+    title: 'Примечания:',
+    colMod: 'calculator__col-height',
+    fields: [
+      {
+        name: 'textarea',
+        mod: 'textarea--lg',
+        type: '',
+        label: { first: '*текст' },
+        fieldClass: 'js-focused-input'
+      }
+    ]
+  }
+]
+%}
+
+{%set
+radios = [
+  {
+    title: 'Внешнее покрытие:',
+    fields: [
+      { label: 'Без стекла', fieldAttributes: { name: 'cover', checked: '' } },
+      { label: 'стекло обычное', fieldAttributes: { name: 'cover' } },
+      { label: 'стекло антибликовое', fieldAttributes: { name: 'cover' } },
+      { label: 'пластик (орг. стекло)', fieldAttributes: { name: 'cover' } },
+      { label: 'Музейный антиблик', fieldAttributes: { name: 'cover' } }
+    ]
+  },
+  {
+    title: 'Паспарту:',
+    fields: [
+      { label: 'Без паспарту', fieldAttributes: { name: 'paspartu', checked: '' } },
+      { label: 'простое', fieldAttributes: { name: 'paspartu' } },
+      { label: 'фактурное', fieldAttributes: { name: 'paspartu' } },
+      { label: 'фигурный вырез окна)', fieldAttributes: { name: 'paspartu' } }
+    ]
+  },
+  {
+    title: 'Задняя стенка:',
+    fields: [
+      { label: 'Без двп/картон', fieldAttributes: { name: 'back', checked: '' } },
+      { label: 'двп', fieldAttributes: { name: 'back' } },
+      { label: 'картон', fieldAttributes: { name: 'back' } }
+    ]
+  }
+]
+%}
+
+<!-- begin popup -->
+<div class="popup js-popup" data-popup="calculator">
+  <div class="popup__inner">
+    <button class="popup__close js-popup-close"></button>
+
+    <div class="popup__title">
+      <div class="title title--h3 title--medium title--ttu">просчет стоимости</div>
+    </div>
+
+    <div class="popup__form">
+      <!-- begin calculator -->
+      <div class="calculator">
+        <form>
+          <div class="calculator__inner">
+            <div class="calculator__left">
+              <div class="calculator__imgs">
+                {% for i in range(0, 4) %}
+                <div class="calculator__img-wrap">
+                  <div class="calculator__img">
+                    <div class="calculator__img-img js-lazy" data-background-image="./img/materials/popup-sm-01.jpg"></div>
+
+                    <div class="calculator__img-title">Артикул: <strong>542A</strong></div>
+
+                    <button class="calculator__img-close"><span></span></button>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="calculator__btn">
+                {{ mixins.btn(
+                  title = 'отправить на просчет',
+                  mod = '',
+                  href = false
+                ) }}
+              </div>
+            </div>
+
+            <div class="calculator__right">
+              <div class="calculator__row">
+                {% for i in inputs %}
+                <div class="calculator__col{% if i.colMod %} {{ i.colMod }}{% endif %}">
+                  <div class="calculator__title">
+                    <div class="title title--h5 title--medium">{{ i.title | safe }}</div>
+                  </div>
+
+                  <div class="calculator__block">                    
+                      {% for j in i.fields %}
+                        <div class="calculator__field">
+                          {{ mixins.input(
+                            name = j.name,
+                            mod = j.mod,
+                            type = j.type,
+                            placeholder = j.placeholder,
+                            value = '',
+                            fieldClass = j.fieldClass,
+                            label = j.label,
+                            fieldAttributes = j.fieldAttributes
+                          ) }}
+                        </div>
+                      {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="calculator__row">
+                {% for i in radios %}
+                <div class="calculator__col">
+                  <div class="calculator__title">
+                    <div class="title title--h5 title--medium">{{ i.title | safe }}</div>
+                  </div>
+
+                  <div class="calculator__block">
+                      {% for j in i.fields %}
+                        <div class="calculator__field">
+                          {{ mixins.input(
+                            name = 'radio',
+                            mod = j.mod,
+                            type = 'radio',
+                            placeholder = j.placeholder,
+                            value = '',
+                            fieldClass = j.fieldClass,
+                            label = { span: true, last: j.label },
+                            fieldAttributes = j.fieldAttributes
+                          ) }}
+                        </div>
+                      {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- end calculator -->
+    </div>
+  </div>
+</div>
+<!-- end popup -->

@@ -19,38 +19,36 @@
   +main-bg
   &__scroll-to
     position: absolute
-    z-index: 1  
-
+    z-index: 1
 
 .out-hor
   $this: &
   +flex
-  height: 110vh
-  width: 732.3vh
   height: 100vh
   height: calc(var(--vh, 1vh) * 100)
   width: 665.74vh
+  width: calc(var(--vh, 1vh) * 665.74)
   position: relative
   &.is-scaled
     #{$this}__bg
-      transform: scale(1.1)
+      transform: scale(1.1) translate(0, -50%)
     .header-hor
       transform: translate(-10%, 0)
     .footer-hor
       transform: translate(40%, 0)
     .info-block      
       &:nth-child(1)
-        transform: translate(-12vh, 0)
+        transform: translate(-16vh, -4vh)
       &:nth-child(2)
-        transform: translate(-12vh, 0)        
+        transform: translate(-16vh, -4vh)        
       &:nth-child(3)
         transform: translate(1vh, 0)        
       &:nth-child(4)
-        transform: translate(-0.5vh, 0)        
+        transform: translate(-0.5vh, -5vh)        
       &:nth-child(5)
-        transform: translate(4.7vh, -2vh)        
+        transform: translate(4.7vh, -7vh)        
       &:nth-child(6)
-        transform: translate(15vh, 1vh)        
+        transform: translate(15vh, -4vh)        
   &__bg
     background-repeat: no-repeat
     background-position: 0% 0%
@@ -58,7 +56,8 @@
     position: absolute
     z-index: 0
     left: 0
-    top: 0
+    top: 50%
+    transform: translate(0, -50%)
     width: 100%
     height: 100%
     +ready
@@ -99,7 +98,9 @@
       margin-bottom: 5vh
       +lines(5vh)
   &__logo
-    background-color: $white
+    // background-color: $white
+    +image('glass-texture.png')
+    +cover
     text-align: center
     box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
     position: relative
@@ -127,8 +128,10 @@
     +flex(center, center)
     .icon
       font-size: 21px
-      margin-left: 10px
+      // margin-left: 10px
       fill: $black
+      animation: swipe 2s linear infinite
+      transform: translate(50px, 0)
 
 .main-hor
   flex: 0 0 percentage(5400/7190)
@@ -234,3 +237,15 @@
     top: 72vh
     left: 372vh
     z-index: 1
+
+@keyframes swipe
+  0%
+    transform: translate(50px, 0)
+  80%
+    transform: translate(-50px, 0)
+  // 50%
+  //   transform: translate(50px, 0)
+  // 75%
+  //   transform: translate(0px, 0)
+  100%
+    transform: translate(50px, 0)

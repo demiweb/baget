@@ -177,6 +177,12 @@
   &__contacts
     flex-grow: 1
     opacity: 0
+    +flex(space-between)
+    padding-left: 10%
+    +lg
+      padding-left: 15px
+    +md
+      display: block
     +xs
       display: none
   &__contacts-mob
@@ -216,6 +222,31 @@
 
 .header-address-item
   // text-decoration: underline
+
+.header-search
+  width: 60%
+  +flex()
+  +md
+    // position: absolute
+    // z-index: 1
+    // top: calc(100% + 50px)
+    // right: 0
+    display: none
+  &__icon
+    color: $black
+    margin-right: 15px
+    .icon
+      font-size: 20px
+      position: relative
+      top: .1em 
+  &__input
+    flex-grow: 1
+    input
+      width: 100%
+      background-color: transparent
+      height: 25px
+      padding: 5px 0
+      border-bottom: 1px solid  $gray-lighten
 
 .header-contacts
   text-align: right

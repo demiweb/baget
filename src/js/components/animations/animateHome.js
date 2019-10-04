@@ -1,12 +1,10 @@
 import { TimelineLite, Power2 } from 'gsap';
 
 export default function animateHome() {
-  const { wrap, headerEls } = {
-    wrap: document.querySelector('.horizontal-page'),
-    headerEls: document.querySelector('.header-hor .header-hor__inner').children,
-  };
-
+  const wrap = document.querySelector('.horizontal-page');
   if (!wrap) return;
+
+  const headerEls = document.querySelector('.header-hor .header-hor__inner').children;
 
   const tl = new TimelineLite();
 

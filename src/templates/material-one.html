@@ -2,6 +2,7 @@
 title: material-one
 page: material-one
 sideLine: true
+popupBtn: true
 hero: {
   title: 'Услуги багетной мастерской',
   titleFixed: 'Металический профиль',
@@ -18,26 +19,39 @@ hero: {
   }
 }
 sectionGallery: {
-  topSimple: true,
+  topSimple: 'наша галерея',
   filter: true,
   noSlider: true,
-  title: 'наша галерея',
+  title: 'Услуги багетной мастерской',
+  breadcrumbs: {
+    list: [
+      { link: 'главная' },
+      { link: '/' },
+      { link: 'материалы ' },
+      { link: '/' },
+      { link: 'Металический профиль', modLink: 'is-active' }
+    ]
+  },
   more: { title: 'раскрыть все фото' },
-  gallery: [
-    { img: '07.png' },
-    { img: '07.png' },
-    { img: '07.png' },
-    { img: '07.png' },
-    { img: '07.png' },
-    { img: '07.png' }
-  ]
+  gallery: {
+    checkboxes: true,
+    list: [
+      { img: '07.png' },
+      { img: '07.png' },
+      { img: '07.png' },
+      { img: '07.png' },
+      { img: '07.png' },
+      { img: '07.png' }
+    ]
+  }
 }
 ---
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-  {% include "partials/_hero.html" %}
-  {% include "partials/sections/_s-seo.html" %}
+  {# {% include "partials/_hero.html" %} #}
+  
   {% include "partials/sections/_s-gallery.html" %}
+  {% include "partials/sections/_s-seo.html" %}
 {% endblock %}
 
