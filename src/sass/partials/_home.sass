@@ -44,6 +44,9 @@
   width: calc(var(--vh, 1vh) * 665.74)
   position: relative
   &.is-scaled
+    .header-hor
+      &__rect
+        transform: translate(-9vh, -9vh) 
     #{$this}__bg
       transform: scale(1.1) translate(0, -50%)
     .header-hor
@@ -105,7 +108,8 @@
       max-width: 100vw
   &__rect
     margin-bottom: 24vh    
-    padding-top: 3.3vh     
+    padding-top: 3.3vh
+    +tr(transform 1s)  
     +lg
       margin-bottom: 20vh
     +xs
