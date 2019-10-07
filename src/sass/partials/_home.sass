@@ -12,6 +12,20 @@
   &::after
     right: 8px
 
+=lines-top($height)
+  position: relative
+  &::before, &::after
+    content: ''
+    border-right: 1px solid $gray-lighten
+    position: absolute
+    bottom: 100%
+    height: $height
+    z-index: 0
+  &::before
+    left: 8px
+  &::after
+    right: 8px
+
 .horizontal-page
   overflow: hidden
   opacity: 0
@@ -67,6 +81,7 @@
   flex: 0 0 percentage(1120/7190)
   height: 100%
   position: relative
+  padding-left: 15px
   z-index: 1
   +ready
     +tr(transform 1s)
@@ -75,7 +90,7 @@
     max-width: percentage(690/1120)
     margin-left: auto
     margin-right: auto
-    padding-top: 10vh
+    // padding-top: 10vh
     padding-bottom: 10vh
     padding-left: 15px
     padding-right: 15px
@@ -86,17 +101,15 @@
       margin-right: 0
       max-width: none
     +xs
-      padding-top: 5vh
+      // padding-top: 5vh
       max-width: 100vw
   &__rect
-    margin-bottom: 14vh
-    +lines(14vh)
+    margin-bottom: 24vh    
+    padding-top: 3.3vh     
     +lg
-      margin-bottom: 10vh
-      +lines(10vh)
+      margin-bottom: 20vh
     +xs
-      margin-bottom: 5vh
-      +lines(5vh)
+      margin-bottom: 15vh
   &__logo
     // background-color: $white
     +image('glass-texture.png')
@@ -108,9 +121,15 @@
     padding-bottom: 2.7vh
     margin-bottom: 5vh
     +lines(5vh)
+  &__logo-wrap
+    +lines-top(24vh)
+    +lg
+      +lines-top(20vh)
+    +xs
+      +lines-top(15vh)
   &__title
     color: $white
-    background-color: $black
+    background-color: #767e81
     text-align: center
     text-transform: uppercase
     // font-size: 30px
