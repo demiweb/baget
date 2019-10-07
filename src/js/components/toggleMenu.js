@@ -60,7 +60,10 @@ export default function toggleMenu() {
 
   burger.onToggle = () => {
     const sideBtn = document.querySelector('.side-btn');
-    sideBtn.classList.toggle('is-bottom');
+    if (sideBtn) {
+      sideBtn.classList.toggle('is-bottom');
+    }
+
 
     document.body.classList.toggle(NO_SCROLL);
     out.classList.toggle(IS_ABOVE);
@@ -104,7 +107,9 @@ export default function toggleMenu() {
   };
   burger.onClose = () => {
     const sideBtn = document.querySelector('.side-btn');
-    sideBtn.classList.remove('is-bottom');
+    if (sideBtn) {
+      sideBtn.classList.remove('is-bottom');
+    }
 
     document.body.classList.remove(NO_SCROLL);
     setTimeout(() => {

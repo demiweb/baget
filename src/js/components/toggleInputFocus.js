@@ -15,7 +15,9 @@ class FormInput {
   }
 
   handleText(e) {
-    if (this.input.value.length > 0) {
+    const valueMinNmb = this.input.value.indexOf('+38') > -1 ? 3 : 0;
+
+    if (this.input.value.length > valueMinNmb) {
       this.wrap.classList.add(HAS_TEXT);
     } else {
       this.wrap.classList.remove(HAS_TEXT);

@@ -3,7 +3,7 @@ import IMask from 'imask';
 class Mask {
   constructor(input, getOptions) {
     this.input = input;
-    this.type = input.dataset.maskType;
+    this.type = input.dataset.maskType || 'phone';
     this.mask = input.dataset.mask;
 
     this.options = getOptions({
