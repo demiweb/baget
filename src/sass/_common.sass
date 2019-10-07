@@ -27,7 +27,7 @@ body
   font-family: 'montserrat', Arial, sans-serif
   font-weight: 300
   color: $c-text
-  +no-scroll
+  // +no-scroll
   +sm
     font-size: $fz-sm
 
@@ -356,8 +356,15 @@ body
   +rotate(90)
   transform-origin: top right
   font-weight: 700
+  +md
+    top: $header-height-md + 270px
+  +xs
+    width: 230px
+    height: 30px
   .letter
     +rotate(-90)
     display: inline-block
     margin-right: 1em
+  &.is-bottom
+    z-index: 0
     

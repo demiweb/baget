@@ -102,12 +102,20 @@
           transform: translate(0, -11px)
           font-size: .65em
 
-.input
-  height: 55px
+.input  
   &--comb
     border-bottom: 1px solid  $gray-lighten
     padding: 10px 0
     +flex(space-between, center)
+    height: 55px
+    +lg
+      height: 50px
+    +md
+      height: 45px
+    +sm
+      height: 40px
+    +xs
+      height: 30px
     label
       &:first-child
         position: static
@@ -118,12 +126,14 @@
         text-transform: none
     input
       width: 70px
-      height: 30px
+      height: 30px !important
       border: 1px solid  $gray-lighten
       margin-right: 10px
       margin-left: 10px
       text-align: center
       padding: 0 5px
+      +sm
+        height: 25px !important
 
 
 
@@ -134,4 +144,11 @@
     height: 100%
     textarea
       overflow: auto
-      height: 100%
+      height: 100% !important
+      min-height: 195px
+      +lg
+        min-height: 180px
+      +sm
+        min-height: 150px
+      +xs
+        min-height: 120px

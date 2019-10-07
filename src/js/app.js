@@ -26,7 +26,6 @@ import setTabs from './components/setTabs';
 
 import scroll from './components/setSmoothScrolling';
 import scrollTo from './components/scrollTo';
-import splitText from './components/splitText';
 import setPopups from './components/setPopups';
 
 
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setHTMLClassNames();
   setLazy();
   setVhProperty();
-  splitText();
   setTextareaHeight();
   toggleMenu();
   animateOnScroll();

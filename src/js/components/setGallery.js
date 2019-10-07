@@ -1,9 +1,9 @@
-import 'lightgallery.js';
-import 'lg-zoom.js';
-import 'lg-fullscreen.js';
-import 'lg-autoplay.js';
-import 'lg-share.js';
-import 'lg-thumbnail.js';
+// import 'lightgallery.js';
+// import 'lg-zoom.js';
+// import 'lg-fullscreen.js';
+// import 'lg-autoplay.js';
+// import 'lg-share.js';
+// import 'lg-thumbnail.js';
 // import 'lg-video.js';
 
 export default function setgallery() {
@@ -24,22 +24,13 @@ export default function setgallery() {
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener('change', (e) => {
         const calcBtn = document.querySelector('.js-popup-open[data-popup-target="calculator"]');
-
-
-        console.log(calcBtn);
+        if (!calcBtn) return;
 
         calcBtn.classList.add('bounceIn');
 
         setTimeout(() => {
           calcBtn.classList.remove('bounceIn');
         }, 1000);
-
-
-        // if (e.currentTarget.checked) {
-        //   calcBtn.classList.add('bounceIn');
-        // } else {
-        //   calcBtn.classList.remove('bounceIn');
-        // }
       });
     });
   }
