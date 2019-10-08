@@ -68,8 +68,6 @@ class MyPopup extends Popup {
   }
 
   init() {
-    super.onOpen = this.onOpen;
-    super.onClose = this.onClose;
     super.init();
   }
 }
