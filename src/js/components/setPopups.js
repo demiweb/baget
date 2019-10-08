@@ -1,27 +1,40 @@
 import Popup from '../lib/popup';
 import scroll from './setSmoothScrolling';
 
-export default function setPopups() {
-  const popup = new Popup();
-  popup.onOpen = () => {
+class MyPopup extends Popup {
+  constructor() {
+    super();
+
+    this.imgsSmSrcArray = [];
+    this.imgsSm = [];
+  }
+
+  getElements() {
+    this.imgLg = this.popup.querySelector('.js-gallery-img-popup');
+    this.imgsSmWrap = this.popup.querySelector('.js-gallery-img-sm-wrap');
+  }
+
+  cleareArrays() {
+    this.imgsSmSrcArray = [];
+    this.imgsSm = [];
+  }
+
+  onOpen() {
     scroll.smooth.off();
+    this.getElements();
 
-    if (popup.name === 'material') {
-      const imgLg = popup.popup.querySelector('.js-gallery-img-popup');
-      const imgsSmWrap = popup.popup.querySelector('.js-gallery-img-sm-wrap');
-      // const imgsSm = [...popup.popup.querySelectorAll('.js-gallery-img-sm-popup')];
-      const { imgsSmNumber, imgsSmSrc, imgLgSrc } = popup.btn.dataset;
+    const { imgsSmNumber, imgsSmSrc, imgLgSrc } = this.btn.dataset;
 
-      const imgsSmSrcArray = [];
-      const imgsSm = [];
+    if (this.imgLg && imgLgSrc) {
+      this.imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
+    }
 
-      imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
-
+    if (imgsSmNumber && imgsSmSrc) {
       for (let i = 0; i < +imgsSmNumber; i++) {
-        // create array of srcs for small images
+      // create array of srcs for small images
         const imgNmb = i <= 9 ? `0${i + 1}` : i + 1;
         const src = imgsSmSrc.replace(/{number}/i, imgNmb);
-        imgsSmSrcArray.push(src);
+        this.imgsSmSrcArray.push(src);
 
         // create img elements
         const wrap = document.createElement('div');
@@ -30,44 +43,38 @@ export default function setPopups() {
         wrap.className = 'popup-gallery__img-sm';
         img.className = 'popup-gallery-img';
         wrap.appendChild(img);
-        imgsSmWrap.appendChild(wrap);
+        this.imgsSmWrap.appendChild(wrap);
 
-        imgsSm.push(img);
+        this.imgsSm.push(img);
       }
 
-      imgsSm.forEach((el, i) => {
+      this.imgsSm.forEach((el, i) => {
         const img = el;
-        img.style.backgroundImage = `url('${imgsSmSrcArray[i]}')`;
+        img.style.backgroundImage = `url('${this.imgsSmSrcArray[i]}')`;
       });
     }
+  }
 
-    if (popup.name === 'lightbox') {
-      const imgLg = popup.popup.querySelector('.js-gallery-img-popup');
-      const { imgLgSrc } = popup.btn.dataset;
-      imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
-    }
-  };
-  popup.onClose = () => {
+  onClose() {
     scroll.smooth.on();
-
-    if (popup.name === 'material') {
-      const imgLg = popup.popup.querySelector('.js-gallery-img-popup');
-      const imgsSmWrap = popup.popup.querySelector('.js-gallery-img-sm-wrap');
-
-      if (imgLg) {
-        imgLg.style.backgroundImage = '';
-      }
-      if (imgsSmWrap) {
-        imgsSmWrap.innerHTML = '';
-      }
+    this.getElements();
+    this.cleareArrays();
+    if (this.imgLg) {
+      this.imgLg.style.backgroundImage = '';
     }
-
-    if (popup.name === 'lightbox') {
-      const imgLg = popup.popup.querySelector('.js-gallery-img-popup');
-      if (imgLg) {
-        imgLg.style.backgroundImage = '';
-      }
+    if (this.imgsSmWrap) {
+      this.imgsSmWrap.innerHTML = '';
     }
-  };
-  popup.init();
+  }
+
+  init() {
+    super.onOpen = this.onOpen;
+    super.onClose = this.onClose;
+    super.init();
+  }
+}
+
+export default function setPopups() {
+  const myPopup = new MyPopup();
+  myPopup.init();
 }
