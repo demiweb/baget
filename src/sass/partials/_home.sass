@@ -84,7 +84,7 @@
   flex: 0 0 percentage(1120/7190)
   height: 100%
   position: relative
-  padding-left: 15px
+  // padding-left: 15px
   z-index: 1
   +ready
     +tr(transform 1s)
@@ -100,9 +100,10 @@
     +ready
       +tr(transform 1s)
     +sm
-      margin-left: 0
-      margin-right: 0
-      max-width: none
+      // margin-left: 0
+      // margin-right: 0
+      // max-width: none
+      max-width: 100vw
     +xs
       // padding-top: 5vh
       max-width: 100vw
@@ -143,6 +144,8 @@
     box-shadow: 7.986px 6.018px 5px 0px rgba(0, 0, 0, 0.15)
   &__contacts
     margin-bottom: 14vh
+    +rh(800)
+      margin-bottom: 7vh
     +lg
       margin-bottom: 10vh
     +xs
