@@ -8,8 +8,7 @@ class HomePage {
   }
 
   setPosition() {
-    if (!this.header) return;
-    if (!this.headerInner) return;
+    if (!this.header || !this.headerInner) return;
     if (this.header.offsetWidth < window.innerWidth) return;
 
     const { left } = this.headerInner.getBoundingClientRect();

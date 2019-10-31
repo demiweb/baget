@@ -1,11 +1,11 @@
-import Popup from '../lib/popup';
+import Popup from 'popup-simple';
 import scroll from './setSmoothScrolling';
 
 class MyPopup extends Popup {
   constructor() {
     super();
 
-    this.imgsSmSrcArray = [];
+    this.imgsSmSrcs = [];
     this.imgsSm = [];
   }
 
@@ -15,12 +15,12 @@ class MyPopup extends Popup {
   }
 
   cleareArrays() {
-    this.imgsSmSrcArray = [];
+    this.imgsSmSrcs = [];
     this.imgsSm = [];
   }
 
   onOpen() {
-    scroll.smooth.off();
+    if (scroll && scroll.inited) scroll.smooth.off();
     this.getElements();
 
     const { imgsSmNumber, imgsSmSrc, imgLgSrc } = this.btn.dataset;
@@ -32,9 +32,9 @@ class MyPopup extends Popup {
     if (imgsSmNumber && imgsSmSrc) {
       for (let i = 0; i < +imgsSmNumber; i++) {
       // create array of srcs for small images
-        const imgNmb = i <= 9 ? `0${i + 1}` : i + 1;
+        const imgNmb = i < 9 ? `0${i + 1}` : i + 1;
         const src = imgsSmSrc.replace(/{number}/i, imgNmb);
-        this.imgsSmSrcArray.push(src);
+        this.imgsSmSrcs.push(src);
 
         // create img elements
         const wrap = document.createElement('div');
@@ -50,13 +50,13 @@ class MyPopup extends Popup {
 
       this.imgsSm.forEach((el, i) => {
         const img = el;
-        img.style.backgroundImage = `url('${this.imgsSmSrcArray[i]}')`;
+        img.style.backgroundImage = `url('${this.imgsSmSrcs[i]}')`;
       });
     }
   }
 
   onClose() {
-    scroll.smooth.on();
+    if (scroll && scroll.inited) scroll.smooth.on();
     this.getElements();
     this.cleareArrays();
     if (this.imgLg) {
@@ -66,13 +66,9 @@ class MyPopup extends Popup {
       this.imgsSmWrap.innerHTML = '';
     }
   }
-
-  init() {
-    super.init();
-  }
 }
 
 export default function setPopups() {
-  const myPopup = new MyPopup();
-  myPopup.init();
+  const popup = new MyPopup();
+  popup.init();
 }

@@ -21,7 +21,16 @@
       right: 15px
       visibility: hidden
       opacity: 0
-    &:hover
+      +sm
+        right: 10px
+        bottom: 10px
+      +xs
+        right: 5px
+        bottom: 5px
+      html:not(.no-touch) &
+        visibility: visible
+        opacity: 1
+    +hover
       .checkbox
         opacity: 1
         visibility: visible

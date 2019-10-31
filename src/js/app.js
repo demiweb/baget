@@ -27,7 +27,6 @@ import setTabs from './components/setTabs';
 import scroll from './components/setSmoothScrolling';
 import scrollTo from './components/scrollTo';
 import setPopups from './components/setPopups';
-
 import setHomePagePosition from './components/setHomePagePosition';
 
 
@@ -55,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   scrollTo();
 
   setPopups();
-
   setHomePagePosition();
 });
+
+window.setLazy = setLazy;
