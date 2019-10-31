@@ -10,6 +10,6 @@ export default function animateOnScroll() {
         threshold: 0.2,
       },
     });
-    animator.init();
+    animator.observe();
   });
 }
