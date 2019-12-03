@@ -9,6 +9,4 @@ export default function animateOnScroll() {
     },
   });
   animator.observe();
-
-  console.log(animator);
 }

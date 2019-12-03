@@ -197,24 +197,36 @@ class Scroll {
     }
   }
 
+  scrollHorizontal(e) {
+    let { target } = this.smooth.vars;
+    const width = this.wrap.scrollWidth - window.innerWidth;
+
+    if (e && e.type === 'wheel') {
+      e.preventDefault();
+      target += ((e.deltaY / 10) * 4);
+    }
+    if (e && e.code === 'ArrowRight') {
+      target += 20;
+    }
+    if (e && e.code === 'ArrowLeft') {
+      target -= 20;
+    }
+
+    this.smooth.vars.target = target;
+    if (target < 0) {
+      this.smooth.vars.target = 0;
+    } else if (target > width) {
+      this.smooth.vars.target = width;
+    }
+  }
+
   setHorizontalScroll() {
     if (!this.isHorizontal) return;
     if (isTouch) {
       this.resetBounding();
     } else {
-      window.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        let { target } = this.smooth.vars;
-        const width = this.wrap.scrollWidth - window.innerWidth;
-
-        target += ((e.deltaY / 10) * 4);
-        this.smooth.vars.target = target;
-        if (target < 0) {
-          this.smooth.vars.target = 0;
-        } else if (target > width) {
-          this.smooth.vars.target = width;
-        }
-      }, { passive: false });
+      window.addEventListener('wheel', this.scrollHorizontal.bind(this), { passive: false });
+      window.addEventListener('keydown', this.scrollHorizontal.bind(this));
     }
   }
 
