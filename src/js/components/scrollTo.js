@@ -12,10 +12,14 @@ class ScrollTo {
 
       this.name = this.btn.getAttribute(ScrollTo.constants.dataBtn);
       this.section = document.querySelector(`.${ScrollTo.constants.section}[${ScrollTo.constants.dataTarget}="${this.name}"]`);
-      const left = this.section.getBoundingClientRect().left
-        - scroll.wrap.getBoundingClientRect().left;
-      const top = this.section.getBoundingClientRect().top
-        - scroll.wrap.getBoundingClientRect().top;
+      const left = this.section
+        ? this.section.getBoundingClientRect().left
+        - scroll.wrap.getBoundingClientRect().left
+        : +this.name;
+      const top = this.section
+        ? this.section.getBoundingClientRect().top
+        - scroll.wrap.getBoundingClientRect().top
+        : +this.name;
 
       this.target = this.isHorizontal ? left : top;
 

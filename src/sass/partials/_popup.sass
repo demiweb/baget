@@ -65,16 +65,20 @@
     +flex(flex-start, normal, row, wrap)
   &__left
     padding-right: 35px
+    padding-top: 80px
     width: percentage(475/1290)
-    +flex(flex-end, normal, column)
+    +flex(flex-start, normal, column)
     +lg
       padding-right: 20px
+      padding-top: 70px
     +md
       padding-right: 10px
+      padding-top: 50px
     +xs
       padding-right: 0
       width: 100%
       margin-bottom: 25px
+      padding-top: 0
   &__right
     padding-left: 35px    
     width: percentage(815/1290)
@@ -110,14 +114,12 @@
       margin-left: -5px
       margin-right: -5px
   &__img-lg
-    height: calc(100% - 60px)
+    // height: calc(100% - 60px)
+    padding-top: 80%
+    margin-bottom: 30px
     +cover
-    +xl
-      height: calc(100% - 50px)
-    +lg
-      height: calc(100% - 40px)
     +md
-      height: calc(100% - 25px)
+      margin-bottom: 15px
     +xs
       height: auto
       padding-top: 60%

@@ -5,17 +5,18 @@ class MyPopup extends Popup {
   constructor() {
     super();
 
-    this.imgsSmSrcs = [];
+    this.imgSmSrcset = [];
     this.imgsSm = [];
   }
 
   getElements() {
     this.imgLg = this.popup.querySelector('.js-gallery-img-popup');
     this.imgsSmWrap = this.popup.querySelector('.js-gallery-img-sm-wrap');
+    this.metaWrap = this.popup.querySelector('.js-gallery-item-meta');
   }
 
   cleareArrays() {
-    this.imgsSmSrcs = [];
+    this.imgSmSrcset = [];
     this.imgsSm = [];
   }
 
@@ -23,18 +24,20 @@ class MyPopup extends Popup {
     if (scroll && scroll.inited) scroll.smooth.off();
     this.getElements();
 
-    const { imgsSmNumber, imgsSmSrc, imgLgSrc } = this.btn.dataset;
+    const {
+      imgsSmNumber, imgsSmSrcset, imgLgSrc, itemMeta,
+    } = this.btn.dataset;
 
     if (this.imgLg && imgLgSrc) {
       this.imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
     }
 
-    if (imgsSmNumber && imgsSmSrc) {
+    if (imgsSmNumber && imgsSmSrcset) {
       for (let i = 0; i < +imgsSmNumber; i++) {
       // create array of srcs for small images
         const imgNmb = i < 9 ? `0${i + 1}` : i + 1;
-        const src = imgsSmSrc.replace(/{number}/i, imgNmb);
-        this.imgsSmSrcs.push(src);
+        const src = imgsSmSrcset.replace(/{number}/i, imgNmb);
+        this.imgSmSrcset.push(src);
 
         // create img elements
         const wrap = document.createElement('div');
@@ -50,8 +53,24 @@ class MyPopup extends Popup {
 
       this.imgsSm.forEach((el, i) => {
         const img = el;
-        img.style.backgroundImage = `url('${this.imgsSmSrcs[i]}')`;
+        img.style.backgroundImage = `url('${this.imgSmSrcset[i]}')`;
       });
+    }
+
+    if (this.metaWrap && itemMeta) {
+      const meta = JSON.parse(itemMeta);
+      const keys = Object.keys(meta);
+      const values = Object.values(meta);
+
+      const metaList = keys
+        .map((key, i) => `<li>${key}: <strong>${values[i]}</strong></li>`)
+        .join('');
+
+      this.metaWrap.innerHTML = `
+        <ul>
+          ${metaList}
+        </ul>
+      `;
     }
   }
 
