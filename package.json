@@ -12,10 +12,11 @@
     ]
   },
   "browserslist": [
-    "last 2 versions",
+    "> 0.3%",
+    "not dead",
     "ie >= 11",
-    "Android > 4",
-    "IOS >= 10"
+    "IOS >= 10",
+    "Android >= 4.4"
   ],
   "authors": "yurayarosh",
   "devDependencies": {
