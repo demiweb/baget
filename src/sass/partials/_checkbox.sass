@@ -32,3 +32,14 @@
     width: 20px
     height: 20px
     display: block
+    input
+      &:checked + span
+        &::after
+          background-color: transparent
+          +icon-arrow(15, 8, 2, $accent, -45)
+          top: 0
+        &::before
+          border-color: $accent
+    span
+      &::before
+        border: 1px solid transparent
