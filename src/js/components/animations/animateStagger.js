@@ -3,6 +3,7 @@ import { TimelineLite, Power2 } from 'gsap';
 export default function animateStagger() {
   const staggerWraps = [...document.querySelectorAll('.js-stagger')];
 
+
   if (!staggerWraps.length) return;
 
   staggerWraps.forEach((wrap) => {

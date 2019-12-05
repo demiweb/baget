@@ -30,6 +30,8 @@ import scrollTo from './components/scrollTo';
 import setPopups from './components/setPopups';
 import setHomePagePosition from './components/setHomePagePosition';
 
+import animateStagger from './components/animations/animateStagger';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   sayHello();
@@ -59,3 +61,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.setLazy = setLazy;
+window.animateStagger = animateStagger;

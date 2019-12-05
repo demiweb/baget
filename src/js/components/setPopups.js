@@ -15,10 +15,6 @@ class MyPopup extends Popup {
     this.metaWrap = this.popup.querySelector('.js-gallery-item-meta');
   }
 
-  cleareArrays() {
-    this.imgSmSrcset = [];
-    this.imgsSm = [];
-  }
 
   onOpen() {
     if (scroll && scroll.inited) scroll.smooth.off();
@@ -32,28 +28,19 @@ class MyPopup extends Popup {
       this.imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
     }
 
-    if (imgsSmNumber && imgsSmSrcset) {
-      for (let i = 0; i < +imgsSmNumber; i++) {
-      // create array of srcs for small images
-        const imgNmb = i < 9 ? `0${i + 1}` : i + 1;
-        const src = imgsSmSrcset.replace(/{number}/i, imgNmb);
-        this.imgSmSrcset.push(src);
+    if (imgsSmSrcset) {
+      this.imgSmSrcset = imgsSmSrcset.split(',');
 
-        // create img elements
+
+      this.imgSmSrcset.forEach((src) => {
         const wrap = document.createElement('div');
         const img = document.createElement('div');
 
         wrap.className = 'popup-gallery__img-sm';
         img.className = 'popup-gallery-img';
+        img.style.backgroundImage = `url('${src}')`;
         wrap.appendChild(img);
         this.imgsSmWrap.appendChild(wrap);
-
-        this.imgsSm.push(img);
-      }
-
-      this.imgsSm.forEach((el, i) => {
-        const img = el;
-        img.style.backgroundImage = `url('${this.imgSmSrcset[i]}')`;
       });
     }
 
@@ -77,7 +64,6 @@ class MyPopup extends Popup {
   onClose() {
     if (scroll && scroll.inited) scroll.smooth.on();
     this.getElements();
-    this.cleareArrays();
     if (this.imgLg) {
       this.imgLg.style.backgroundImage = '';
     }

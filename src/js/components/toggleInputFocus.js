@@ -3,7 +3,10 @@ import { HAS_FOCUS, HAS_TEXT } from '../constants';
 class FormInput {
   constructor(input) {
     this.input = input;
-    this.wrap = input.parentNode;
+    this.wrap = input.closest('.input')
+      || input.closest('.textarea')
+      || input.closest('.select')
+      || input.parentNode;
   }
 
   addFocus(e) {
