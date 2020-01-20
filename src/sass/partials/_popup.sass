@@ -53,6 +53,7 @@
       margin-bottom: 15px
 
 .popup-gallery
+  $this: &
   &__title
     margin-bottom: 45px
     +xl
@@ -113,16 +114,29 @@
     +sm
       margin-left: -5px
       margin-right: -5px
-  &__img-lg
-    // height: calc(100% - 60px)
+  &__img-lg-wrap
     padding-top: 80%
     margin-bottom: 30px
-    +cover
+    position: relative
+    overflow: hidden
+    +hover
+      #{$this}__img-lg
+        transform: translate(-50%, -50%) scale(1.1)
     +md
       margin-bottom: 15px
     +xs
       height: auto
       padding-top: 60%
+  &__img-lg
+    +cover
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 100%
+    height: 100%
+    +tr(transform .5s)
+    transform: translate(-50%, -50%) scale(1)
+    
   &__img-sm
     width: 33.33333%
     padding-left: 25px
