@@ -31,6 +31,7 @@ import setPopups from './components/setPopups';
 import setHomePagePosition from './components/setHomePagePosition';
 
 import animateStagger from './components/animations/animateStagger';
+import zoomImage from './components/zoomImage';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setPopups();
   setHomePagePosition();
+  zoomImage();
 });
 
 window.setLazy = setLazy;

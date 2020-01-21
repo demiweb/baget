@@ -114,28 +114,45 @@
     +sm
       margin-left: -5px
       margin-right: -5px
-  &__img-lg-wrap
+  // &__img-lg-wrap
+  //   padding-top: 80%
+  //   margin-bottom: 30px
+  //   position: relative
+  //   overflow: hidden
+  //   +hover
+  //     #{$this}__img-lg
+  //       transform: translate(-50%, -50%) scale(1.1)
+  //   +md
+  //     margin-bottom: 15px
+  //   +xs
+  //     height: auto
+  //     padding-top: 60%
+  &__img-lg
+    // +cover
+    // position: absolute
+    // top: 50%
+    // left: 50%
+    // width: 100%
+    // height: 100%
+    // +tr(transform .5s)
+    // transform: translate(-50%, -50%) scale(1)
     padding-top: 80%
     margin-bottom: 30px
     position: relative
     overflow: hidden
+    background-repeat: no-repeat
+    background-position: 50% 50%
     +hover
-      #{$this}__img-lg
-        transform: translate(-50%, -50%) scale(1.1)
-    +md
-      margin-bottom: 15px
-    +xs
-      height: auto
-      padding-top: 60%
-  &__img-lg
-    +cover
-    position: absolute
-    top: 50%
-    left: 50%
-    width: 100%
-    height: 100%
-    +tr(transform .5s)
-    transform: translate(-50%, -50%) scale(1)
+      img
+        opacity: 0
+    img
+      position: absolute
+      z-index: 1
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
     
   &__img-sm
     width: 33.33333%
