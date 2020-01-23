@@ -24,11 +24,14 @@ class MyPopup extends Popup {
       imgsSmNumber, imgsSmSrcset, imgLgSrc, itemMeta, imgLgThumb,
     } = this.btn.dataset;
 
-    if (this.imgLg && imgLgSrc && imgLgThumb) {
+    if (this.imgLg && imgLgSrc) {
       this.imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
-      const img = new Image();
-      img.src = imgLgThumb;
-      this.imgLg.appendChild(img);
+
+      if (imgLgThumb) {
+        const img = new Image();
+        img.src = imgLgThumb;
+        this.imgLg.appendChild(img);
+      }
     }
 
     if (imgsSmSrcset) {
