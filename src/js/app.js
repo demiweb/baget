@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInputMask();
   setTabs();
 
-  scroll.init();
+  // scroll.init();
   // setPanorama();
   scrollTo();
 
@@ -64,3 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.setLazy = setLazy;
 window.animateStagger = animateStagger;
+
+window.onload = () => {
+  setTimeout(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    scroll.init();
+  });
+};

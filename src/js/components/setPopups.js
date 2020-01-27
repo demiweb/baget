@@ -28,9 +28,9 @@ class MyPopup extends Popup {
       this.imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
 
       if (imgLgThumb) {
-        const img = new Image();
-        img.src = imgLgThumb;
-        this.imgLg.appendChild(img);
+        this.imgLgThumb = new Image();
+        this.imgLgThumb.src = imgLgThumb;
+        this.imgLg.appendChild(this.imgLgThumb);
       }
     }
 
@@ -72,6 +72,7 @@ class MyPopup extends Popup {
     this.getElements();
     if (this.imgLg) {
       this.imgLg.style.backgroundImage = '';
+      this.imgLg.innerHTML = '';
     }
     if (this.imgsSmWrap) {
       this.imgsSmWrap.innerHTML = '';

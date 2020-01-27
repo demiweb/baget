@@ -18,20 +18,18 @@ export default function setgallery() {
   //   });
   // });
 
-  const checkboxes = [...document.querySelectorAll('.js-gallery-checkbox')];
+  function onChange(e) {
+    const checkbox = e.target.closest('.js-gallery-checkbox');
+    if (!checkbox) return;
+    const calcBtn = document.querySelector('.js-popup-open[data-popup-target="calculator"]');
+    if (!calcBtn) return;
 
-  if (checkboxes && checkboxes.length > 0) {
-    checkboxes.forEach((checkbox) => {
-      checkbox.addEventListener('change', (e) => {
-        const calcBtn = document.querySelector('.js-popup-open[data-popup-target="calculator"]');
-        if (!calcBtn) return;
+    calcBtn.classList.add('bounceIn');
 
-        calcBtn.classList.add('bounceIn');
-
-        setTimeout(() => {
-          calcBtn.classList.remove('bounceIn');
-        }, 1000);
-      });
-    });
+    setTimeout(() => {
+      calcBtn.classList.remove('bounceIn');
+    }, 1000);
   }
+
+  document.addEventListener('change', onChange);
 }
