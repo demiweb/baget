@@ -1,13 +1,13 @@
-import Popup from 'popup-simple';
+import Popup from '../lib/popup';
 import scroll from './setSmoothScrolling';
 
 class MyPopup extends Popup {
-  constructor() {
-    super();
+  // constructor() {
+  //   // super();
 
-    this.imgSmSrcset = [];
-    this.imgsSm = [];
-  }
+  //   this.imgSmSrcset = [];
+  //   this.imgsSm = [];
+  // }
 
   getElements() {
     this.imgLg = this.popup.querySelector('.js-gallery-img-popup');
@@ -15,13 +15,12 @@ class MyPopup extends Popup {
     this.metaWrap = this.popup.querySelector('.js-gallery-item-meta');
   }
 
-
   onOpen() {
     if (scroll && scroll.inited) scroll.smooth.off();
     this.getElements();
 
     const {
-      imgsSmNumber, imgsSmSrcset, imgLgSrc, itemMeta, imgLgThumb,
+      imgsSmNumber, imgsSmSrcset, imgLgSrc, itemMeta, imgLgThumb, imgsSmPopupSrcset,
     } = this.btn.dataset;
 
     if (this.imgLg && imgLgSrc) {
@@ -36,15 +35,18 @@ class MyPopup extends Popup {
 
     if (imgsSmSrcset) {
       this.imgSmSrcset = imgsSmSrcset.split(',');
+      this.imgsSmPopupSrcset = imgsSmPopupSrcset.split(',');
 
 
-      this.imgSmSrcset.forEach((src) => {
+      this.imgSmSrcset.forEach((src, i) => {
         const wrap = document.createElement('div');
-        const img = document.createElement('div');
+        const img = document.createElement('button');
 
         wrap.className = 'popup-gallery__img-sm';
-        img.className = 'popup-gallery-img';
+        img.className = 'popup-gallery-img js-popup-open';
         img.style.backgroundImage = `url('${src}')`;
+        img.setAttribute('data-popup-target', 'lightbox');
+        img.setAttribute('data-img-lg-src', this.imgsSmPopupSrcset[i]);
         wrap.appendChild(img);
         this.imgsSmWrap.appendChild(wrap);
       });
@@ -68,8 +70,11 @@ class MyPopup extends Popup {
   }
 
   onClose() {
-    if (scroll && scroll.inited) scroll.smooth.on();
+    if (!this.openPopups.length && scroll && scroll.inited) {
+      scroll.smooth.on();
+    }
     this.getElements();
+
     if (this.imgLg) {
       this.imgLg.style.backgroundImage = '';
       this.imgLg.innerHTML = '';
