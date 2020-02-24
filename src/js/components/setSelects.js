@@ -1,4 +1,5 @@
 import Select from 'select-custom';
+// import scroll from './setSmoothScrolling';
 
 class CustomSelect {
   constructor(select, params) {
@@ -11,13 +12,13 @@ class CustomSelect {
     let placeholder;
     [...this.select.options].forEach((option) => {
       if (option.value === 'placeholder') {
-        placeholder = option.innerText;
+        placeholder = option.innerText || option.innerHTML;
       }
 
       if (option.value === 'placeholder') {
-        placeholder = option.innerText;
+        placeholder = option.innerText || option.innerHTML;
         if (this.select.multiple) {
-          this.opener.innerText = placeholder;
+          this.opener.innerHTML = placeholder;
         }
       }
     });
@@ -31,6 +32,10 @@ class CustomSelect {
     this.input = this.wrap.querySelector('.js-search');
   }
 
+  addCustomClassNames() {
+    this.panel.className += ' scrollbar js-scrollbar js-scrolled-el';
+  }
+
   init() {
     this.Select = new Select(this.select, this.params);
     this.Select.init();
@@ -38,6 +43,7 @@ class CustomSelect {
 
     // ================ helpers ======================
     this.addSelectsPlaceholder();
+    this.addCustomClassNames();
     // ================ helpers ======================
   }
 }
@@ -49,7 +55,6 @@ export default function setSelects() {
 
   const params = {
     with_checkboxes: {
-      // multipleSelectOpenerText: { labels: true },
       changeOpenerText: false,
       optionBuilder: (option, customOption) => {
         const inner = customOption.innerHTML;

@@ -1,27 +1,29 @@
 import Popup from '../lib/popup';
-import scroll from './setSmoothScrolling';
+// import scroll from './setSmoothScrolling';
 
 class MyPopup extends Popup {
-  // constructor() {
-  //   // super();
-
-  //   this.imgSmSrcset = [];
-  //   this.imgsSm = [];
-  // }
+  constructor(app) {
+    super();
+    this.scroll = app.scroll;
+  }
 
   getElements() {
     this.imgLg = this.popup.querySelector('.js-gallery-img-popup');
     this.imgsSmWrap = this.popup.querySelector('.js-gallery-img-sm-wrap');
     this.metaWrap = this.popup.querySelector('.js-gallery-item-meta');
+    this.title = this.popup.querySelector('.js-gallery-item-title');
+    this.priceList = this.popup.querySelector('.js-gallery-item-price');
   }
 
   onOpen() {
-    if (scroll && scroll.inited) scroll.smooth.off();
+    if (this.scroll && this.scroll.inited) this.scroll.smooth.off();
     this.getElements();
 
     const {
-      imgsSmNumber, imgsSmSrcset, imgLgSrc, itemMeta, imgLgThumb, imgsSmPopupSrcset,
+      imgsSmSrcset, imgLgSrc, itemMeta, imgLgThumb, imgsSmPopupSrcset,
     } = this.btn.dataset;
+    const itemTitle = this.btn.querySelector('.js-item-title');
+    const priceList = this.btn.querySelector('.js-item-price-list');
 
     if (this.imgLg && imgLgSrc) {
       this.imgLg.style.backgroundImage = `url('${imgLgSrc}')`;
@@ -67,25 +69,33 @@ class MyPopup extends Popup {
         </ul>
       `;
     }
+    if (this.title && itemTitle) {
+      this.title.innerHTML = itemTitle.innerHTML;
+    }
+    if (this.priceList && priceList) {
+      this.priceList.innerHTML = priceList.innerHTML;
+    }
   }
 
   onClose() {
-    if (!this.openPopups.length && scroll && scroll.inited) {
-      scroll.smooth.on();
+    if (!this.openPopups.length && this.scroll && this.scroll.inited) {
+      this.scroll.smooth.on();
     }
     this.getElements();
 
     if (this.imgLg) {
       this.imgLg.style.backgroundImage = '';
+      this.imgLg.style.backgroundPosition = '';
       this.imgLg.innerHTML = '';
     }
-    if (this.imgsSmWrap) {
-      this.imgsSmWrap.innerHTML = '';
-    }
+    if (this.imgsSmWrap) this.imgsSmWrap.innerHTML = '';
+    if (this.metaWrap) this.metaWrap.innerHTML = '';
+    if (this.priceList) this.priceList.innerHTML = '';
+    if (this.title) this.title.innerHTML = '';
   }
 }
 
-export default function setPopups() {
-  const popup = new MyPopup();
+export default function setPopups(app) {
+  const popup = new MyPopup(app);
   popup.init();
 }

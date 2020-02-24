@@ -101,10 +101,6 @@ export default class Popup {
     if (!this.popup) return;
     this.closeBtns = [...this.popup.querySelectorAll(`.${CLOSE}`)];
 
-
-    console.log('bah');
-
-
     this.popup.classList.add(IS_ACTIVE);
     if (this.options.toggleBodyClass) {
       document.body.classList.add(NO_SCROLL);

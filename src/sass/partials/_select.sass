@@ -33,14 +33,19 @@
     left: 0
     width: 100%
     top: calc(100% + 10px)
-    z-index: 1
+    z-index: 5
     max-height: 250px
-    overflow: auto
+    padding-right: 0
+    // overflow: auto
     visibility: hidden
     opacity: 0
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.16)
     +ready
       +tr(opacity .3s, visibility .3s)
+    &.scrollbar
+      +scrollbar($gray-lighten)
+      .scrollbar__inner
+        padding-right: 0
   &__option
     padding: 1.2em
     user-select: none

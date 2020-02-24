@@ -95,9 +95,26 @@ slider = [
               data-imgs-sm-srcset="http://beget.demiweb.pro/wp-content/uploads/2019/12/05-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/05-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg"
               data-imgs-sm-popup-srcset="http://beget.demiweb.pro/wp-content/uploads/2019/12/05-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/05-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg, http://beget.demiweb.pro/wp-content/uploads/2019/12/01-1.jpg"
               data-item-meta="{ &quot;Артикул&quot;: &quot;542A&quot;, &quot;Ширина&quot;: &quot;3,5 см&quot;, &quot;Цвет&quot;: &quot;зеленый&quot; }"
-              data-imgs-sm-number="6"
-              >
-              <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>
+            >
+              <span class="gallery-item__img">
+                <img class="js-lazy" alt="" data-src="./img/gallery/{{ i.img }}"/>
+              </span>
+
+              <span class="gallery-item__content">
+                <h5 class="gallery-item__title title title--h5 title--medium title--ttu js-item-title">Стальной тросик-слайдер</h5>
+
+                <span class="gallery-item__price-list js-item-price-list">
+                  <ul>
+                    <li>Цена за шт.: <strong>179 грн (длина 200см)</strong></li>
+                    <li>Цена за шт.: <strong>189 грн (длина 250см)</strong></li>
+                    <li>Цена за шт.: <strong>179 грн (длина 200см)</strong></li>
+                    <li>Цена за шт.: <strong>199 грн (длина 300см)</strong></li>
+                    <li>Цена за шт.: <strong>189 грн (длина 250см)</strong></li>
+                  </ul>
+                </span>
+              </span>
+              
+
             </button>
 
             {{ mixins.input(

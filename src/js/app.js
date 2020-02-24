@@ -25,7 +25,7 @@ import setInputMask from './components/setInputMask';
 import setTabs from './components/setTabs';
 // import setPanorama from './components/setPanorama';
 
-import scroll from './components/setSmoothScrolling';
+import Scroll from './components/setSmoothScrolling';
 import scrollTo from './components/scrollTo';
 import setPopups from './components/setPopups';
 import setHomePagePosition from './components/setHomePagePosition';
@@ -33,33 +33,62 @@ import setHomePagePosition from './components/setHomePagePosition';
 import animateStagger from './components/animations/animateStagger';
 import zoomImage from './components/zoomImage';
 
+function getScrollOptions({ section, callback }) {
+  return {
+    default: {
+      section,
+      callback,
+      ease: 0.05,
+    },
+    horizontal: {
+      section,
+      callback,
+      ease: 0.05,
+      direction: 'horizontal',
+      vs: { passive: false },
+    },
+  };
+}
 
+class App {
+  constructor() {
+    this.scroll = null;
+  }
+
+  init() {
+    sayHello();
+    setHTMLClassNames();
+    setLazy();
+    setVhProperty();
+    setSelects();
+
+    const wrap = document.querySelector('.js-scroll');
+    this.scroll = new Scroll(wrap, getScrollOptions);
+
+    setTextareaHeight();
+    toggleMenu();
+    animateOnScroll();
+
+    fixedFooter.init();
+    mySlider.init();
+
+    setGallery();
+    setScrollbar();
+    setAnimations();
+    toggleInputFocus();
+    setInputMask();
+    setTabs();
+    scrollTo(this);
+    setPopups(this);
+    setHomePagePosition(this);
+    zoomImage();
+  }
+}
+
+let app = null;
 document.addEventListener('DOMContentLoaded', () => {
-  sayHello();
-  setHTMLClassNames();
-  setLazy();
-  setVhProperty();
-  setTextareaHeight();
-  toggleMenu();
-  animateOnScroll();
-  fixedFooter.init();
-  setScrollbar();
-  mySlider.init();
-  setGallery();
-  setSelects();
-
-  setAnimations();
-  toggleInputFocus();
-  setInputMask();
-  setTabs();
-
-  // scroll.init();
-  // setPanorama();
-  scrollTo();
-
-  setPopups();
-  setHomePagePosition();
-  zoomImage();
+  app = new App();
+  app.init();
 });
 
 window.setLazy = setLazy;
@@ -70,6 +99,6 @@ window.onload = () => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
 
-    scroll.init();
+    app.scroll.init();
   });
 };

@@ -5,10 +5,10 @@ import animateBgText from './animateBgText';
 import fixedFooter from './setFooter';
 import scaleHorizontalContainer from './scaleHorizontalContainer';
 
-class Scroll {
+export default class Scroll {
   constructor(wrap, options) {
     this.wrap = wrap;
-    this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
+    // this.scrolledEls = [...document.querySelectorAll('.js-scrolled-el')];
     this.customWheelBlocks = [...document.querySelectorAll('.js-wheel-custom-block')];
     this.height = wrap.scrollHeight;
     this.width = wrap.scrollWidth;
@@ -21,6 +21,11 @@ class Scroll {
     this.inited = false;
     this.pause = false;
     this.allowRefresh = true;
+  }
+
+  // eslint-disable-next-line
+  get scrolledEls() {
+    return [...document.querySelectorAll('.js-scrolled-el')];
   }
 
   get isHorizontal() {
@@ -75,7 +80,7 @@ class Scroll {
     if (!this.scrolledEls.length) return;
 
     this.scrolledEls.forEach((el) => {
-      el.addEventListener('wheel', (e) => {
+      el.addEventListener('wheel', () => {
         if (document.body.classList.contains('is-virtual-scroll') && !this.pause) {
           this.smooth.off();
           this.pause = true;
@@ -83,7 +88,7 @@ class Scroll {
       });
     });
 
-    window.addEventListener('wheel', (e) => {
+    window.addEventListener('wheel', () => {
       if (document.body.classList.contains('is-virtual-scroll') && this.pause) {
         this.smooth.on();
         this.pause = false;
@@ -251,25 +256,3 @@ class Scroll {
     window.addEventListener('resize', this.onResize);
   }
 }
-
-const wrap = document.querySelector('.js-scroll');
-
-function getOptions({ section, callback }) {
-  return {
-    default: {
-      section,
-      callback,
-      ease: 0.05,
-    },
-    horizontal: {
-      section,
-      callback,
-      ease: 0.05,
-      direction: 'horizontal',
-      vs: { passive: false },
-    },
-  };
-}
-
-const scroll = new Scroll(wrap, getOptions);
-export default scroll;

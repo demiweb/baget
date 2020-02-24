@@ -1,8 +1,12 @@
-import scroll from './setSmoothScrolling';
+// import scroll from './setSmoothScrolling';
+
+// console.log(scroll);
+
 
 class ScrollTo {
-  constructor() {
-    this.isHorizontal = scroll.options.direction === 'horizontal';
+  constructor(app) {
+    this.isHorizontal = app.scroll.options.direction === 'horizontal';
+    this.scroll = app.scroll;
   }
 
   _scroll() {
@@ -14,16 +18,16 @@ class ScrollTo {
       this.section = document.querySelector(`.${ScrollTo.constants.section}[${ScrollTo.constants.dataTarget}="${this.name}"]`);
       const left = this.section
         ? this.section.getBoundingClientRect().left
-        - scroll.wrap.getBoundingClientRect().left
+        - this.scroll.wrap.getBoundingClientRect().left
         : +this.name;
       const top = this.section
         ? this.section.getBoundingClientRect().top
-        - scroll.wrap.getBoundingClientRect().top
+        - this.scroll.wrap.getBoundingClientRect().top
         : +this.name;
 
       this.target = this.isHorizontal ? left : top;
 
-      scroll.smooth.scrollTo(this.target);
+      this.scroll.smooth.scrollTo(this.target);
     });
   }
 
@@ -39,7 +43,7 @@ ScrollTo.constants = {
   dataTarget: 'data-scroll-to-section',
 };
 
-export default function scrollTo() {
-  const scrollToTarget = new ScrollTo();
+export default function scrollTo(app) {
+  const scrollToTarget = new ScrollTo(app);
   scrollToTarget.init();
 }
