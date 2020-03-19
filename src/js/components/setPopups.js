@@ -37,18 +37,22 @@ class MyPopup extends Popup {
 
     if (imgsSmSrcset) {
       this.imgSmSrcset = imgsSmSrcset.split(',');
-      this.imgsSmPopupSrcset = imgsSmPopupSrcset.split(',');
-
+      this.imgsSmPopupSrcset = imgsSmPopupSrcset ? imgsSmPopupSrcset.split(',') : [];
 
       this.imgSmSrcset.forEach((src, i) => {
         const wrap = document.createElement('div');
         const img = document.createElement('button');
 
         wrap.className = 'popup-gallery__img-sm';
-        img.className = 'popup-gallery-img js-popup-open';
+        img.className = 'popup-gallery-img';
         img.style.backgroundImage = `url('${src}')`;
-        img.setAttribute('data-popup-target', 'lightbox');
-        img.setAttribute('data-img-lg-src', this.imgsSmPopupSrcset[i]);
+
+        if (this.imgsSmPopupSrcset.length > 0) {
+          img.classList.add('js-popup-open');
+          img.setAttribute('data-popup-target', 'lightbox');
+          img.setAttribute('data-img-lg-src', this.imgsSmPopupSrcset[i]);
+        }
+
         wrap.appendChild(img);
         this.imgsSmWrap.appendChild(wrap);
       });
