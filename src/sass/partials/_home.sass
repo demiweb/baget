@@ -79,12 +79,13 @@
     height: 100%
     +ready
       +tr(transform 1s)
+    +rh(485)
+      background-size: 100% 108%
 
 .header-hor
   flex: 0 0 percentage(1120/7190)
   height: 100%
   position: relative
-  // padding-left: 15px
   z-index: 1
   +ready
     +tr(transform 1s)
@@ -93,19 +94,12 @@
     max-width: percentage(690/1120)
     margin-left: auto
     margin-right: auto
-    // padding-top: 10vh
     padding-bottom: 10vh
     padding-left: 15px
     padding-right: 15px
     +ready
       +tr(transform 1s)
     +sm
-      // margin-left: 0
-      // margin-right: 0
-      // max-width: none
-      max-width: 100vw
-    +xs
-      // padding-top: 5vh
       max-width: 100vw
   &__rect
     margin-bottom: 24vh    
@@ -171,7 +165,6 @@
   z-index: 1
   +tr(transform 1s)
   &__inner
-    // @extend .header-hor__inner
     padding-top: 15vh
     padding-left: 15px
     padding-right: 15px
@@ -181,6 +174,13 @@
     margin-bottom: 15vh
   &__menu
     margin-bottom: 5vh
+    +md
+      font-size: 12px
+  &__btn
+    +md
+      .btn
+        min-width: 0
+        width: 100%
 
 .info-block
   $this: &
